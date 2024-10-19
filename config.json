@@ -1,0 +1,8 @@
+{
+  "MySqlConnection": {
+    "Server": "localhost",
+    "Database": "seprise",
+    "User": "root",
+    "Password": "*Elbocha10"
+  }
+}
