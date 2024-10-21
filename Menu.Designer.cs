@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
-            btnAltaSocio = new Button();
+            btnTurnos = new Button();
             picLogo = new PictureBox();
             panel1 = new Panel();
-            btnTodos = new Button();
-            btnCuotaVencer = new Button();
+            btnAtencion = new Button();
             lblTitulo = new Label();
-            btnCuotaHoy = new Button();
-            btnCuotaVencida = new Button();
-            btnCarnet = new Button();
-            btnReporSocios = new Button();
+            btnRecepcion = new Button();
+            btnGestion = new Button();
             btnSalir = new Button();
+            btnVolver = new Button();
+            btnConsultorios = new Button();
+            btnMedicos = new Button();
+            btnPacientes = new Button();
             lblIngreso = new Label();
             label1 = new Label();
             label2 = new Label();
@@ -47,25 +48,26 @@
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // btnAltaSocio
+            // btnTurnos
             // 
-            btnAltaSocio.BackColor = Color.Azure;
-            btnAltaSocio.FlatAppearance.BorderColor = Color.LightBlue;
-            btnAltaSocio.FlatAppearance.BorderSize = 3;
-            btnAltaSocio.FlatStyle = FlatStyle.Flat;
-            btnAltaSocio.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAltaSocio.ForeColor = Color.SteelBlue;
-            btnAltaSocio.Location = new Point(86, 216);
-            btnAltaSocio.Name = "btnAltaSocio";
-            btnAltaSocio.Size = new Size(217, 52);
-            btnAltaSocio.TabIndex = 6;
-            btnAltaSocio.Text = "ALTA CLIENTE";
-            btnAltaSocio.UseVisualStyleBackColor = false;
+            btnTurnos.BackColor = Color.Azure;
+            btnTurnos.FlatAppearance.BorderColor = Color.LightBlue;
+            btnTurnos.FlatAppearance.BorderSize = 3;
+            btnTurnos.FlatStyle = FlatStyle.Flat;
+            btnTurnos.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTurnos.ForeColor = Color.SteelBlue;
+            btnTurnos.Location = new Point(51, 146);
+            btnTurnos.Name = "btnTurnos";
+            btnTurnos.Size = new Size(296, 87);
+            btnTurnos.TabIndex = 6;
+            btnTurnos.Text = "GESTION DE TURNOS";
+            btnTurnos.UseVisualStyleBackColor = false;
+            btnTurnos.Click += btnTurnos_Click;
             // 
             // picLogo
             // 
             picLogo.Image = (Image)resources.GetObject("picLogo.Image");
-            picLogo.Location = new Point(-2, 148);
+            picLogo.Location = new Point(-2, 168);
             picLogo.Name = "picLogo";
             picLogo.Size = new Size(279, 250);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
@@ -75,52 +77,35 @@
             // panel1
             // 
             panel1.BackColor = Color.LightCyan;
-            panel1.Controls.Add(btnTodos);
-            panel1.Controls.Add(btnCuotaVencer);
+            panel1.Controls.Add(btnAtencion);
             panel1.Controls.Add(lblTitulo);
-            panel1.Controls.Add(btnCuotaHoy);
-            panel1.Controls.Add(btnCuotaVencida);
-            panel1.Controls.Add(btnCarnet);
-            panel1.Controls.Add(btnReporSocios);
+            panel1.Controls.Add(btnRecepcion);
+            panel1.Controls.Add(btnGestion);
             panel1.Controls.Add(btnSalir);
-            panel1.Controls.Add(btnAltaSocio);
+            panel1.Controls.Add(btnTurnos);
+            panel1.Controls.Add(btnVolver);
+            panel1.Controls.Add(btnConsultorios);
+            panel1.Controls.Add(btnMedicos);
+            panel1.Controls.Add(btnPacientes);
             panel1.Location = new Point(279, -5);
             panel1.Name = "panel1";
             panel1.Size = new Size(730, 612);
             panel1.TabIndex = 8;
             // 
-            // btnTodos
+            // btnAtencion
             // 
-            btnTodos.BackColor = Color.Azure;
-            btnTodos.FlatAppearance.BorderColor = Color.LightBlue;
-            btnTodos.FlatAppearance.BorderSize = 3;
-            btnTodos.FlatStyle = FlatStyle.Flat;
-            btnTodos.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTodos.ForeColor = Color.SteelBlue;
-            btnTodos.Location = new Point(378, 480);
-            btnTodos.Name = "btnTodos";
-            btnTodos.Size = new Size(217, 52);
-            btnTodos.TabIndex = 14;
-            btnTodos.Text = "TODOS LOS CLIENTES";
-            btnTodos.UseVisualStyleBackColor = false;
-            btnTodos.Visible = false;
-            // 
-            // btnCuotaVencer
-            // 
-            btnCuotaVencer.BackColor = Color.Azure;
-            btnCuotaVencer.FlatAppearance.BorderColor = Color.LightBlue;
-            btnCuotaVencer.FlatAppearance.BorderSize = 3;
-            btnCuotaVencer.FlatStyle = FlatStyle.Flat;
-            btnCuotaVencer.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCuotaVencer.ForeColor = Color.SteelBlue;
-            btnCuotaVencer.Location = new Point(139, 480);
-            btnCuotaVencer.Name = "btnCuotaVencer";
-            btnCuotaVencer.Size = new Size(217, 52);
-            btnCuotaVencer.TabIndex = 13;
-            btnCuotaVencer.Text = "SOCIOS: CUOTA A VENCER";
-            btnCuotaVencer.UseVisualStyleBackColor = false;
-            btnCuotaVencer.Visible = false;
-            btnCuotaVencer.Click += btnCuotaVencer_Click;
+            btnAtencion.BackColor = Color.Azure;
+            btnAtencion.FlatAppearance.BorderColor = Color.LightBlue;
+            btnAtencion.FlatAppearance.BorderSize = 3;
+            btnAtencion.FlatStyle = FlatStyle.Flat;
+            btnAtencion.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAtencion.ForeColor = Color.SteelBlue;
+            btnAtencion.Location = new Point(381, 262);
+            btnAtencion.Name = "btnAtencion";
+            btnAtencion.Size = new Size(296, 87);
+            btnAtencion.TabIndex = 15;
+            btnAtencion.Text = "ATENCION DEL PACIENTE";
+            btnAtencion.UseVisualStyleBackColor = false;
             // 
             // lblTitulo
             // 
@@ -132,71 +117,37 @@
             lblTitulo.TabIndex = 13;
             lblTitulo.Text = "MENU PRINCIPAL";
             // 
-            // btnCuotaHoy
+            // btnRecepcion
             // 
-            btnCuotaHoy.BackColor = Color.Azure;
-            btnCuotaHoy.FlatAppearance.BorderColor = Color.LightBlue;
-            btnCuotaHoy.FlatAppearance.BorderSize = 3;
-            btnCuotaHoy.FlatStyle = FlatStyle.Flat;
-            btnCuotaHoy.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCuotaHoy.ForeColor = Color.SteelBlue;
-            btnCuotaHoy.Location = new Point(378, 422);
-            btnCuotaHoy.Name = "btnCuotaHoy";
-            btnCuotaHoy.Size = new Size(217, 52);
-            btnCuotaHoy.TabIndex = 12;
-            btnCuotaHoy.Text = "SOCIOS: VENCE HOY";
-            btnCuotaHoy.UseVisualStyleBackColor = false;
-            btnCuotaHoy.Visible = false;
-            btnCuotaHoy.Click += btnCuotaHoy_Click;
+            btnRecepcion.BackColor = Color.Azure;
+            btnRecepcion.FlatAppearance.BorderColor = Color.LightBlue;
+            btnRecepcion.FlatAppearance.BorderSize = 3;
+            btnRecepcion.FlatStyle = FlatStyle.Flat;
+            btnRecepcion.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRecepcion.ForeColor = Color.SteelBlue;
+            btnRecepcion.Location = new Point(381, 146);
+            btnRecepcion.Name = "btnRecepcion";
+            btnRecepcion.Size = new Size(296, 87);
+            btnRecepcion.TabIndex = 10;
+            btnRecepcion.Text = "RECEPCION EN SALA DE ESPERA";
+            btnRecepcion.UseVisualStyleBackColor = false;
+            btnRecepcion.Click += btnCarnet_Click;
             // 
-            // btnCuotaVencida
+            // btnGestion
             // 
-            btnCuotaVencida.BackColor = Color.Azure;
-            btnCuotaVencida.FlatAppearance.BorderColor = Color.LightBlue;
-            btnCuotaVencida.FlatAppearance.BorderSize = 3;
-            btnCuotaVencida.FlatStyle = FlatStyle.Flat;
-            btnCuotaVencida.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCuotaVencida.ForeColor = Color.SteelBlue;
-            btnCuotaVencida.Location = new Point(139, 422);
-            btnCuotaVencida.Name = "btnCuotaVencida";
-            btnCuotaVencida.Size = new Size(217, 52);
-            btnCuotaVencida.TabIndex = 11;
-            btnCuotaVencida.Text = "SOCIOS: CUOTA VENCIDA";
-            btnCuotaVencida.UseVisualStyleBackColor = false;
-            btnCuotaVencida.Visible = false;
-            btnCuotaVencida.Click += btnCuotaVencida_Click;
-            // 
-            // btnCarnet
-            // 
-            btnCarnet.BackColor = Color.Azure;
-            btnCarnet.FlatAppearance.BorderColor = Color.LightBlue;
-            btnCarnet.FlatAppearance.BorderSize = 3;
-            btnCarnet.FlatStyle = FlatStyle.Flat;
-            btnCarnet.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCarnet.ForeColor = Color.SteelBlue;
-            btnCarnet.Location = new Point(436, 216);
-            btnCarnet.Name = "btnCarnet";
-            btnCarnet.Size = new Size(217, 52);
-            btnCarnet.TabIndex = 10;
-            btnCarnet.Text = "EMITIR CARNET";
-            btnCarnet.UseVisualStyleBackColor = false;
-            btnCarnet.Click += btnCarnet_Click;
-            // 
-            // btnReporSocios
-            // 
-            btnReporSocios.BackColor = Color.Azure;
-            btnReporSocios.FlatAppearance.BorderColor = Color.LightBlue;
-            btnReporSocios.FlatAppearance.BorderSize = 3;
-            btnReporSocios.FlatStyle = FlatStyle.Flat;
-            btnReporSocios.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnReporSocios.ForeColor = Color.SteelBlue;
-            btnReporSocios.Location = new Point(86, 312);
-            btnReporSocios.Name = "btnReporSocios";
-            btnReporSocios.Size = new Size(217, 52);
-            btnReporSocios.TabIndex = 9;
-            btnReporSocios.Text = "REPORTE DE CLIENTES";
-            btnReporSocios.UseVisualStyleBackColor = false;
-            btnReporSocios.Click += btnReporSocios_Click;
+            btnGestion.BackColor = Color.Azure;
+            btnGestion.FlatAppearance.BorderColor = Color.LightBlue;
+            btnGestion.FlatAppearance.BorderSize = 3;
+            btnGestion.FlatStyle = FlatStyle.Flat;
+            btnGestion.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGestion.ForeColor = Color.SteelBlue;
+            btnGestion.Location = new Point(51, 262);
+            btnGestion.Name = "btnGestion";
+            btnGestion.Size = new Size(296, 87);
+            btnGestion.TabIndex = 9;
+            btnGestion.Text = "GESTION ADMINISTRATIVA";
+            btnGestion.UseVisualStyleBackColor = false;
+            btnGestion.Click += btnGestion_Click;
             // 
             // btnSalir
             // 
@@ -206,13 +157,80 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.SteelBlue;
-            btnSalir.Location = new Point(436, 312);
+            btnSalir.Location = new Point(381, 378);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(217, 52);
+            btnSalir.Size = new Size(296, 87);
             btnSalir.TabIndex = 8;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
+            // 
+            // btnVolver
+            // 
+            btnVolver.BackColor = Color.Azure;
+            btnVolver.FlatAppearance.BorderColor = Color.LightBlue;
+            btnVolver.FlatAppearance.BorderSize = 3;
+            btnVolver.FlatStyle = FlatStyle.Flat;
+            btnVolver.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVolver.ForeColor = Color.SteelBlue;
+            btnVolver.Location = new Point(366, 309);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(296, 87);
+            btnVolver.TabIndex = 14;
+            btnVolver.Text = "VOLVER";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Visible = false;
+            // 
+            // btnConsultorios
+            // 
+            btnConsultorios.BackColor = Color.Azure;
+            btnConsultorios.FlatAppearance.BorderColor = Color.LightBlue;
+            btnConsultorios.FlatAppearance.BorderSize = 3;
+            btnConsultorios.FlatStyle = FlatStyle.Flat;
+            btnConsultorios.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnConsultorios.ForeColor = Color.SteelBlue;
+            btnConsultorios.Location = new Point(64, 309);
+            btnConsultorios.Name = "btnConsultorios";
+            btnConsultorios.Size = new Size(296, 87);
+            btnConsultorios.TabIndex = 13;
+            btnConsultorios.Text = "ASIGNAR CONSULTORIO";
+            btnConsultorios.UseVisualStyleBackColor = false;
+            btnConsultorios.Visible = false;
+            btnConsultorios.Click += btnCuotaVencer_Click;
+            // 
+            // btnMedicos
+            // 
+            btnMedicos.BackColor = Color.Azure;
+            btnMedicos.FlatAppearance.BorderColor = Color.LightBlue;
+            btnMedicos.FlatAppearance.BorderSize = 3;
+            btnMedicos.FlatStyle = FlatStyle.Flat;
+            btnMedicos.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnMedicos.ForeColor = Color.SteelBlue;
+            btnMedicos.Location = new Point(366, 216);
+            btnMedicos.Name = "btnMedicos";
+            btnMedicos.Size = new Size(296, 87);
+            btnMedicos.TabIndex = 12;
+            btnMedicos.Text = "GESTIONAR PERSONAL MEDICO";
+            btnMedicos.UseVisualStyleBackColor = false;
+            btnMedicos.Visible = false;
+            btnMedicos.Click += btnCuotaHoy_Click;
+            // 
+            // btnPacientes
+            // 
+            btnPacientes.BackColor = Color.Azure;
+            btnPacientes.FlatAppearance.BorderColor = Color.LightBlue;
+            btnPacientes.FlatAppearance.BorderSize = 3;
+            btnPacientes.FlatStyle = FlatStyle.Flat;
+            btnPacientes.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPacientes.ForeColor = Color.SteelBlue;
+            btnPacientes.Location = new Point(64, 216);
+            btnPacientes.Name = "btnPacientes";
+            btnPacientes.Size = new Size(296, 87);
+            btnPacientes.TabIndex = 11;
+            btnPacientes.Text = "GESTIONAR PACIENTES";
+            btnPacientes.UseVisualStyleBackColor = false;
+            btnPacientes.Visible = false;
+            btnPacientes.Click += btnPacientes_Click;
             // 
             // lblIngreso
             // 
@@ -222,7 +240,6 @@
             lblIngreso.Size = new Size(38, 15);
             lblIngreso.TabIndex = 11;
             lblIngreso.Text = "label1";
-            lblIngreso.Click += lblIngreso_Click;
             // 
             // label1
             // 
@@ -274,16 +291,17 @@
         private PictureBox picLogo;
         private Panel panel1;
         private Label lblIngreso;
-        private Button btnAltaSocio;
+        private Button btnTurnos;
         private Button btnSalir;
-        private Button btnReporSocios;
-        private Button btnCarnet;
+        private Button btnGestion;
+        private Button btnRecepcion;
         private Label lblTitulo;
         private Label label1;
         private Label label2;
-        private Button btnCuotaVencer;
-        private Button btnCuotaHoy;
-        private Button btnCuotaVencida;
-        private Button btnTodos;
+        private Button btnConsultorios;
+        private Button btnMedicos;
+        private Button btnPacientes;
+        private Button btnVolver;
+        private Button btnAtencion;
     }
 }

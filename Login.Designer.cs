@@ -57,6 +57,7 @@ namespace Clinica_SePrise
             // 
             // txtUsuario
             // 
+            txtUsuario.ForeColor = SystemColors.MenuHighlight;
             txtUsuario.Location = new Point(493, 90);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(163, 23);
@@ -85,6 +86,7 @@ namespace Clinica_SePrise
             // 
             // txtPass
             // 
+            txtPass.ForeColor = SystemColors.MenuHighlight;
             txtPass.Location = new Point(493, 138);
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(163, 23);
@@ -95,12 +97,12 @@ namespace Clinica_SePrise
             // 
             // btnIngresar
             // 
-            btnIngresar.BackColor = Color.SteelBlue;
-            btnIngresar.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            btnIngresar.BackColor = Color.Azure;
+            btnIngresar.FlatAppearance.BorderColor = Color.LightBlue;
             btnIngresar.FlatAppearance.BorderSize = 3;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnIngresar.ForeColor = Color.White;
+            btnIngresar.ForeColor = Color.SteelBlue;
             btnIngresar.Location = new Point(447, 210);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(217, 52);

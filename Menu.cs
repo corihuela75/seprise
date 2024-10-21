@@ -32,23 +32,24 @@ namespace Clinica_SePrise
             Application.Exit();
         }
 
-        private void btnAltaSocio_Click(object sender, EventArgs e)
+        private void btnTurnos_Click(object sender, EventArgs e)
         {
-            //NuevoCliente frmNuevoCliente = new NuevoCliente();
-            //frmNuevoCliente.ShowDialog();
+           // NuevoPaciente frmNuevoPaciente = new NuevoPaciente();
+            //frmNuevoPaciente.ShowDialog();
             //this.Hide();
         }
 
-        private void btnReporSocios_Click(object sender, EventArgs e)
+        private void btnGestion_Click(object sender, EventArgs e)
         {
-            btnAltaSocio.Visible = false;
-            btnCarnet.Visible = false;
-            btnReporSocios.Visible = false;
+            btnTurnos.Visible = false;
+            btnRecepcion.Visible = false;
+            btnGestion.Visible = false;
             btnSalir.Visible = false;
-            btnCuotaHoy.Visible = true;
-            btnCuotaVencer.Visible = true;
-            btnCuotaVencida.Visible = true;
-            btnTodos.Visible = true;
+            btnAtencion.Visible = false;
+            btnMedicos.Visible = true;
+            btnConsultorios.Visible = true;
+            btnPacientes.Visible = true;
+            btnVolver.Visible = true;
         }
 
         private void btnCarnet_Click(object sender, EventArgs e)
@@ -58,12 +59,11 @@ namespace Clinica_SePrise
             //this.Hide();
         }
 
-        private void btnCuotaVencida_Click(object sender, EventArgs e)
+        private void btnPacientes_Click(object sender, EventArgs e)
         {
-            //frmReporCliente.listado = "1";
-            //frmReporCliente.ShowDialog();
-            //restablecerBotones();
-            //frmReporCliente.Hide();
+            NuevoPaciente frmNuevoPaciente = new NuevoPaciente();
+            frmNuevoPaciente.ShowDialog();
+            this.Hide();
         }
 
         private void btnCuotaHoy_Click(object sender, EventArgs e)
@@ -94,19 +94,15 @@ namespace Clinica_SePrise
 
         private void restablecerBotones()
         {
-            btnAltaSocio.Visible = true;
-            btnCarnet.Visible = true;
-            btnReporSocios.Visible = true;
+            btnTurnos.Visible = true;
+            btnRecepcion.Visible = true;
+            btnGestion.Visible = true;
             btnSalir.Visible = true;
-            btnCuotaHoy.Visible = false;
-            btnCuotaVencer.Visible = false;
-            btnCuotaVencida.Visible = false;
-            btnTodos.Visible = false;
+            btnMedicos.Visible = false;
+            btnConsultorios.Visible = false;
+            btnPacientes.Visible = false;
+            btnVolver.Visible = false;
         }
 
-        private void lblIngreso_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -27,3 +27,22 @@ insert into usuario(CodUsu,NombreUsu,PassUsu,RolUsu) values
 (26,'Admin','1234',120),
 (30,'Cristian','1234',120),
 (31,'Heber','1234',120);
+
+CREATE TABLE paciente (
+    cod_paci INT AUTO_INCREMENT,
+    nombre_paci VARCHAR(50) NOT NULL,
+    doc_paci INT,
+    fecha_nac_paci DATE,
+    edad_paci INT,
+    genero_paci ENUM('Masculino', 'Femenino', 'Otro'),
+    tel_paci VARCHAR(20),
+    direccion_paci VARCHAR(100),
+    email_paci VARCHAR(100),
+    estado_civil_paci ENUM('Soltero', 'Casado', 'Divorciado', 'Viudo', 'Otro'),
+    historial_paci TEXT,
+    fecha_registro_paci DATETIME DEFAULT CURRENT_TIMESTAMP,
+    obra_social_paci VARCHAR(100),
+    constraint pk_paciente primary key (cod_paci)
+);
+
+
