@@ -1,4 +1,6 @@
 using Clinica_SePrise.Datos;
+using Clinica_SePrise.Medicos;
+using Clinica_SePrise.Pacientes;
 using System.Data;
 
 
@@ -26,9 +28,6 @@ namespace Clinica_SePrise
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            /* Notifica a todos los surtidores de mensajes que deben terminar 
-             * y, a continuación, cierra todas las ventanas de la aplicación 
-             *______________________________________________________________________ */
             Application.Exit();
         }
 
@@ -66,12 +65,11 @@ namespace Clinica_SePrise
             this.Hide();
         }
 
-        private void btnCuotaHoy_Click(object sender, EventArgs e)
+        private void btnMedicos_Click(object sender, EventArgs e)
         {
-            //frmReporCliente.listado = "2";
-            //frmReporCliente.ShowDialog();
-            //restablecerBotones();
-            //frmReporCliente.Hide();
+            NuevoMedico frmNuevoMedico = new NuevoMedico();
+            frmNuevoMedico.ShowDialog();
+            this.Hide();
 
         }
 

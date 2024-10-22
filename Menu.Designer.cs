@@ -213,7 +213,7 @@
             btnMedicos.Text = "GESTIONAR PERSONAL MEDICO";
             btnMedicos.UseVisualStyleBackColor = false;
             btnMedicos.Visible = false;
-            btnMedicos.Click += btnCuotaHoy_Click;
+            btnMedicos.Click += btnMedicos_Click;
             // 
             // btnPacientes
             // 
