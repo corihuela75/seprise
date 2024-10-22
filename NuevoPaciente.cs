@@ -1,6 +1,6 @@
 ﻿using Clinica_SePrise.Datos;
 
-namespace Clinica_SePrise
+namespace Clinica_SePrise.Pacientes
 {
     public partial class NuevoPaciente : Form
     {
@@ -43,7 +43,7 @@ namespace Clinica_SePrise
             txtHistoria.Text = "";
             txtNombre.Focus();
         }
-        //COMPROBAMOS INGRESO DE CAMPOS OBLIGAORIOS
+        //COMPROBAMOS INGRESO DE CAMPOS OBLIGATORIOS
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (txtNombre.Text == "" || txtDocu.Text == "" || txtEmail.Text == "" || txtNacimiento.Text == ""

@@ -1,7 +1,8 @@
 ﻿
-namespace Clinica_SePrise.Pacientes
+namespace Clinica_SePrise.Medicos
+
 {
-    public partial class NuevoPaciente : Form
+    public partial class NuevoMedico : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,36 +30,30 @@ namespace Clinica_SePrise.Pacientes
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoPaciente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoMedico));
             pictureBox1 = new PictureBox();
             lblTitulo = new Label();
             lblNombre = new Label();
-            lblDni = new Label();
-            lblTipo = new Label();
+            lblMatricula = new Label();
             lblNacimiento = new Label();
-            cboGenero = new ComboBox();
             txtNombre = new TextBox();
-            txtDocu = new TextBox();
-            txtNacimiento = new TextBox();
+            txtMatricula = new TextBox();
             btnIngresar = new Button();
             btnLimpiar = new Button();
             btnVolver = new Button();
             txtEmail = new TextBox();
             lblEmail = new Label();
-            cboEstado = new ComboBox();
-            lblApto = new Label();
             lblAsterisco = new Label();
             panel1 = new Panel();
-            txtEdad = new TextBox();
-            label1 = new Label();
             txtTelefono = new TextBox();
             label2 = new Label();
-            txtDireccion = new TextBox();
+            txtApellido = new TextBox();
             label3 = new Label();
-            txtObra = new TextBox();
             label4 = new Label();
-            txtHistoria = new TextBox();
-            label5 = new Label();
+            txtUsuario = new TextBox();
+            label1 = new Label();
+            cboEspecialidad = new ComboBox();
+            txtContraseña = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -79,61 +74,39 @@ namespace Clinica_SePrise.Pacientes
             lblTitulo.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitulo.Location = new Point(200, 9);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(351, 45);
+            lblTitulo.Size = new Size(328, 45);
             lblTitulo.TabIndex = 1;
-            lblTitulo.Text = "REGISTRAR PACIENTE";
+            lblTitulo.Text = "REGISTRAR MEDICO";
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombre.Location = new Point(257, 80);
+            lblNombre.Location = new Point(327, 80);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(167, 19);
+            lblNombre.Size = new Size(97, 19);
             lblNombre.TabIndex = 2;
-            lblNombre.Text = "( * ) Nombre Completo:";
+            lblNombre.Text = "( * ) Nombre:";
             // 
-            // lblDni
+            // lblMatricula
             // 
-            lblDni.AutoSize = true;
-            lblDni.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDni.Location = new Point(358, 114);
-            lblDni.Name = "lblDni";
-            lblDni.Size = new Size(66, 19);
-            lblDni.TabIndex = 3;
-            lblDni.Text = "( * ) DNI:";
-            // 
-            // lblTipo
-            // 
-            lblTipo.AutoSize = true;
-            lblTipo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTipo.Location = new Point(334, 318);
-            lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(90, 19);
-            lblTipo.TabIndex = 4;
-            lblTipo.Text = "( * ) Género:";
+            lblMatricula.AutoSize = true;
+            lblMatricula.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMatricula.Location = new Point(314, 166);
+            lblMatricula.Name = "lblMatricula";
+            lblMatricula.Size = new Size(104, 19);
+            lblMatricula.TabIndex = 3;
+            lblMatricula.Text = "( * ) Matricula:";
             // 
             // lblNacimiento
             // 
             lblNacimiento.AutoSize = true;
             lblNacimiento.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNacimiento.Location = new Point(243, 250);
+            lblNacimiento.Location = new Point(294, 209);
             lblNacimiento.Name = "lblNacimiento";
-            lblNacimiento.Size = new Size(181, 19);
+            lblNacimiento.Size = new Size(124, 19);
             lblNacimiento.TabIndex = 5;
-            lblNacimiento.Text = "( * ) Fecha de Nacimiento:";
-            // 
-            // cboGenero
-            // 
-            cboGenero.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboGenero.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cboGenero.ForeColor = SystemColors.MenuHighlight;
-            cboGenero.FormattingEnabled = true;
-            cboGenero.Items.AddRange(new object[] { "Masculino", "Femenino", "Otro" });
-            cboGenero.Location = new Point(434, 315);
-            cboGenero.Name = "cboGenero";
-            cboGenero.Size = new Size(121, 25);
-            cboGenero.TabIndex = 8;
+            lblNacimiento.Text = "( * ) Especialidad:";
             // 
             // txtNombre
             // 
@@ -144,23 +117,14 @@ namespace Clinica_SePrise.Pacientes
             txtNombre.Size = new Size(404, 25);
             txtNombre.TabIndex = 1;
             // 
-            // txtDocu
+            // txtMatricula
             // 
-            txtDocu.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDocu.ForeColor = SystemColors.MenuHighlight;
-            txtDocu.Location = new Point(434, 111);
-            txtDocu.Name = "txtDocu";
-            txtDocu.Size = new Size(98, 25);
-            txtDocu.TabIndex = 2;
-            // 
-            // txtNacimiento
-            // 
-            txtNacimiento.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNacimiento.ForeColor = SystemColors.MenuHighlight;
-            txtNacimiento.Location = new Point(434, 247);
-            txtNacimiento.Name = "txtNacimiento";
-            txtNacimiento.Size = new Size(124, 25);
-            txtNacimiento.TabIndex = 6;
+            txtMatricula.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMatricula.ForeColor = SystemColors.MenuHighlight;
+            txtMatricula.Location = new Point(434, 163);
+            txtMatricula.Name = "txtMatricula";
+            txtMatricula.Size = new Size(98, 25);
+            txtMatricula.TabIndex = 3;
             // 
             // btnIngresar
             // 
@@ -173,7 +137,7 @@ namespace Clinica_SePrise.Pacientes
             btnIngresar.Location = new Point(412, 592);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(145, 47);
-            btnIngresar.TabIndex = 12;
+            btnIngresar.TabIndex = 9;
             btnIngresar.Text = "INGRESAR";
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
@@ -189,7 +153,7 @@ namespace Clinica_SePrise.Pacientes
             btnLimpiar.Location = new Point(575, 592);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(145, 47);
-            btnLimpiar.TabIndex = 13;
+            btnLimpiar.TabIndex = 10;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -205,7 +169,7 @@ namespace Clinica_SePrise.Pacientes
             btnVolver.Location = new Point(738, 592);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(145, 47);
-            btnVolver.TabIndex = 14;
+            btnVolver.TabIndex = 11;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
@@ -214,42 +178,20 @@ namespace Clinica_SePrise.Pacientes
             // 
             txtEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtEmail.ForeColor = SystemColors.MenuHighlight;
-            txtEmail.Location = new Point(434, 213);
+            txtEmail.Location = new Point(434, 292);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(404, 25);
-            txtEmail.TabIndex = 5;
+            txtEmail.TabIndex = 6;
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEmail.Location = new Point(347, 216);
+            lblEmail.Location = new Point(375, 295);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(77, 19);
+            lblEmail.Size = new Size(49, 19);
             lblEmail.TabIndex = 16;
-            lblEmail.Text = "( * ) Email:";
-            // 
-            // cboEstado
-            // 
-            cboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboEstado.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cboEstado.ForeColor = SystemColors.MenuHighlight;
-            cboEstado.FormattingEnabled = true;
-            cboEstado.Items.AddRange(new object[] { "Soltero", "Casado", "Divorciado", "Viudo", "Otro" });
-            cboEstado.Location = new Point(434, 349);
-            cboEstado.Name = "cboEstado";
-            cboEstado.Size = new Size(121, 25);
-            cboEstado.TabIndex = 9;
-            // 
-            // lblApto
-            // 
-            lblApto.AutoSize = true;
-            lblApto.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblApto.Location = new Point(334, 352);
-            lblApto.Name = "lblApto";
-            lblApto.Size = new Size(90, 19);
-            lblApto.TabIndex = 18;
-            lblApto.Text = "Estado Civil:";
+            lblEmail.Text = "Email:";
             // 
             // lblAsterisco
             // 
@@ -270,139 +212,125 @@ namespace Clinica_SePrise.Pacientes
             panel1.Size = new Size(180, 657);
             panel1.TabIndex = 21;
             // 
-            // txtEdad
-            // 
-            txtEdad.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEdad.ForeColor = SystemColors.MenuHighlight;
-            txtEdad.Location = new Point(434, 281);
-            txtEdad.Name = "txtEdad";
-            txtEdad.Size = new Size(98, 25);
-            txtEdad.TabIndex = 7;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(378, 284);
-            label1.Name = "label1";
-            label1.Size = new Size(46, 19);
-            label1.TabIndex = 23;
-            label1.Text = "Edad:";
-            // 
             // txtTelefono
             // 
             txtTelefono.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtTelefono.ForeColor = SystemColors.MenuHighlight;
-            txtTelefono.Location = new Point(434, 179);
+            txtTelefono.Location = new Point(434, 249);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(124, 25);
-            txtTelefono.TabIndex = 4;
+            txtTelefono.TabIndex = 5;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(325, 182);
+            label2.Location = new Point(325, 252);
             label2.Name = "label2";
             label2.Size = new Size(99, 19);
             label2.TabIndex = 25;
             label2.Text = "( * ) Teléfono:";
             // 
-            // txtDireccion
+            // txtApellido
             // 
-            txtDireccion.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDireccion.ForeColor = SystemColors.MenuHighlight;
-            txtDireccion.Location = new Point(434, 145);
-            txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(404, 25);
-            txtDireccion.TabIndex = 3;
+            txtApellido.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtApellido.ForeColor = SystemColors.MenuHighlight;
+            txtApellido.Location = new Point(434, 120);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(404, 25);
+            txtApellido.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(320, 148);
+            label3.Location = new Point(320, 123);
             label3.Name = "label3";
-            label3.Size = new Size(104, 19);
+            label3.Size = new Size(98, 19);
             label3.TabIndex = 27;
-            label3.Text = "( * ) Dirección:";
-            // 
-            // txtObra
-            // 
-            txtObra.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtObra.ForeColor = SystemColors.MenuHighlight;
-            txtObra.Location = new Point(434, 383);
-            txtObra.Name = "txtObra";
-            txtObra.Size = new Size(404, 25);
-            txtObra.TabIndex = 10;
+            label3.Text = "( * ) Apellido:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(333, 386);
+            label4.Location = new Point(333, 381);
             label4.Name = "label4";
-            label4.Size = new Size(91, 19);
+            label4.Size = new Size(88, 19);
             label4.TabIndex = 29;
-            label4.Text = "Obra Social:";
+            label4.Text = "Contraseña:";
             // 
-            // txtHistoria
+            // txtUsuario
             // 
-            txtHistoria.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtHistoria.ForeColor = SystemColors.MenuHighlight;
-            txtHistoria.Location = new Point(435, 415);
-            txtHistoria.Multiline = true;
-            txtHistoria.Name = "txtHistoria";
-            txtHistoria.Size = new Size(404, 160);
-            txtHistoria.TabIndex = 11;
+            txtUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuario.ForeColor = SystemColors.MenuHighlight;
+            txtUsuario.Location = new Point(434, 335);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(214, 25);
+            txtUsuario.TabIndex = 7;
             // 
-            // label5
+            // label1
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(310, 418);
-            label5.Name = "label5";
-            label5.Size = new Size(114, 19);
-            label5.TabIndex = 31;
-            label5.Text = "Historia Clínica:";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(360, 338);
+            label1.Name = "label1";
+            label1.Size = new Size(64, 19);
+            label1.TabIndex = 23;
+            label1.Text = "Usuario:";
             // 
-            // NuevoPaciente
+            // cboEspecialidad
+            // 
+            cboEspecialidad.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboEspecialidad.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cboEspecialidad.ForeColor = SystemColors.MenuHighlight;
+            cboEspecialidad.FormattingEnabled = true;
+            cboEspecialidad.Items.AddRange(new object[] { "Medicina Interna", "Pediatría", "Ginecología", "Obstetricia", "Cardiología", "Neurología", "Psiquiatría", "Cirugía General", "Ortopedia y Traumatología", "Otorrinolaringología", "Oftalmología", "Urología", "Dermatología", "Radiología", "Anestesiología", "Patología", "Medicina Nuclear", "Medicina del Trabajo", "Medicina Preventiva", "Medicina Intensiva", "Geriatría", "Alergología e Inmunología", "Anatomía Patológica", "Cirugía Cardiovascular", "Neurocirugía", "Cirugía Pediátrica", "Cirugía Plástica y Reparadora", "Gastroenterología", "Hematología", "Nefrología", "Neumología", "Reumatología", "Endocrinología" });
+            cboEspecialidad.Location = new Point(434, 209);
+            cboEspecialidad.Name = "cboEspecialidad";
+            cboEspecialidad.Size = new Size(404, 25);
+            cboEspecialidad.TabIndex = 4;
+            // 
+            // txtContraseña
+            // 
+            txtContraseña.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtContraseña.ForeColor = SystemColors.MenuHighlight;
+            txtContraseña.Location = new Point(434, 378);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.Size = new Size(214, 25);
+            txtContraseña.TabIndex = 8;
+            // 
+            // NuevoMedico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(895, 651);
-            Controls.Add(txtHistoria);
-            Controls.Add(label5);
-            Controls.Add(txtObra);
+            Controls.Add(txtContraseña);
+            Controls.Add(cboEspecialidad);
             Controls.Add(label4);
-            Controls.Add(txtDireccion);
+            Controls.Add(txtApellido);
             Controls.Add(label3);
             Controls.Add(txtTelefono);
             Controls.Add(label2);
-            Controls.Add(txtEdad);
+            Controls.Add(txtUsuario);
             Controls.Add(label1);
             Controls.Add(lblAsterisco);
-            Controls.Add(cboEstado);
-            Controls.Add(lblApto);
             Controls.Add(txtEmail);
             Controls.Add(lblEmail);
             Controls.Add(btnVolver);
             Controls.Add(btnLimpiar);
             Controls.Add(btnIngresar);
-            Controls.Add(txtNacimiento);
-            Controls.Add(txtDocu);
+            Controls.Add(txtMatricula);
             Controls.Add(txtNombre);
-            Controls.Add(cboGenero);
             Controls.Add(lblNacimiento);
-            Controls.Add(lblTipo);
-            Controls.Add(lblDni);
+            Controls.Add(lblMatricula);
             Controls.Add(lblNombre);
             Controls.Add(lblTitulo);
             Controls.Add(panel1);
-            Name = "NuevoPaciente";
+            Name = "NuevoMedico";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "REGISTRAR PACIENTE";
+            Text = "REGISTRAR MEDICO";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -415,10 +343,8 @@ namespace Clinica_SePrise.Pacientes
         private PictureBox pictureBox1;
         private Label lblTitulo;
         private Label lblNombre;
-        private Label lblDni;
-        private Label lblTipo;
+        private Label lblMatricula;
         private Label lblNacimiento;
-        private ComboBox cboEstado;
         private TextBox txtEmail;
         //private TextBox textBox2;
         //private TextBox textBox3;
@@ -426,22 +352,18 @@ namespace Clinica_SePrise.Pacientes
         private Button btnLimpiar;
         private Button btnVolver;
         private TextBox txtNombre;
-        private TextBox txtDocu;        
-        private TextBox txtNacimiento;
-        private ComboBox cboGenero;
+        private TextBox txtMatricula;        
         private Label lblEmail;
-        private Label lblApto;
         private Label lblAsterisco;
         private Panel panel1;
-        private TextBox txtEdad;
-        private Label label1;
         private TextBox txtTelefono;
         private Label label2;
-        private TextBox txtDireccion;
+        private TextBox txtApellido;
         private Label label3;
-        private TextBox txtObra;
         private Label label4;
-        private TextBox txtHistoria;
-        private Label label5;
+        private TextBox txtUsuario;
+        private Label label1;
+        private ComboBox cboEspecialidad;
+        private TextBox txtContraseña;
     }
 }

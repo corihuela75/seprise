@@ -67,10 +67,6 @@ namespace Clinica_SePrise
             }
         }
 
-
-
-
-
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text;
@@ -95,8 +91,6 @@ namespace Clinica_SePrise
                         Menu menu = new Menu();
                         menu.Show(); // se llama al formulario principal
                         this.Hide(); // se oculta el formulario del login
-
-
                     }
                     else
                     {

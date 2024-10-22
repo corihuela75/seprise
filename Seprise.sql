@@ -11,7 +11,8 @@ constraint primary key(RolUsu)
 
 insert into roles values
 (120,'Administrador'),
-(121,'Empleado');
+(121,'Empleado'),
+(122,'Medico');
 
 create table usuario(
 CodUsu int auto_increment,
@@ -45,4 +46,15 @@ CREATE TABLE paciente (
     constraint pk_paciente primary key (cod_paci)
 );
 
+CREATE TABLE medico (
+    cod_medi INT AUTO_INCREMENT,
+    nombre_medi VARCHAR(50) NOT NULL,
+	apellido_medi VARCHAR(50) NOT NULL,
+    matricula INT,
+    especialidad VARCHAR(100),
+    tel_medi VARCHAR(20),
+    email_medi VARCHAR(100),
+    fecha_registro_medi DATETIME DEFAULT CURRENT_TIMESTAMP,
+    constraint pk_medico primary key (cod_medi)
+);
 

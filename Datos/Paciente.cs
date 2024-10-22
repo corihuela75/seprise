@@ -81,11 +81,6 @@ namespace Clinica_SePrise.Datos
                 }
             }
         }
-
-
-
-        // Otros métodos CRUD para Pacientes
-        // Ejemplo: ObtenerPaciente, ActualizarPaciente, EliminarPaciente, etc.
     }
 }
 

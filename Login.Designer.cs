@@ -62,7 +62,7 @@ namespace Clinica_SePrise
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(163, 23);
             txtUsuario.TabIndex = 1;
-            txtUsuario.Text = "USUARIO";
+            txtUsuario.Text = "Admin";
             txtUsuario.Enter += txtUsuario_Enter;
             txtUsuario.Leave += txtUsuario_Leave;
             // 
@@ -91,7 +91,7 @@ namespace Clinica_SePrise
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(163, 23);
             txtPass.TabIndex = 4;
-            txtPass.Text = "CONTRASEÑA";
+            txtPass.Text = "1234";
             txtPass.Enter += txtPass_Enter;
             txtPass.Leave += txtPass_Leave;
             // 
