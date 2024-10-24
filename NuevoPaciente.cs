@@ -76,8 +76,6 @@ namespace Clinica_SePrise.Pacientes
                 pacienteNuevo.InsertarPaciente(nombre, documento, nacimiento,edad,genero, telefono,
                   direccion, email, estado, historia, obra);
 
-                MessageBox.Show("El paciente a sido añadido a la base de datos correctamente ",
-                             "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Menu principal = new Menu();
                 principal.Show();
                 this.Close();

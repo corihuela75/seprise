@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,11 +66,14 @@ namespace Clinica_SePrise.Datos
 
                         if (result > 0)
                         {
-                            Console.WriteLine("Registro insertado exitosamente.");
+                            MessageBox.Show("El paciente a sido añadido a la base de datos correctamente ",
+                             "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
                             Console.WriteLine("No se pudo insertar el registro.");
+                            MessageBox.Show("No se pudo insertar el médico.Verifique los datos y la conexión a la base de datos. ",
+                              "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

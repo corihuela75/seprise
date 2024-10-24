@@ -38,7 +38,7 @@
             btnGestion = new Button();
             btnSalir = new Button();
             btnVolver = new Button();
-            btnConsultorios = new Button();
+            btnAgenda = new Button();
             btnMedicos = new Button();
             btnPacientes = new Button();
             lblIngreso = new Label();
@@ -84,7 +84,7 @@
             panel1.Controls.Add(btnSalir);
             panel1.Controls.Add(btnTurnos);
             panel1.Controls.Add(btnVolver);
-            panel1.Controls.Add(btnConsultorios);
+            panel1.Controls.Add(btnAgenda);
             panel1.Controls.Add(btnMedicos);
             panel1.Controls.Add(btnPacientes);
             panel1.Location = new Point(279, -5);
@@ -180,23 +180,24 @@
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Visible = false;
+            btnVolver.Click += btnVolver_Click;
             // 
-            // btnConsultorios
+            // btnAgenda
             // 
-            btnConsultorios.BackColor = Color.Azure;
-            btnConsultorios.FlatAppearance.BorderColor = Color.LightBlue;
-            btnConsultorios.FlatAppearance.BorderSize = 3;
-            btnConsultorios.FlatStyle = FlatStyle.Flat;
-            btnConsultorios.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnConsultorios.ForeColor = Color.SteelBlue;
-            btnConsultorios.Location = new Point(64, 309);
-            btnConsultorios.Name = "btnConsultorios";
-            btnConsultorios.Size = new Size(296, 87);
-            btnConsultorios.TabIndex = 13;
-            btnConsultorios.Text = "ASIGNAR CONSULTORIO";
-            btnConsultorios.UseVisualStyleBackColor = false;
-            btnConsultorios.Visible = false;
-            btnConsultorios.Click += btnCuotaVencer_Click;
+            btnAgenda.BackColor = Color.Azure;
+            btnAgenda.FlatAppearance.BorderColor = Color.LightBlue;
+            btnAgenda.FlatAppearance.BorderSize = 3;
+            btnAgenda.FlatStyle = FlatStyle.Flat;
+            btnAgenda.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgenda.ForeColor = Color.SteelBlue;
+            btnAgenda.Location = new Point(64, 309);
+            btnAgenda.Name = "btnAgenda";
+            btnAgenda.Size = new Size(296, 87);
+            btnAgenda.TabIndex = 13;
+            btnAgenda.Text = "GESTIONAR AGENDA";
+            btnAgenda.UseVisualStyleBackColor = false;
+            btnAgenda.Visible = false;
+            btnAgenda.Click += btnAgenda_Click;
             // 
             // btnMedicos
             // 
@@ -298,7 +299,7 @@
         private Label lblTitulo;
         private Label label1;
         private Label label2;
-        private Button btnConsultorios;
+        private Button btnAgenda;
         private Button btnMedicos;
         private Button btnPacientes;
         private Button btnVolver;

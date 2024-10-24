@@ -2,9 +2,6 @@
 using System;
 
 
-
-
-
 namespace Clinica_SePrise.Datos
 {
     public class Medico
@@ -18,7 +15,7 @@ namespace Clinica_SePrise.Datos
 
         // CREAR MEDICO
 
-        public void InsertarMedico(string nombre, string apellido, int matricula, string especialidad,
+        public void InsertarMedico(string nombre, int matricula, string especialidad,
             string telefono, string email)
         {
             using (var connection = conexion.GetConnection())
@@ -27,14 +24,13 @@ namespace Clinica_SePrise.Datos
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO medico (nombre_medi, apellido_medi, matricula, especialidad," +
+                    string query = "INSERT INTO medico (nombre_medi, matricula, especialidad," +
                         " tel_medi, email_medi) VALUES (@nombre, @apellido, @matricula, @especialidad, @telefono," +
                         " @email)";
 
                     using (var command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@nombre", nombre);
-                        command.Parameters.AddWithValue("@apellido", apellido);
                         command.Parameters.AddWithValue("@matricula", matricula);
                         command.Parameters.AddWithValue("@especialidad", especialidad);
                         command.Parameters.AddWithValue("@telefono", telefono);
@@ -44,11 +40,13 @@ namespace Clinica_SePrise.Datos
 
                         if (rowsAffected > 0)
                         {
-                            Console.WriteLine("Médico insertado exitosamente.");
+                            MessageBox.Show("El médico ha sido añadido a la base de datos correctamente.",
+                                            "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            Console.WriteLine("No se pudo insertar el médico. Verifique los datos y la conexión a la base de datos.");
+                            MessageBox.Show("No se pudo insertar el médico. Verifique los datos y la conexión a la base de datos.",
+                            "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
