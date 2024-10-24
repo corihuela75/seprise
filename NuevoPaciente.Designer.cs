@@ -87,17 +87,17 @@ namespace Clinica_SePrise.Pacientes
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombre.Location = new Point(257, 80);
+            lblNombre.Location = new Point(249, 80);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(167, 19);
+            lblNombre.Size = new Size(183, 19);
             lblNombre.TabIndex = 2;
-            lblNombre.Text = "( * ) Nombre Completo:";
+            lblNombre.Text = "( * ) NOMBRE COMPLETO :";
             // 
             // lblDni
             // 
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDni.Location = new Point(358, 114);
+            lblDni.Location = new Point(366, 114);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(66, 19);
             lblDni.TabIndex = 3;
@@ -107,21 +107,21 @@ namespace Clinica_SePrise.Pacientes
             // 
             lblTipo.AutoSize = true;
             lblTipo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTipo.Location = new Point(334, 318);
+            lblTipo.Location = new Point(332, 318);
             lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(90, 19);
+            lblTipo.Size = new Size(100, 19);
             lblTipo.TabIndex = 4;
-            lblTipo.Text = "( * ) Género:";
+            lblTipo.Text = "( * ) GENERO :";
             // 
             // lblNacimiento
             // 
             lblNacimiento.AutoSize = true;
             lblNacimiento.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNacimiento.Location = new Point(243, 250);
+            lblNacimiento.Location = new Point(231, 250);
             lblNacimiento.Name = "lblNacimiento";
-            lblNacimiento.Size = new Size(181, 19);
+            lblNacimiento.Size = new Size(201, 19);
             lblNacimiento.TabIndex = 5;
-            lblNacimiento.Text = "( * ) Fecha de Nacimiento:";
+            lblNacimiento.Text = "( * ) FECHA DE NACIMIENTO :";
             // 
             // cboGenero
             // 
@@ -223,11 +223,11 @@ namespace Clinica_SePrise.Pacientes
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEmail.Location = new Point(347, 216);
+            lblEmail.Location = new Point(346, 216);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(77, 19);
+            lblEmail.Size = new Size(86, 19);
             lblEmail.TabIndex = 16;
-            lblEmail.Text = "( * ) Email:";
+            lblEmail.Text = "( * ) EMAIL :";
             // 
             // cboEstado
             // 
@@ -245,11 +245,11 @@ namespace Clinica_SePrise.Pacientes
             // 
             lblApto.AutoSize = true;
             lblApto.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblApto.Location = new Point(334, 352);
+            lblApto.Location = new Point(325, 352);
             lblApto.Name = "lblApto";
-            lblApto.Size = new Size(90, 19);
+            lblApto.Size = new Size(107, 19);
             lblApto.TabIndex = 18;
-            lblApto.Text = "Estado Civil:";
+            lblApto.Text = "ESTADO CIVIL :";
             // 
             // lblAsterisco
             // 
@@ -285,9 +285,9 @@ namespace Clinica_SePrise.Pacientes
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(378, 284);
             label1.Name = "label1";
-            label1.Size = new Size(46, 19);
+            label1.Size = new Size(54, 19);
             label1.TabIndex = 23;
-            label1.Text = "Edad:";
+            label1.Text = "EDAD :";
             // 
             // txtTelefono
             // 
@@ -302,11 +302,11 @@ namespace Clinica_SePrise.Pacientes
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(325, 182);
+            label2.Location = new Point(318, 182);
             label2.Name = "label2";
-            label2.Size = new Size(99, 19);
+            label2.Size = new Size(114, 19);
             label2.TabIndex = 25;
-            label2.Text = "( * ) Teléfono:";
+            label2.Text = "( * ) TELEFONO :";
             // 
             // txtDireccion
             // 
@@ -321,11 +321,11 @@ namespace Clinica_SePrise.Pacientes
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(320, 148);
+            label3.Location = new Point(313, 148);
             label3.Name = "label3";
-            label3.Size = new Size(104, 19);
+            label3.Size = new Size(119, 19);
             label3.TabIndex = 27;
-            label3.Text = "( * ) Dirección:";
+            label3.Text = "( * ) DIRECCION :";
             // 
             // txtObra
             // 
@@ -340,11 +340,11 @@ namespace Clinica_SePrise.Pacientes
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(333, 386);
+            label4.Location = new Point(323, 386);
             label4.Name = "label4";
-            label4.Size = new Size(91, 19);
+            label4.Size = new Size(109, 19);
             label4.TabIndex = 29;
-            label4.Text = "Obra Social:";
+            label4.Text = "OBRA SOCIAL :";
             // 
             // txtHistoria
             // 
@@ -360,11 +360,11 @@ namespace Clinica_SePrise.Pacientes
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(310, 418);
+            label5.Location = new Point(293, 418);
             label5.Name = "label5";
-            label5.Size = new Size(114, 19);
+            label5.Size = new Size(139, 19);
             label5.TabIndex = 31;
-            label5.Text = "Historia Clínica:";
+            label5.Text = "HISTORIA CLINICA :";
             // 
             // NuevoPaciente
             // 

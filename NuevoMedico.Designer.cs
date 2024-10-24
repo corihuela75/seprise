@@ -47,8 +47,6 @@ namespace Clinica_SePrise.Medicos
             panel1 = new Panel();
             txtTelefono = new TextBox();
             label2 = new Label();
-            txtApellido = new TextBox();
-            label3 = new Label();
             label4 = new Label();
             txtUsuario = new TextBox();
             label1 = new Label();
@@ -82,31 +80,31 @@ namespace Clinica_SePrise.Medicos
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombre.Location = new Point(327, 80);
+            lblNombre.Location = new Point(245, 80);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(97, 19);
+            lblNombre.Size = new Size(187, 19);
             lblNombre.TabIndex = 2;
-            lblNombre.Text = "( * ) Nombre:";
+            lblNombre.Text = "( * ) NOMBRE Y APELLIDO :";
             // 
             // lblMatricula
             // 
             lblMatricula.AutoSize = true;
             lblMatricula.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblMatricula.Location = new Point(314, 166);
+            lblMatricula.Location = new Point(308, 122);
             lblMatricula.Name = "lblMatricula";
-            lblMatricula.Size = new Size(104, 19);
+            lblMatricula.Size = new Size(124, 19);
             lblMatricula.TabIndex = 3;
-            lblMatricula.Text = "( * ) Matricula:";
+            lblMatricula.Text = "( * ) MATRICULA :";
             // 
             // lblNacimiento
             // 
             lblNacimiento.AutoSize = true;
             lblNacimiento.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNacimiento.Location = new Point(294, 209);
+            lblNacimiento.Location = new Point(292, 164);
             lblNacimiento.Name = "lblNacimiento";
-            lblNacimiento.Size = new Size(124, 19);
+            lblNacimiento.Size = new Size(140, 19);
             lblNacimiento.TabIndex = 5;
-            lblNacimiento.Text = "( * ) Especialidad:";
+            lblNacimiento.Text = "( * ) ESPECIALIDAD :";
             // 
             // txtNombre
             // 
@@ -121,7 +119,7 @@ namespace Clinica_SePrise.Medicos
             // 
             txtMatricula.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtMatricula.ForeColor = SystemColors.MenuHighlight;
-            txtMatricula.Location = new Point(434, 163);
+            txtMatricula.Location = new Point(434, 119);
             txtMatricula.Name = "txtMatricula";
             txtMatricula.Size = new Size(98, 25);
             txtMatricula.TabIndex = 3;
@@ -178,7 +176,7 @@ namespace Clinica_SePrise.Medicos
             // 
             txtEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtEmail.ForeColor = SystemColors.MenuHighlight;
-            txtEmail.Location = new Point(434, 292);
+            txtEmail.Location = new Point(434, 245);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(404, 25);
             txtEmail.TabIndex = 6;
@@ -187,11 +185,11 @@ namespace Clinica_SePrise.Medicos
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEmail.Location = new Point(375, 295);
+            lblEmail.Location = new Point(374, 248);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(49, 19);
+            lblEmail.Size = new Size(58, 19);
             lblEmail.TabIndex = 16;
-            lblEmail.Text = "Email:";
+            lblEmail.Text = "EMAIL :";
             // 
             // lblAsterisco
             // 
@@ -216,7 +214,7 @@ namespace Clinica_SePrise.Medicos
             // 
             txtTelefono.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtTelefono.ForeColor = SystemColors.MenuHighlight;
-            txtTelefono.Location = new Point(434, 249);
+            txtTelefono.Location = new Point(434, 203);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(124, 25);
             txtTelefono.TabIndex = 5;
@@ -225,46 +223,27 @@ namespace Clinica_SePrise.Medicos
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(325, 252);
+            label2.Location = new Point(318, 206);
             label2.Name = "label2";
-            label2.Size = new Size(99, 19);
+            label2.Size = new Size(114, 19);
             label2.TabIndex = 25;
-            label2.Text = "( * ) Teléfono:";
-            // 
-            // txtApellido
-            // 
-            txtApellido.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtApellido.ForeColor = SystemColors.MenuHighlight;
-            txtApellido.Location = new Point(434, 120);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(404, 25);
-            txtApellido.TabIndex = 2;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(320, 123);
-            label3.Name = "label3";
-            label3.Size = new Size(98, 19);
-            label3.TabIndex = 27;
-            label3.Text = "( * ) Apellido:";
+            label2.Text = "( * ) TELEFONO :";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(333, 381);
+            label4.Location = new Point(321, 332);
             label4.Name = "label4";
-            label4.Size = new Size(88, 19);
+            label4.Size = new Size(111, 19);
             label4.TabIndex = 29;
-            label4.Text = "Contraseña:";
+            label4.Text = "CONTRASEÑA :";
             // 
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtUsuario.ForeColor = SystemColors.MenuHighlight;
-            txtUsuario.Location = new Point(434, 335);
+            txtUsuario.Location = new Point(434, 287);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(214, 25);
             txtUsuario.TabIndex = 7;
@@ -273,11 +252,11 @@ namespace Clinica_SePrise.Medicos
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(360, 338);
+            label1.Location = new Point(353, 290);
             label1.Name = "label1";
-            label1.Size = new Size(64, 19);
+            label1.Size = new Size(79, 19);
             label1.TabIndex = 23;
-            label1.Text = "Usuario:";
+            label1.Text = "USUARIO :";
             // 
             // cboEspecialidad
             // 
@@ -286,7 +265,7 @@ namespace Clinica_SePrise.Medicos
             cboEspecialidad.ForeColor = SystemColors.MenuHighlight;
             cboEspecialidad.FormattingEnabled = true;
             cboEspecialidad.Items.AddRange(new object[] { "Medicina Interna", "Pediatría", "Ginecología", "Obstetricia", "Cardiología", "Neurología", "Psiquiatría", "Cirugía General", "Ortopedia y Traumatología", "Otorrinolaringología", "Oftalmología", "Urología", "Dermatología", "Radiología", "Anestesiología", "Patología", "Medicina Nuclear", "Medicina del Trabajo", "Medicina Preventiva", "Medicina Intensiva", "Geriatría", "Alergología e Inmunología", "Anatomía Patológica", "Cirugía Cardiovascular", "Neurocirugía", "Cirugía Pediátrica", "Cirugía Plástica y Reparadora", "Gastroenterología", "Hematología", "Nefrología", "Neumología", "Reumatología", "Endocrinología" });
-            cboEspecialidad.Location = new Point(434, 209);
+            cboEspecialidad.Location = new Point(434, 161);
             cboEspecialidad.Name = "cboEspecialidad";
             cboEspecialidad.Size = new Size(404, 25);
             cboEspecialidad.TabIndex = 4;
@@ -295,7 +274,7 @@ namespace Clinica_SePrise.Medicos
             // 
             txtContraseña.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtContraseña.ForeColor = SystemColors.MenuHighlight;
-            txtContraseña.Location = new Point(434, 378);
+            txtContraseña.Location = new Point(434, 329);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(214, 25);
             txtContraseña.TabIndex = 8;
@@ -309,8 +288,6 @@ namespace Clinica_SePrise.Medicos
             Controls.Add(txtContraseña);
             Controls.Add(cboEspecialidad);
             Controls.Add(label4);
-            Controls.Add(txtApellido);
-            Controls.Add(label3);
             Controls.Add(txtTelefono);
             Controls.Add(label2);
             Controls.Add(txtUsuario);
@@ -358,8 +335,6 @@ namespace Clinica_SePrise.Medicos
         private Panel panel1;
         private TextBox txtTelefono;
         private Label label2;
-        private TextBox txtApellido;
-        private Label label3;
         private Label label4;
         private TextBox txtUsuario;
         private Label label1;

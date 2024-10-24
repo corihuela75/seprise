@@ -1,6 +1,7 @@
 using Clinica_SePrise.Datos;
 using Clinica_SePrise.Medicos;
 using Clinica_SePrise.Pacientes;
+using Clinica_SePrise.Turnos;
 using System.Data;
 
 
@@ -31,13 +32,6 @@ namespace Clinica_SePrise
             Application.Exit();
         }
 
-        private void btnTurnos_Click(object sender, EventArgs e)
-        {
-           // NuevoPaciente frmNuevoPaciente = new NuevoPaciente();
-            //frmNuevoPaciente.ShowDialog();
-            //this.Hide();
-        }
-
         private void btnGestion_Click(object sender, EventArgs e)
         {
             btnTurnos.Visible = false;
@@ -46,11 +40,16 @@ namespace Clinica_SePrise
             btnSalir.Visible = false;
             btnAtencion.Visible = false;
             btnMedicos.Visible = true;
-            btnConsultorios.Visible = true;
+            btnAgenda.Visible = true;
             btnPacientes.Visible = true;
             btnVolver.Visible = true;
         }
-
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Menu principal = new Menu();
+            principal.Show();
+            this.Close();
+        }
         private void btnCarnet_Click(object sender, EventArgs e)
         {
             //EntergaCarnet frmPagar = new EntergaCarnet();
@@ -73,20 +72,17 @@ namespace Clinica_SePrise
 
         }
 
-        private void btnCuotaVencer_Click(object sender, EventArgs e)
+        private void btnTurnos_Click(object sender, EventArgs e)
         {
-            //frmReporCliente.listado = "3";
-            //frmReporCliente.ShowDialog();
-            //restablecerBotones();
-            //frmReporCliente.Hide();
+            //NuevoTurno frmNuevoTurno = new NuevoTurno();
+            //frmNuevoTurno.ShowDialog();
+            //this.Hide();
         }
-
-        private void btnTodos_Click(object sender, EventArgs e)
+        private void btnAgenda_Click(object sender, EventArgs e)
         {
-            //frmReporCliente.listado = "4";
-            //frmReporCliente.ShowDialog();
-            //restablecerBotones();
-            //frmReporCliente.Hide();
+            NuevoAgenda frmNuevoTurno = new NuevoAgenda();
+            frmNuevoTurno.ShowDialog();
+            this.Hide();
         }
 
 
@@ -97,10 +93,11 @@ namespace Clinica_SePrise
             btnGestion.Visible = true;
             btnSalir.Visible = true;
             btnMedicos.Visible = false;
-            btnConsultorios.Visible = false;
+            btnAgenda.Visible = false;
             btnPacientes.Visible = false;
             btnVolver.Visible = false;
         }
+
 
     }
 }

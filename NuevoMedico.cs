@@ -6,7 +6,6 @@ namespace Clinica_SePrise.Medicos
     {
         // Campos para almacenar la información del médico
         private string nombre;
-        private string apellido;
         private int matricula;
         private string especialidad;
         private string telefono;
@@ -29,7 +28,6 @@ namespace Clinica_SePrise.Medicos
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = "";
-            txtApellido.Text = "";
             txtMatricula.Text = "";
             txtTelefono.Text = "";
             txtEmail.Text = "";
@@ -44,7 +42,6 @@ namespace Clinica_SePrise.Medicos
         {
             // Validación de campos obligatorios
             if (string.IsNullOrEmpty(txtNombre.Text) ||
-                string.IsNullOrEmpty(txtApellido.Text) ||
                 string.IsNullOrEmpty(txtMatricula.Text) ||
                 string.IsNullOrEmpty(cboEspecialidad.Text) ||
                 string.IsNullOrEmpty(txtTelefono.Text))
@@ -56,7 +53,6 @@ namespace Clinica_SePrise.Medicos
 
             // Asignación de valores a las variables
             nombre = txtNombre.Text;
-            apellido = txtApellido.Text;
             matricula = int.Parse(txtMatricula.Text);
             especialidad = cboEspecialidad.Text;
             telefono = txtTelefono.Text;
@@ -73,7 +69,7 @@ namespace Clinica_SePrise.Medicos
             Medico medicoNuevo = new Medico(conexion);
 
             // Insertar un nuevo médico
-            medicoNuevo.InsertarMedico(nombre, apellido, matricula, especialidad, telefono, email);
+            medicoNuevo.InsertarMedico(nombre, matricula, especialidad, telefono, email);
 
             MessageBox.Show("El médico ha sido añadido a la base de datos correctamente.",
                             "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
