@@ -72,6 +72,8 @@ CREATE TABLE medico (
 
 INSERT INTO medico (nombre_medi, matricula, especialidad, tel_medi, email_medi)
 VALUES 
+('Diego Laso*', 45633, 'Kinesiologia *', '534-342-9078', 'diego.laso@hospital.com'),
+('Monica Chapa**', 34234, 'Psiquiatría **', '534-342-9078', 'diego.laso@hospital.com'),
 ('Juan Pérez', 123456, 'Cardiología', '123-456-7890', 'juan.perez@hospital.com'),
 ('Ana García', 234567, 'Pediatría', '234-567-8901', 'ana.garcia@hospital.com'),
 ('Luis Rodríguez', 345678, 'Traumatología', '345-678-9012', 'luis.rodriguez@hospital.com'),
@@ -94,7 +96,7 @@ CREATE TABLE turnos (
     hora_inicio TIME,
     hora_fin TIME,
     turno_periodo ENUM('mañana', 'tarde'),
-    duracion ENUM('30', '60', '90'),
+    duracion INT,
     estado ENUM('disponible', 'reservado', 'cancelado')
     # CONSTRAINT fk_medico FOREIGN KEY (medico_id) REFERENCES medico (cod_medi)
     # CONSTRAINT fk_paciente FOREIGN KEY (paciente_id) REFERENCES paciente (cod_paci)

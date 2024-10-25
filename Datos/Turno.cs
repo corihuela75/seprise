@@ -16,7 +16,7 @@ namespace Clinica_SePrise.Datos
         // CREAR TURNO
 
         public void InsertarTurno(int consultorio, string medico, string especialidad, string paciente, DateTime fecha, string hora_inicio, string hora_fin,
-            string turno_periodo, string duracion, string estado)
+            string turno_periodo, int duracion, string estado)
         {
             using (var connection = conexion.GetConnection())
             {
