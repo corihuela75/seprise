@@ -17,6 +17,7 @@ namespace Clinica_SePrise.Turnos
         private string duracion;
         private string estado;
         private string especialidad;
+        private int minutos = 30;
 
 
         public NuevoAgenda()
@@ -100,6 +101,9 @@ namespace Clinica_SePrise.Turnos
                 especialidad = Convert.ToString(cboMedico.SelectedValue);
                 estado = "Disponible";
 
+
+
+
                 // Determinar la franja horaria según el periodo (mañana o tarde)
                 TimeSpan horaInicio;
                 TimeSpan horaFin;
@@ -121,8 +125,17 @@ namespace Clinica_SePrise.Turnos
                     return;
                 }
 
-                // Intervalo de 30 minutos entre turnos
-                TimeSpan intervalo = new TimeSpan(0, 30, 0);  // Intervalo de 30 minutos
+                // Intervalo de 30, 60 o 90  minutos entre turnos
+                if (especialidad == "Kinesiologia *")
+                {
+                    minutos = 60;
+                }
+                else if (especialidad == "Psiquiatría **")
+                {
+                    minutos = 90;
+                }
+
+                TimeSpan intervalo = new TimeSpan(0, minutos, 0);  // Intervalo de 30 minutos
 
                 // Crear una instancia de la clase Conexion
                 Conexion conexion = new Conexion();
@@ -130,36 +143,82 @@ namespace Clinica_SePrise.Turnos
                 // Crear una instancia de Turno, pasando la conexión
                 Turno turnoNuevo = new Turno(conexion);
 
-                // Insertar un nuevo paciente
-                try
+
+                // Verificar si ya existen turnos para la misma fecha, consultorio, médico y periodo de turno
+                if (ExisteTurno(fecha, consultorio, turno_periodo))
                 {
-                    // Ciclo para generar turnos cada 30 minutos entre las horas definidas
-                    for (TimeSpan horaActual = horaInicio; horaActual < horaFin; horaActual = horaActual.Add(intervalo))
+                    MessageBox.Show("Ya existen turnos asignados en el periodo seleccionado (mañana/tarde) para este médico en este consultorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //return;
+                }
+                else
+                {
+                    // Insertar un nuevo paciente
+                    try
                     {
-                        // Definir la hora de inicio y fin del turno
-                        DateTime turnoHoraInicio = new DateTime(fecha.Year, fecha.Month, fecha.Day, horaActual.Hours, horaActual.Minutes, 0);
-                        DateTime turnoHoraFin = turnoHoraInicio.AddMinutes(30);
+                        // Ciclo para generar turnos cada 30 minutos entre las horas definidas
+                        for (TimeSpan horaActual = horaInicio; horaActual < horaFin; horaActual = horaActual.Add(intervalo))
+                        {
+                            // Definir la hora de inicio y fin del turno
+                            DateTime turnoHoraInicio = new DateTime(fecha.Year, fecha.Month, fecha.Day, horaActual.Hours, horaActual.Minutes, 0);
+                            DateTime turnoHoraFin = turnoHoraInicio.AddMinutes(minutos);
 
-                        // Insertar el turno en la base de datos
-                        turnoNuevo.InsertarTurno(consultorio, medico, especialidad, paciente, fecha,
-                                                 turnoHoraInicio.ToString("HH:mm"), turnoHoraFin.ToString("HH:mm"),
-                                                 turno_periodo, "30", estado);
+                            // Insertar el turno en la base de datos
+                            turnoNuevo.InsertarTurno(consultorio, medico, especialidad, paciente, fecha,
+                                                     turnoHoraInicio.ToString("HH:mm"), turnoHoraFin.ToString("HH:mm"),
+                                                     turno_periodo, minutos, estado);
 
-                        // Puedes mostrar un mensaje opcional o seguir con el ciclo
+                            // Puedes mostrar un mensaje opcional o seguir con el ciclo
+                        }
+
+                        MessageBox.Show("Se han insertado los turnos correctamente.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrió un error al insertar los turnos: " + ex.Message);
                     }
 
-                    MessageBox.Show("Se han insertado los turnos correctamente.");
+
+                    Menu principal = new Menu();
+                    principal.Show();
+                    this.Close();
+                }
+            }
+        }
+
+        //Comprobamos que no este ocupado el consultorio
+        private bool ExisteTurno(DateTime fecha, int consultorio, string turno_periodo)
+        {
+            // Crea una instancia de la clase Conexion
+            Conexion conexion = new Conexion();
+
+            // Crea la consulta para verificar si ya existen turnos para la misma fecha, consultorio y turno_periodo
+            string queryVerificarTurnos = "SELECT COUNT(*) FROM turnos WHERE fecha = @fecha AND consultorio = @consultorio AND turno_periodo = @turno_periodo";
+
+            using (var connection = conexion.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Crear un comando MySQL
+                    MySqlCommand command = new MySqlCommand(queryVerificarTurnos, connection);
+                    command.Parameters.AddWithValue("@fecha", fecha.ToString("yyyy-MM-dd"));
+                    command.Parameters.AddWithValue("@consultorio", consultorio);
+                    command.Parameters.AddWithValue("@turno_periodo", turno_periodo);
+
+                    // Ejecutar la consulta y obtener el número de registros encontrados
+                    int turnoExistente = Convert.ToInt32(command.ExecuteScalar());
+
+                    // Retornar verdadero si hay turnos existentes, falso en caso contrario
+                    return turnoExistente > 0;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió un error al insertar los turnos: " + ex.Message);
+                    MessageBox.Show("Ocurrió un error al verificar los turnos: " + ex.Message);
+                    return false;
                 }
-
-
-                Menu principal = new Menu();
-                principal.Show();
-                this.Close();
             }
         }
+
     }
 }
