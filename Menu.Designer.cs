@@ -34,16 +34,16 @@
             panel1 = new Panel();
             btnAtencion = new Button();
             lblTitulo = new Label();
-            btnRecepcion = new Button();
-            btnGestion = new Button();
+            btnEspera = new Button();
+            btnAdministrativa = new Button();
+            btnFour = new Button();
+            btnTwo = new Button();
+            btnThree = new Button();
+            btnOne = new Button();
             btnSalir = new Button();
-            btnVolver = new Button();
-            btnAgenda = new Button();
-            btnMedicos = new Button();
-            btnPacientes = new Button();
-            lblIngreso = new Label();
             label1 = new Label();
             label2 = new Label();
+            lblIngreso = new Label();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -56,7 +56,7 @@
             btnTurnos.FlatStyle = FlatStyle.Flat;
             btnTurnos.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnTurnos.ForeColor = Color.SteelBlue;
-            btnTurnos.Location = new Point(51, 146);
+            btnTurnos.Location = new Point(33, 229);
             btnTurnos.Name = "btnTurnos";
             btnTurnos.Size = new Size(296, 87);
             btnTurnos.TabIndex = 6;
@@ -79,14 +79,13 @@
             panel1.BackColor = Color.LightCyan;
             panel1.Controls.Add(btnAtencion);
             panel1.Controls.Add(lblTitulo);
-            panel1.Controls.Add(btnRecepcion);
-            panel1.Controls.Add(btnGestion);
-            panel1.Controls.Add(btnSalir);
+            panel1.Controls.Add(btnEspera);
+            panel1.Controls.Add(btnAdministrativa);
             panel1.Controls.Add(btnTurnos);
-            panel1.Controls.Add(btnVolver);
-            panel1.Controls.Add(btnAgenda);
-            panel1.Controls.Add(btnMedicos);
-            panel1.Controls.Add(btnPacientes);
+            panel1.Controls.Add(btnFour);
+            panel1.Controls.Add(btnTwo);
+            panel1.Controls.Add(btnThree);
+            panel1.Controls.Add(btnOne);
             panel1.Location = new Point(279, -5);
             panel1.Name = "panel1";
             panel1.Size = new Size(730, 612);
@@ -100,12 +99,13 @@
             btnAtencion.FlatStyle = FlatStyle.Flat;
             btnAtencion.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAtencion.ForeColor = Color.SteelBlue;
-            btnAtencion.Location = new Point(381, 262);
+            btnAtencion.Location = new Point(33, 481);
             btnAtencion.Name = "btnAtencion";
             btnAtencion.Size = new Size(296, 87);
             btnAtencion.TabIndex = 15;
             btnAtencion.Text = "ATENCION DEL PACIENTE";
             btnAtencion.UseVisualStyleBackColor = false;
+            btnAtencion.Click += btnAtencion_Click;
             // 
             // lblTitulo
             // 
@@ -117,136 +117,123 @@
             lblTitulo.TabIndex = 13;
             lblTitulo.Text = "MENU PRINCIPAL";
             // 
-            // btnRecepcion
+            // btnEspera
             // 
-            btnRecepcion.BackColor = Color.Azure;
-            btnRecepcion.FlatAppearance.BorderColor = Color.LightBlue;
-            btnRecepcion.FlatAppearance.BorderSize = 3;
-            btnRecepcion.FlatStyle = FlatStyle.Flat;
-            btnRecepcion.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnRecepcion.ForeColor = Color.SteelBlue;
-            btnRecepcion.Location = new Point(381, 146);
-            btnRecepcion.Name = "btnRecepcion";
-            btnRecepcion.Size = new Size(296, 87);
-            btnRecepcion.TabIndex = 10;
-            btnRecepcion.Text = "RECEPCION EN SALA DE ESPERA";
-            btnRecepcion.UseVisualStyleBackColor = false;
-            btnRecepcion.Click += btnCarnet_Click;
+            btnEspera.BackColor = Color.Azure;
+            btnEspera.FlatAppearance.BorderColor = Color.LightBlue;
+            btnEspera.FlatAppearance.BorderSize = 3;
+            btnEspera.FlatStyle = FlatStyle.Flat;
+            btnEspera.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEspera.ForeColor = Color.SteelBlue;
+            btnEspera.Location = new Point(33, 355);
+            btnEspera.Name = "btnEspera";
+            btnEspera.Size = new Size(296, 87);
+            btnEspera.TabIndex = 10;
+            btnEspera.Text = "RECEPCION EN SALA DE ESPERA";
+            btnEspera.UseVisualStyleBackColor = false;
+            btnEspera.Click += btnSalaEspera_Click;
             // 
-            // btnGestion
+            // btnAdministrativa
             // 
-            btnGestion.BackColor = Color.Azure;
-            btnGestion.FlatAppearance.BorderColor = Color.LightBlue;
-            btnGestion.FlatAppearance.BorderSize = 3;
-            btnGestion.FlatStyle = FlatStyle.Flat;
-            btnGestion.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGestion.ForeColor = Color.SteelBlue;
-            btnGestion.Location = new Point(51, 262);
-            btnGestion.Name = "btnGestion";
-            btnGestion.Size = new Size(296, 87);
-            btnGestion.TabIndex = 9;
-            btnGestion.Text = "GESTION ADMINISTRATIVA";
-            btnGestion.UseVisualStyleBackColor = false;
-            btnGestion.Click += btnGestion_Click;
+            btnAdministrativa.BackColor = Color.Azure;
+            btnAdministrativa.FlatAppearance.BorderColor = Color.LightBlue;
+            btnAdministrativa.FlatAppearance.BorderSize = 3;
+            btnAdministrativa.FlatStyle = FlatStyle.Flat;
+            btnAdministrativa.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdministrativa.ForeColor = Color.SteelBlue;
+            btnAdministrativa.Location = new Point(33, 103);
+            btnAdministrativa.Name = "btnAdministrativa";
+            btnAdministrativa.Size = new Size(296, 87);
+            btnAdministrativa.TabIndex = 9;
+            btnAdministrativa.Text = "GESTION ADMINISTRATIVA";
+            btnAdministrativa.UseVisualStyleBackColor = false;
+            btnAdministrativa.Click += btnAdministrativa_Click;
+            // 
+            // btnFour
+            // 
+            btnFour.BackColor = Color.Azure;
+            btnFour.FlatAppearance.BorderColor = Color.LightBlue;
+            btnFour.FlatAppearance.BorderSize = 3;
+            btnFour.FlatStyle = FlatStyle.Flat;
+            btnFour.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFour.ForeColor = Color.SteelBlue;
+            btnFour.Location = new Point(410, 441);
+            btnFour.Name = "btnFour";
+            btnFour.Size = new Size(250, 75);
+            btnFour.TabIndex = 14;
+            btnFour.Text = "Opcion 4";
+            btnFour.UseVisualStyleBackColor = false;
+            btnFour.Click += btnOpFour_Click;
+            // 
+            // btnTwo
+            // 
+            btnTwo.BackColor = Color.Azure;
+            btnTwo.FlatAppearance.BorderColor = Color.LightBlue;
+            btnTwo.FlatAppearance.BorderSize = 3;
+            btnTwo.FlatStyle = FlatStyle.Flat;
+            btnTwo.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTwo.ForeColor = Color.SteelBlue;
+            btnTwo.Location = new Point(410, 241);
+            btnTwo.Name = "btnTwo";
+            btnTwo.Size = new Size(250, 75);
+            btnTwo.TabIndex = 13;
+            btnTwo.Text = "Opcion 2";
+            btnTwo.UseVisualStyleBackColor = false;
+            btnTwo.Click += btnOpTwo_Click;
+            // 
+            // btnThree
+            // 
+            btnThree.BackColor = Color.Azure;
+            btnThree.FlatAppearance.BorderColor = Color.LightBlue;
+            btnThree.FlatAppearance.BorderSize = 3;
+            btnThree.FlatStyle = FlatStyle.Flat;
+            btnThree.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThree.ForeColor = Color.SteelBlue;
+            btnThree.Location = new Point(410, 341);
+            btnThree.Name = "btnThree";
+            btnThree.Size = new Size(250, 75);
+            btnThree.TabIndex = 12;
+            btnThree.Text = "Opcion 3";
+            btnThree.UseVisualStyleBackColor = false;
+            btnThree.Click += btnOpThree_Click;
+            // 
+            // btnOne
+            // 
+            btnOne.BackColor = Color.Azure;
+            btnOne.FlatAppearance.BorderColor = Color.LightBlue;
+            btnOne.FlatAppearance.BorderSize = 3;
+            btnOne.FlatStyle = FlatStyle.Flat;
+            btnOne.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnOne.ForeColor = Color.SteelBlue;
+            btnOne.Location = new Point(410, 141);
+            btnOne.Name = "btnOne";
+            btnOne.Size = new Size(250, 75);
+            btnOne.TabIndex = 11;
+            btnOne.Text = "Opcion 1";
+            btnOne.UseVisualStyleBackColor = false;
+            btnOne.Click += btnOpOne_Click;
             // 
             // btnSalir
             // 
-            btnSalir.BackColor = Color.Azure;
-            btnSalir.FlatAppearance.BorderColor = Color.LightBlue;
-            btnSalir.FlatAppearance.BorderSize = 3;
+            btnSalir.BackColor = Color.DarkRed;
+            btnSalir.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnSalir.FlatAppearance.BorderSize = 2;
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSalir.ForeColor = Color.SteelBlue;
-            btnSalir.Location = new Point(381, 378);
+            btnSalir.ForeColor = Color.White;
+            btnSalir.Location = new Point(47, 543);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(296, 87);
+            btnSalir.Size = new Size(180, 50);
             btnSalir.TabIndex = 8;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
-            // btnVolver
-            // 
-            btnVolver.BackColor = Color.Azure;
-            btnVolver.FlatAppearance.BorderColor = Color.LightBlue;
-            btnVolver.FlatAppearance.BorderSize = 3;
-            btnVolver.FlatStyle = FlatStyle.Flat;
-            btnVolver.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnVolver.ForeColor = Color.SteelBlue;
-            btnVolver.Location = new Point(366, 309);
-            btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(296, 87);
-            btnVolver.TabIndex = 14;
-            btnVolver.Text = "VOLVER";
-            btnVolver.UseVisualStyleBackColor = false;
-            btnVolver.Visible = false;
-            btnVolver.Click += btnVolver_Click;
-            // 
-            // btnAgenda
-            // 
-            btnAgenda.BackColor = Color.Azure;
-            btnAgenda.FlatAppearance.BorderColor = Color.LightBlue;
-            btnAgenda.FlatAppearance.BorderSize = 3;
-            btnAgenda.FlatStyle = FlatStyle.Flat;
-            btnAgenda.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAgenda.ForeColor = Color.SteelBlue;
-            btnAgenda.Location = new Point(64, 309);
-            btnAgenda.Name = "btnAgenda";
-            btnAgenda.Size = new Size(296, 87);
-            btnAgenda.TabIndex = 13;
-            btnAgenda.Text = "GESTIONAR AGENDA";
-            btnAgenda.UseVisualStyleBackColor = false;
-            btnAgenda.Visible = false;
-            btnAgenda.Click += btnAgenda_Click;
-            // 
-            // btnMedicos
-            // 
-            btnMedicos.BackColor = Color.Azure;
-            btnMedicos.FlatAppearance.BorderColor = Color.LightBlue;
-            btnMedicos.FlatAppearance.BorderSize = 3;
-            btnMedicos.FlatStyle = FlatStyle.Flat;
-            btnMedicos.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnMedicos.ForeColor = Color.SteelBlue;
-            btnMedicos.Location = new Point(366, 216);
-            btnMedicos.Name = "btnMedicos";
-            btnMedicos.Size = new Size(296, 87);
-            btnMedicos.TabIndex = 12;
-            btnMedicos.Text = "GESTIONAR PERSONAL MEDICO";
-            btnMedicos.UseVisualStyleBackColor = false;
-            btnMedicos.Visible = false;
-            btnMedicos.Click += btnMedicos_Click;
-            // 
-            // btnPacientes
-            // 
-            btnPacientes.BackColor = Color.Azure;
-            btnPacientes.FlatAppearance.BorderColor = Color.LightBlue;
-            btnPacientes.FlatAppearance.BorderSize = 3;
-            btnPacientes.FlatStyle = FlatStyle.Flat;
-            btnPacientes.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPacientes.ForeColor = Color.SteelBlue;
-            btnPacientes.Location = new Point(64, 216);
-            btnPacientes.Name = "btnPacientes";
-            btnPacientes.Size = new Size(296, 87);
-            btnPacientes.TabIndex = 11;
-            btnPacientes.Text = "GESTIONAR PACIENTES";
-            btnPacientes.UseVisualStyleBackColor = false;
-            btnPacientes.Visible = false;
-            btnPacientes.Click += btnPacientes_Click;
-            // 
-            // lblIngreso
-            // 
-            lblIngreso.AutoSize = true;
-            lblIngreso.Location = new Point(12, 582);
-            lblIngreso.Name = "lblIngreso";
-            lblIngreso.Size = new Size(38, 15);
-            lblIngreso.TabIndex = 11;
-            lblIngreso.Text = "label1";
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(6, 9);
+            label1.Location = new Point(8, 9);
             label1.Name = "label1";
             label1.Size = new Size(258, 41);
             label1.TabIndex = 14;
@@ -256,11 +243,21 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(12, 50);
+            label2.Location = new Point(53, 50);
             label2.Name = "label2";
             label2.Size = new Size(169, 30);
             label2.TabIndex = 15;
             label2.Text = "Sistema General";
+            // 
+            // lblIngreso
+            // 
+            lblIngreso.AutoSize = true;
+            lblIngreso.Location = new Point(119, 123);
+            lblIngreso.Name = "lblIngreso";
+            lblIngreso.Size = new Size(38, 15);
+            lblIngreso.TabIndex = 16;
+            lblIngreso.Text = "label3";
+            lblIngreso.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Menu
             // 
@@ -268,15 +265,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1010, 606);
+            Controls.Add(lblIngreso);
+            Controls.Add(btnSalir);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(lblIngreso);
             Controls.Add(panel1);
             Controls.Add(picLogo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Menu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SISTEMA DE LA CLINICA SEPRISE";
+            FormClosing += Menu_FormClosing;
             Load += Principal_Load;
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             panel1.ResumeLayout(false);
@@ -291,18 +290,18 @@
 
         private PictureBox picLogo;
         private Panel panel1;
-        private Label lblIngreso;
         private Button btnTurnos;
         private Button btnSalir;
-        private Button btnGestion;
-        private Button btnRecepcion;
+        private Button btnAdministrativa;
+        private Button btnEspera;
         private Label lblTitulo;
         private Label label1;
         private Label label2;
-        private Button btnAgenda;
-        private Button btnMedicos;
-        private Button btnPacientes;
-        private Button btnVolver;
+        private Button btnTwo;
+        private Button btnThree;
+        private Button btnOne;
+        private Button btnFour;
         private Button btnAtencion;
+        private Label lblIngreso;
     }
 }

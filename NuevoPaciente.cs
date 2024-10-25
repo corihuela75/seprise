@@ -23,9 +23,9 @@ namespace Clinica_SePrise.Pacientes
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            Menu principal = new Menu();
-            principal.Show();
-            this.Close();
+            //Menu principal = new Menu();
+            //principal.Show();
+            //this.Close();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -76,9 +76,9 @@ namespace Clinica_SePrise.Pacientes
                 pacienteNuevo.InsertarPaciente(nombre, documento, nacimiento,edad,genero, telefono,
                   direccion, email, estado, historia, obra);
 
-                Menu principal = new Menu();
-                principal.Show();
-                this.Close();
+                //Menu principal = new Menu();
+                //principal.Show();
+                //this.Close();
             }
         }
     }

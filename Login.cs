@@ -83,14 +83,26 @@ namespace Clinica_SePrise
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows)
+                    if (reader.Read())
                     {
+
+                        int id = reader.GetInt16(0);
+                        string name = reader.GetString(1);
+                        string rol = reader.GetString(2);
+                        bool active = reader.GetBoolean(3);
+
+                        if (!active)
+                        {
+                            MessageBox.Show("Actualmente no posee permisos para ingresar \n Comuniquese con un administrador");
+                        } else
+                        {
                         // Usuario encontrado, login exitoso
                         MessageBox.Show("Inicio de sesión exitoso.");
                         // CONTINUA CON EL MENU
-                        Menu menu = new Menu();
+                        Menu menu = new Menu(id,name,rol);
                         menu.Show(); // se llama al formulario principal
                         this.Hide(); // se oculta el formulario del login
+                        }
                     }
                     else
                     {
