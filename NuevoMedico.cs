@@ -20,9 +20,9 @@ namespace Clinica_SePrise.Medicos
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            Menu principal = new Menu();
-            principal.Show();
-            this.Close();
+            //Menu principal = new Menu();
+            //principal.Show();
+            //this.Close();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -87,9 +87,9 @@ namespace Clinica_SePrise.Medicos
 
 
             // Volver al menú principal
-            Menu principal = new Menu();
-            principal.Show();
-            this.Close();
+            //Menu principal = new Menu();
+            //principal.Show();
+            //this.Close();
         }
     }
 }

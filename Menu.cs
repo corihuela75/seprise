@@ -9,95 +9,103 @@ namespace Clinica_SePrise
 {
     public partial class Menu : Form
     {
-        //public ReporteClientes frmReporCliente = new ReporteClientes();
+        private string name;
+        private string rol;
+        private int id;
 
-        public Menu()
+        private Form btnOneForm;
+        private Form btnTwoForm;
+        private Form btnThreeForm;
+        private Form btnFourForm;
+
+        // -- FORMS GESTION ADMINISTRATIVA --
+        private NuevoPaciente formPacientes;
+        private NuevoAgenda formAgenda;
+        private NuevoMedico formMedico;
+
+        // -- FORMS GESTION TURNOS --
+
+
+        public Menu(int id, string name, string rol)
         {
+            this.name = name;
+            this.id = id;
+            this.rol = rol;
             InitializeComponent();
+            this.btnAdministrativa_Click(null, null);
         }
         /* ___________ VARIABLES tipo INTERNAL__________________________________
         * Serán accesibles desde el ensamblado en el cual están declarados
         * y tampoco se pueden utilizar en el interior de una función.
         * _________________________________________________________________   */
-        internal string? rol;
-        internal string? usuario;
         private void Principal_Load(object sender, EventArgs e)
         {
-            // MUESTRA LOS DATOS DEL USUARIO CONECTADO
-            lblIngreso.Text = "USUARIO: " + usuario + " " + "(" + rol +
-           ")";
+            lblIngreso.Text = id.ToString() + '-' + name.ToUpper() + '\n' + rol.ToUpper();
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        private void btnGestion_Click(object sender, EventArgs e)
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            btnTurnos.Visible = false;
-            btnRecepcion.Visible = false;
-            btnGestion.Visible = false;
-            btnSalir.Visible = false;
-            btnAtencion.Visible = false;
-            btnMedicos.Visible = true;
-            btnAgenda.Visible = true;
-            btnPacientes.Visible = true;
-            btnVolver.Visible = true;
-        }
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            Menu principal = new Menu();
-            principal.Show();
-            this.Close();
-        }
-        private void btnCarnet_Click(object sender, EventArgs e)
-        {
-            //EntergaCarnet frmPagar = new EntergaCarnet();
-            //frmPagar.ShowDialog();
-            //this.Hide();
+            Application.Exit();
         }
 
-        private void btnPacientes_Click(object sender, EventArgs e)
+        private void btnSelected(Button btn)
         {
-            NuevoPaciente frmNuevoPaciente = new NuevoPaciente();
-            frmNuevoPaciente.ShowDialog();
-            this.Hide();
+            btn.BackColor = Color.SteelBlue;
+            btn.FlatAppearance.BorderColor = Color.DarkBlue;
+            btn.ForeColor = Color.White;
         }
 
-        private void btnMedicos_Click(object sender, EventArgs e)
+        private void btnAdministrativa_Click(object? sender, EventArgs? e)
         {
-            NuevoMedico frmNuevoMedico = new NuevoMedico();
-            frmNuevoMedico.ShowDialog();
-            this.Hide();
 
+            btnFour.Visible = false;
+            btnOne.Text = "GESTIONAR PERSONAL MEDICO";
+            btnTwo.Text = "GESTIONAR AGENDA";
+            btnThree.Text = "GESTIONAR PACIENTES";
+            this.btnSelected(btnAdministrativa);
+
+            this.btnOneForm = this.formPacientes ?? new NuevoPaciente();
+            this.btnTwoForm = this.formAgenda ?? new NuevoAgenda();
+            this.btnThreeForm = this.formMedico ?? new NuevoMedico();
+
+        }
+        private void btnOpFour_Click(object sender, EventArgs e)
+        {
+            this.btnFourForm.ShowDialog();
+
+        }
+        private void btnSalaEspera_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnOpOne_Click(object sender, EventArgs e)
+        {
+            this.btnOneForm.ShowDialog();
+        }
+
+        private void btnOpThree_Click(object sender, EventArgs e)
+        {
+            this.btnThreeForm.ShowDialog();
         }
 
         private void btnTurnos_Click(object sender, EventArgs e)
         {
-            //NuevoTurno frmNuevoTurno = new NuevoTurno();
-            //frmNuevoTurno.ShowDialog();
-            //this.Hide();
         }
-        private void btnAgenda_Click(object sender, EventArgs e)
+        private void btnOpTwo_Click(object sender, EventArgs e)
         {
-            NuevoAgenda frmNuevoTurno = new NuevoAgenda();
-            frmNuevoTurno.ShowDialog();
-            this.Hide();
+            this.btnTwoForm.ShowDialog();
         }
 
 
         private void restablecerBotones()
         {
-            btnTurnos.Visible = true;
-            btnRecepcion.Visible = true;
-            btnGestion.Visible = true;
-            btnSalir.Visible = true;
-            btnMedicos.Visible = false;
-            btnAgenda.Visible = false;
-            btnPacientes.Visible = false;
-            btnVolver.Visible = false;
         }
 
-
+        private void btnAtencion_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
