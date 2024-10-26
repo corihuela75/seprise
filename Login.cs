@@ -81,6 +81,21 @@ namespace Clinica_SePrise
                 command.Parameters.AddWithValue("@usuario", usuario);
                 command.Parameters.AddWithValue("@contrasena", contrasena);
 
+                /*
+                  id_turno INT AUTO_INCREMENT PRIMARY KEY,
+                   consultorio INT,
+                   medico VARCHAR(50),
+	               especialidad VARCHAR(100),
+                   paciente VARCHAR(50),
+                   fecha DATE,
+                   hora_inicio TIME,
+                   hora_fin TIME,
+                   turno_periodo ENUM('mañana', 'tarde'),
+                   duracion ENUM('30', '60', '90'),
+                   estado ENUM('disponible', 'reservado', 'cancelado')
+                */
+
+
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
