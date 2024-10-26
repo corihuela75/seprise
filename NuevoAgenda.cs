@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 
 
-namespace Clinica_SePrise.Turnos
+namespace Clinica_SePrise.Agenda
 {
     public partial class NuevoAgenda : Form
     {
@@ -71,9 +71,7 @@ namespace Clinica_SePrise.Turnos
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            //Menu principal = new Menu();
-            //principal.Show();
-            //this.Close();
+            this.Hide();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -178,9 +176,9 @@ namespace Clinica_SePrise.Turnos
                     }
 
 
-                    Menu principal = new Menu();
-                    principal.Show();
-                    this.Close();
+                    //Menu principal = new Menu();
+                    //menu.Show();
+                    this.Hide();
                 }
             }
         }

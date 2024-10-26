@@ -23,9 +23,7 @@ namespace Clinica_SePrise.Pacientes
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            //Menu principal = new Menu();
-            //principal.Show();
-            //this.Close();
+            this.Hide();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)

@@ -59,7 +59,7 @@
             btnTurnos.Location = new Point(33, 229);
             btnTurnos.Name = "btnTurnos";
             btnTurnos.Size = new Size(296, 87);
-            btnTurnos.TabIndex = 6;
+            btnTurnos.TabIndex = 2;
             btnTurnos.Text = "GESTION DE TURNOS";
             btnTurnos.UseVisualStyleBackColor = false;
             btnTurnos.Click += btnTurnos_Click;
@@ -102,7 +102,7 @@
             btnAtencion.Location = new Point(33, 481);
             btnAtencion.Name = "btnAtencion";
             btnAtencion.Size = new Size(296, 87);
-            btnAtencion.TabIndex = 15;
+            btnAtencion.TabIndex = 4;
             btnAtencion.Text = "ATENCION DEL PACIENTE";
             btnAtencion.UseVisualStyleBackColor = false;
             btnAtencion.Click += btnAtencion_Click;
@@ -128,7 +128,7 @@
             btnEspera.Location = new Point(33, 355);
             btnEspera.Name = "btnEspera";
             btnEspera.Size = new Size(296, 87);
-            btnEspera.TabIndex = 10;
+            btnEspera.TabIndex = 3;
             btnEspera.Text = "RECEPCION EN SALA DE ESPERA";
             btnEspera.UseVisualStyleBackColor = false;
             btnEspera.Click += btnSalaEspera_Click;
@@ -144,7 +144,7 @@
             btnAdministrativa.Location = new Point(33, 103);
             btnAdministrativa.Name = "btnAdministrativa";
             btnAdministrativa.Size = new Size(296, 87);
-            btnAdministrativa.TabIndex = 9;
+            btnAdministrativa.TabIndex = 1;
             btnAdministrativa.Text = "GESTION ADMINISTRATIVA";
             btnAdministrativa.UseVisualStyleBackColor = false;
             btnAdministrativa.Click += btnAdministrativa_Click;
@@ -160,7 +160,7 @@
             btnFour.Location = new Point(410, 441);
             btnFour.Name = "btnFour";
             btnFour.Size = new Size(250, 75);
-            btnFour.TabIndex = 14;
+            btnFour.TabIndex = 8;
             btnFour.Text = "Opcion 4";
             btnFour.UseVisualStyleBackColor = false;
             btnFour.Click += btnOpFour_Click;
@@ -176,7 +176,7 @@
             btnTwo.Location = new Point(410, 241);
             btnTwo.Name = "btnTwo";
             btnTwo.Size = new Size(250, 75);
-            btnTwo.TabIndex = 13;
+            btnTwo.TabIndex = 6;
             btnTwo.Text = "Opcion 2";
             btnTwo.UseVisualStyleBackColor = false;
             btnTwo.Click += btnOpTwo_Click;
@@ -192,7 +192,7 @@
             btnThree.Location = new Point(410, 341);
             btnThree.Name = "btnThree";
             btnThree.Size = new Size(250, 75);
-            btnThree.TabIndex = 12;
+            btnThree.TabIndex = 7;
             btnThree.Text = "Opcion 3";
             btnThree.UseVisualStyleBackColor = false;
             btnThree.Click += btnOpThree_Click;
@@ -208,7 +208,7 @@
             btnOne.Location = new Point(410, 141);
             btnOne.Name = "btnOne";
             btnOne.Size = new Size(250, 75);
-            btnOne.TabIndex = 11;
+            btnOne.TabIndex = 5;
             btnOne.Text = "Opcion 1";
             btnOne.UseVisualStyleBackColor = false;
             btnOne.Click += btnOpOne_Click;
@@ -221,10 +221,10 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.White;
-            btnSalir.Location = new Point(47, 543);
+            btnSalir.Location = new Point(42, 513);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(180, 50);
-            btnSalir.TabIndex = 8;
+            btnSalir.TabIndex = 9;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;

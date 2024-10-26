@@ -1,5 +1,5 @@
 ﻿
-namespace Clinica_SePrise.Turnos
+namespace Clinica_SePrise.Agenda
 {
     public partial class NuevoAgenda: Form
     {
@@ -252,7 +252,7 @@ namespace Clinica_SePrise.Turnos
             Controls.Add(panel1);
             Name = "NuevoAgenda";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "REGISTRAR TURNOS";
+            Text = "REGISTRAR AGENDA";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
