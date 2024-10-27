@@ -221,7 +221,7 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.White;
-            btnSalir.Location = new Point(47, 543);
+            btnSalir.Location = new Point(47, 513);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(180, 50);
             btnSalir.TabIndex = 8;
@@ -243,16 +243,16 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(53, 50);
+            label2.Location = new Point(27, 50);
             label2.Name = "label2";
-            label2.Size = new Size(169, 30);
+            label2.Size = new Size(221, 30);
             label2.TabIndex = 15;
-            label2.Text = "Sistema General";
+            label2.Text = "Consultorios Externos";
             // 
             // lblIngreso
             // 
             lblIngreso.AutoSize = true;
-            lblIngreso.Location = new Point(119, 123);
+            lblIngreso.Location = new Point(118, 123);
             lblIngreso.Name = "lblIngreso";
             lblIngreso.Size = new Size(38, 15);
             lblIngreso.TabIndex = 16;

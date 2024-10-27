@@ -39,7 +39,6 @@ namespace Clinica_SePrise.Pacientes
             cboGenero = new ComboBox();
             txtNombre = new TextBox();
             txtDocu = new TextBox();
-            txtNacimiento = new TextBox();
             btnIngresar = new Button();
             btnLimpiar = new Button();
             btnVolver = new Button();
@@ -49,7 +48,6 @@ namespace Clinica_SePrise.Pacientes
             lblApto = new Label();
             lblAsterisco = new Label();
             panel1 = new Panel();
-            txtEdad = new TextBox();
             label1 = new Label();
             txtTelefono = new TextBox();
             label2 = new Label();
@@ -59,6 +57,8 @@ namespace Clinica_SePrise.Pacientes
             label4 = new Label();
             txtHistoria = new TextBox();
             label5 = new Label();
+            txtEdad = new TextBox();
+            dtpNacimiento = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -152,15 +152,7 @@ namespace Clinica_SePrise.Pacientes
             txtDocu.Name = "txtDocu";
             txtDocu.Size = new Size(98, 25);
             txtDocu.TabIndex = 2;
-            // 
-            // txtNacimiento
-            // 
-            txtNacimiento.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNacimiento.ForeColor = SystemColors.MenuHighlight;
-            txtNacimiento.Location = new Point(434, 247);
-            txtNacimiento.Name = "txtNacimiento";
-            txtNacimiento.Size = new Size(124, 25);
-            txtNacimiento.TabIndex = 6;
+            txtDocu.KeyPress += txtDocu_KeyPress;
             // 
             // btnIngresar
             // 
@@ -270,15 +262,6 @@ namespace Clinica_SePrise.Pacientes
             panel1.Size = new Size(180, 657);
             panel1.TabIndex = 21;
             // 
-            // txtEdad
-            // 
-            txtEdad.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEdad.ForeColor = SystemColors.MenuHighlight;
-            txtEdad.Location = new Point(434, 281);
-            txtEdad.Name = "txtEdad";
-            txtEdad.Size = new Size(98, 25);
-            txtEdad.TabIndex = 7;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -366,12 +349,33 @@ namespace Clinica_SePrise.Pacientes
             label5.TabIndex = 31;
             label5.Text = "HISTORIA CLINICA :";
             // 
+            // txtEdad
+            // 
+            txtEdad.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEdad.ForeColor = SystemColors.MenuHighlight;
+            txtEdad.Location = new Point(434, 281);
+            txtEdad.Name = "txtEdad";
+            txtEdad.Size = new Size(98, 25);
+            txtEdad.TabIndex = 7;
+            txtEdad.KeyPress += txtEdad_KeyPress;
+            // 
+            // dtpNacimiento
+            // 
+            dtpNacimiento.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpNacimiento.Format = DateTimePickerFormat.Short;
+            dtpNacimiento.Location = new Point(434, 247);
+            dtpNacimiento.Name = "dtpNacimiento";
+            dtpNacimiento.Size = new Size(121, 25);
+            dtpNacimiento.TabIndex = 33;
+            dtpNacimiento.Value = new DateTime(2024, 10, 23, 22, 30, 28, 0);
+            // 
             // NuevoPaciente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(895, 651);
+            Controls.Add(dtpNacimiento);
             Controls.Add(txtHistoria);
             Controls.Add(label5);
             Controls.Add(txtObra);
@@ -390,7 +394,6 @@ namespace Clinica_SePrise.Pacientes
             Controls.Add(btnVolver);
             Controls.Add(btnLimpiar);
             Controls.Add(btnIngresar);
-            Controls.Add(txtNacimiento);
             Controls.Add(txtDocu);
             Controls.Add(txtNombre);
             Controls.Add(cboGenero);
@@ -427,13 +430,11 @@ namespace Clinica_SePrise.Pacientes
         private Button btnVolver;
         private TextBox txtNombre;
         private TextBox txtDocu;        
-        private TextBox txtNacimiento;
         private ComboBox cboGenero;
         private Label lblEmail;
         private Label lblApto;
         private Label lblAsterisco;
         private Panel panel1;
-        private TextBox txtEdad;
         private Label label1;
         private TextBox txtTelefono;
         private Label label2;
@@ -443,5 +444,7 @@ namespace Clinica_SePrise.Pacientes
         private Label label4;
         private TextBox txtHistoria;
         private Label label5;
+        private TextBox txtEdad;
+        private DateTimePicker dtpNacimiento;
     }
 }
