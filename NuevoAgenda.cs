@@ -1,6 +1,7 @@
 ﻿using Clinica_SePrise.Datos;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 
 namespace Clinica_SePrise.Turnos
@@ -24,6 +25,7 @@ namespace Clinica_SePrise.Turnos
         {
             InitializeComponent();
             LlenarComboBox();
+            dtpFecha.Value = DateTime.Now;
         }
 
 
@@ -71,9 +73,7 @@ namespace Clinica_SePrise.Turnos
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            //Menu principal = new Menu();
-            //principal.Show();
-            //this.Close();
+            this.Close();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -100,9 +100,6 @@ namespace Clinica_SePrise.Turnos
                 turno_periodo = cboTurno.Text;
                 especialidad = Convert.ToString(cboMedico.SelectedValue);
                 estado = "Disponible";
-
-
-
 
                 // Determinar la franja horaria según el periodo (mañana o tarde)
                 TimeSpan horaInicio;
@@ -178,9 +175,9 @@ namespace Clinica_SePrise.Turnos
                     }
 
 
-                    Menu principal = new Menu();
-                    principal.Show();
-                    this.Close();
+                    //Menu principal = new Menu();
+                    //principal.Show();
+                    //this.Close();
                 }
             }
         }
@@ -219,6 +216,5 @@ namespace Clinica_SePrise.Turnos
                 }
             }
         }
-
     }
 }

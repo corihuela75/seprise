@@ -2,6 +2,8 @@ using Clinica_SePrise.Datos;
 using Clinica_SePrise.Medicos;
 using Clinica_SePrise.Pacientes;
 using Clinica_SePrise.Turnos;
+using Clinica_SePrise.TurnoE;
+using Clinica_SePrise.TurnoP;
 using System.Data;
 
 
@@ -27,6 +29,8 @@ namespace Clinica_SePrise
 
         // -- FORMS GESTION TURNOS --
         private RatificarTurno formRatTurno;
+        private NuevoTurnoE formTurnosEspe;
+        private NuevoTurnoP formTurnosProf;
 
 
         public Menu(int id, string name, string rol)
@@ -41,10 +45,7 @@ namespace Clinica_SePrise
             this.btns.Add(btnTurnos);
             this.btnAdministrativa_Click(null, null);
         }
-        /* ___________ VARIABLES tipo INTERNAL__________________________________
-        * Serán accesibles desde el ensamblado en el cual están declarados
-        * y tampoco se pueden utilizar en el interior de una función.
-        * _________________________________________________________________   */
+
         private void Principal_Load(object sender, EventArgs e)
         {
             lblIngreso.Text = id.ToString() + '-' + name.ToUpper() + '\n' + rol.ToUpper();
@@ -68,7 +69,7 @@ namespace Clinica_SePrise
         private void btnSelected(Button btn)
         {
             btn.BackColor = Color.SteelBlue;
-            btn.FlatAppearance.BorderColor = Color.DarkBlue;
+            btn.FlatAppearance.BorderColor = Color.LightBlue;
             btn.ForeColor = Color.White;
             this.btns.ForEach(b => { if (b != btn) this.deselected(b); });
         }
@@ -77,32 +78,34 @@ namespace Clinica_SePrise
 
         private void btnAdministrativa_Click(object? sender, EventArgs? e)
         {
-
+            this.restablecerBotones();
             btnOne.Visible = true;
             btnTwo.Visible = true;
             btnThree.Visible = true;
             btnFour.Visible = false;
-            btnOne.Text = "GESTIONAR PERSONAL MEDICO";
+            btnOne.Text = "GESTIONAR PACIENTES";
             btnTwo.Text = "GESTIONAR AGENDA";
-            btnThree.Text = "GESTIONAR PACIENTES";
+            btnThree.Text = "GESTIONAR PESONAL MEDICO";
             this.btnOneForm = this.formPacientes ?? new NuevoPaciente();
             this.btnTwoForm = this.formAgenda ?? new NuevoAgenda();
             this.btnThreeForm = this.formMedico ?? new NuevoMedico();
             this.btnSelected(btnAdministrativa);
-
         }
 
         private void btnTurnos_Click(object sender, EventArgs e)
         {
-            btnOne.Visible = false;
+            this.restablecerBotones();
+            btnOne.Visible = true;
             btnTwo.Visible = true;
-            btnThree.Visible = false;
+            btnThree.Visible = true;
             btnFour.Visible = false;
-
-            btnTwo.Text = "RATIFICAR TURNO";
-            this.btnTwoForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
+            btnOne.Text = "SOLICITAR TURNO POR ESPECIALIDAD";
+            btnTwo.Text = "SOLICITAR TURNO POR PROFESIONAL";
+            btnThree.Text = "RATIFICAR TURNO";
+            this.btnThreeForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
+            this.btnOneForm = this.formTurnosEspe ?? new NuevoTurnoE();
+            this.btnTwoForm = this.formTurnosProf ?? new NuevoTurnoP();
             this.btnSelected(btnTurnos);
-
         }
 
         private void btnSalaEspera_Click(object sender, EventArgs e)
@@ -123,6 +126,7 @@ namespace Clinica_SePrise
         {
             this.btnTwoForm.ShowDialog();
         }
+
         private void btnOpThree_Click(object sender, EventArgs e)
         {
             this.btnThreeForm.ShowDialog();
@@ -134,14 +138,17 @@ namespace Clinica_SePrise
 
         }
 
-        
-        
-
-
         private void restablecerBotones()
         {
-        }
+            this.deselected(btnAdministrativa);
+            this.deselected(btnTurnos);
+            this.deselected(btnEspera);
+            this.deselected(btnAtencion);
 
-        
+            btnOne.Visible = false;
+            btnTwo.Visible = false;
+            btnThree.Visible = false;
+            btnFour.Visible = false;
+        }
     }
 }
