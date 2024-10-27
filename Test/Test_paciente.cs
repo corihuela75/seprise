@@ -14,7 +14,7 @@ class Test_paciente
         Paciente pacienteNuevo = new Paciente(conexion);
 
         // Insertar un nuevo paciente
-        pacienteNuevo.InsertarPaciente("Juan Pérez", 25061243, "15-12-75", 48, "Masculino", "2235903633",
+        pacienteNuevo.InsertarPaciente("Juan Pérez", 25061243, DateTime.Now, 48, "Masculino", "2235903633",
           "Calle Falsa 123", "ori@live.com.ar", "Soltero", "ds", "d");
 
         Console.WriteLine("Operación completada.");

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
-using System.IO;
+﻿using MySql.Data.MySqlClient;
 using System.Text.Json;
+using System.Diagnostics;
 
 namespace Clinica_SePrise.Datos
 {
@@ -38,7 +36,7 @@ namespace Clinica_SePrise.Datos
             }
             else
             {
-                throw new Exception("Error al leer la configuración de la conexión MySQL.");
+                throw new Exception("*** Error al leer la configuración de la conexión MySQL.");
             }
         }
 
@@ -54,11 +52,11 @@ namespace Clinica_SePrise.Datos
                 try
                 {
                     connection.Open();
-                    Console.WriteLine("Conexión exitosa a la base de datos MySQL.");
+                    Debug.WriteLine("*** Conexión exitosa a la base de datos MySQL.");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error al conectar a la base de datos: {ex.Message}");
+                    Debug.WriteLine($"*** Error al conectar a la base de datos: {ex.Message}");
                 }
             }
         }

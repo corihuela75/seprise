@@ -1,10 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Clinica_SePrise.Datos
 {
@@ -22,7 +17,7 @@ namespace Clinica_SePrise.Datos
 
         // CREAR PACIENTE
 
-        public void InsertarPaciente(string nombre, int documento, string nacimiento,
+        public void InsertarPaciente(string nombre, int documento, DateTime nacimiento,
             int edad, string genero, string telefono, string direccion, string email,
             string estado, string historial, string obrasocial)
 
@@ -43,16 +38,7 @@ namespace Clinica_SePrise.Datos
                     {
                         command.Parameters.AddWithValue("@nombre", nombre);
                         command.Parameters.AddWithValue("@documento", documento);
-                        // Intentar convertir el string de nacimiento a DateTime para el formato adecuado en SQL
-                        DateTime nacimientoDate;
-                        if (DateTime.TryParse(nacimiento, out nacimientoDate))
-                        {
-                            command.Parameters.AddWithValue("@nacimiento", nacimientoDate.ToString("yyyy-MM-dd"));
-                        }
-                        else
-                        {
-                            throw new Exception("El formato de fecha de nacimiento es incorrecto.");
-                        }
+                        command.Parameters.AddWithValue("@nacimiento", nacimiento.ToString("yyyy-MM-dd"));
                         command.Parameters.AddWithValue("@edad", edad);
                         command.Parameters.AddWithValue("@genero", genero);
                         command.Parameters.AddWithValue("@telefono", telefono);
@@ -62,7 +48,9 @@ namespace Clinica_SePrise.Datos
                         command.Parameters.AddWithValue("@historial", historial);
                         command.Parameters.AddWithValue("@obrasocial", obrasocial);
                         // Ejecuta la consulta SQL (INSERT)
+                        MessageBox.Show(query);
                         int result = command.ExecuteNonQuery();
+
 
                         if (result > 0)
                         {
@@ -71,7 +59,7 @@ namespace Clinica_SePrise.Datos
                         }
                         else
                         {
-                            Console.WriteLine("No se pudo insertar el registro.");
+                            // Console.WriteLine("No se pudo insertar el registro.");
                             MessageBox.Show("No se pudo insertar el médico.Verifique los datos y la conexión a la base de datos. ",
                               "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -79,8 +67,8 @@ namespace Clinica_SePrise.Datos
                 }
                 catch (Exception ex) // Captura cualquier excepción que ocurra durante la operación
                 {
-                    Console.WriteLine($"Error al insertar el registro: {ex.Message}");
-                    Console.WriteLine(ex.StackTrace); // Esto te mostrará más detalles sobre el error
+                    Debug.WriteLine($"Error al insertar el registro: {ex.Message}");
+                    Debug.WriteLine(ex.StackTrace); // Esto te mostrará más detalles sobre el error
 
                 }
             }

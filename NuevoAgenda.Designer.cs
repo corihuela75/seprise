@@ -45,7 +45,6 @@ namespace Clinica_SePrise.Turnos
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             dtpFecha = new DateTimePicker();
-            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -165,7 +164,7 @@ namespace Clinica_SePrise.Turnos
             // 
             lblAsterisco.AutoSize = true;
             lblAsterisco.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAsterisco.Location = new Point(200, 592);
+            lblAsterisco.Location = new Point(234, 306);
             lblAsterisco.Name = "lblAsterisco";
             lblAsterisco.Size = new Size(192, 15);
             lblAsterisco.TabIndex = 20;
@@ -222,20 +221,12 @@ namespace Clinica_SePrise.Turnos
             dtpFecha.TabIndex = 32;
             dtpFecha.Value = new DateTime(2024, 10, 23, 22, 30, 28, 0);
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(444, 344);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(294, 23);
-            textBox1.TabIndex = 33;
-            // 
             // NuevoAgenda
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(895, 651);
-            Controls.Add(textBox1);
             Controls.Add(dtpFecha);
             Controls.Add(cboTurno);
             Controls.Add(label5);
@@ -277,6 +268,5 @@ namespace Clinica_SePrise.Turnos
         private PictureBox pictureBox1;
         private Panel panel1;
         private DateTimePicker dtpFecha;
-        private TextBox textBox1;
     }
 }

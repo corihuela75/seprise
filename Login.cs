@@ -1,6 +1,6 @@
 ﻿using Clinica_SePrise.Datos;
 using MySql.Data.MySqlClient;
-using System.Data;
+using System.Diagnostics;
 
 namespace Clinica_SePrise
 {
@@ -21,13 +21,12 @@ namespace Clinica_SePrise
             {
                 // Probar la conexión a la base de datos al cargar el formulario
                 conexion.TestConnection();
-
-                MessageBox.Show("Conexión a la base de datos exitosa.");
+                Debug.WriteLine("*** Conexión a la base de datos exitosa.");
             }
             catch (Exception ex)
             {
                 // Manejo de errores de conexión
-                MessageBox.Show($"Error al conectar a la base de datos: {ex.Message}");
+                Debug.WriteLine($"*** Error al conectar a la base de datos: {ex.Message}");
             }
         }
 
@@ -112,7 +111,7 @@ namespace Clinica_SePrise
                         } else
                         {
                         // Usuario encontrado, login exitoso
-                        MessageBox.Show("Inicio de sesión exitoso.");
+                        Debug.WriteLine("*** Inicio de sesión exitoso.");
                         // CONTINUA CON EL MENU
                         Menu menu = new Menu(id,name,rol);
                         menu.Show(); // se llama al formulario principal

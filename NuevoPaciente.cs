@@ -1,4 +1,5 @@
 ﻿using Clinica_SePrise.Datos;
+using Clinica_SePrise;
 
 namespace Clinica_SePrise.Pacientes
 {
@@ -9,7 +10,7 @@ namespace Clinica_SePrise.Pacientes
         private String direccion;
         private String telefono;
         private String email;
-        private String nacimiento;
+        private DateTime nacimiento;
         private int edad;
         private String genero;
         private String estado;
@@ -23,9 +24,7 @@ namespace Clinica_SePrise.Pacientes
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            //Menu principal = new Menu();
-            //principal.Show();
-            //this.Close();
+            this.Close();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -35,8 +34,7 @@ namespace Clinica_SePrise.Pacientes
             txtDireccion.Text = "";
             txtTelefono.Text = "";
             txtEmail.Text = "";
-            txtNacimiento.Text = "";
-            txtEdad.Text = "";
+            dtpNacimiento.Value = DateTime.Now;
             cboGenero.Text = "";
             cboEstado.Text = "";
             txtObra.Text = "";
@@ -46,8 +44,7 @@ namespace Clinica_SePrise.Pacientes
         //COMPROBAMOS INGRESO DE CAMPOS OBLIGATORIOS
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == "" || txtDocu.Text == "" || txtEmail.Text == "" || txtNacimiento.Text == ""
-                || cboGenero.Text == "" || txtDireccion.Text == "" || txtTelefono.Text == "")
+            if (txtNombre.Text == ""|| txtDocu.Text == "" || txtEmail.Text == "" || cboGenero.Text == "" || txtDireccion.Text == "" || txtTelefono.Text == "")
             {
                 MessageBox.Show("Debe completar datos requeridos (*) ",
                 "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -55,12 +52,16 @@ namespace Clinica_SePrise.Pacientes
             else
             {
                 nombre = txtNombre.Text;
-                documento = Int32.Parse(txtDocu.Text);
+                edad = Int32.Parse(txtDocu.Text);
                 direccion = txtDireccion.Text;
                 telefono = txtTelefono.Text;
                 email = txtEmail.Text;
-                nacimiento = txtNacimiento.Text;
-                edad = Int32.Parse(txtEdad.Text);
+                nacimiento = dtpNacimiento.Value;
+                // Valida si txtEdad tiene valor antes de convertir
+                if (!string.IsNullOrEmpty(txtEdad.Text))
+                {
+                    edad = Int32.Parse(txtEdad.Text);
+                }
                 genero = cboGenero.Text;
                 estado = cboEstado.Text;
                 obra = txtObra.Text;
@@ -73,12 +74,31 @@ namespace Clinica_SePrise.Pacientes
                 Paciente pacienteNuevo = new Paciente(conexion);
 
                 // Insertar un nuevo paciente
-                pacienteNuevo.InsertarPaciente(nombre, documento, nacimiento,edad,genero, telefono,
+                pacienteNuevo.InsertarPaciente(nombre, documento, nacimiento, edad, genero, telefono,
                   direccion, email, estado, historia, obra);
 
                 //Menu principal = new Menu();
                 //principal.Show();
                 //this.Close();
+            }
+        }
+        // DESHABILITA EL INGRESO DE LETRAS EN CAMPO NUMERICO
+        private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si el carácter presionado es un número o una tecla de control (como retroceso)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Si no es un número o una tecla de control, bloquea el carácter
+                e.Handled = true;
+            }
+        }
+        private void txtDocu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si el carácter presionado es un número o una tecla de control (como retroceso)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Si no es un número o una tecla de control, bloquea el carácter
+                e.Handled = true;
             }
         }
     }
