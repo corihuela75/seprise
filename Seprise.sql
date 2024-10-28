@@ -39,7 +39,7 @@ CREATE TABLE paciente (
     tel_paci VARCHAR(20),
     direccion_paci VARCHAR(100),
     email_paci VARCHAR(100),
-    estado_civil_paci ENUM('Soltero', 'Casado', 'Divorciado', 'Viudo', 'Otro'),
+    estado_civil_paci ENUM('Soltero', 'Casado', 'Divorciado', 'Viudo', 'Otro', ''),
     historial_paci TEXT,
     fecha_registro_paci DATETIME DEFAULT CURRENT_TIMESTAMP,
     obra_social_paci VARCHAR(100),

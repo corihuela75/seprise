@@ -25,7 +25,7 @@ namespace Clinica_SePrise.Datos
                     connection.Open();
 
                     string query = "INSERT INTO medico (nombre_medi, matricula, especialidad," +
-                        " tel_medi, email_medi) VALUES (@nombre, @apellido, @matricula, @especialidad, @telefono," +
+                        " tel_medi, email_medi) VALUES (@nombre, @matricula, @especialidad, @telefono, @email" +
                         " @email)";
 
                     using (var command = new MySqlCommand(query, connection))
@@ -52,7 +52,7 @@ namespace Clinica_SePrise.Datos
                 }
                 catch (MySqlException ex)
                 {
-                    Console.WriteLine($"Error al insertar el médico: {ex.Message}");
+                    MessageBox.Show($"Error al insertar el médico: {ex.Message}");
                 }
             }
         }

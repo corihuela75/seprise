@@ -48,9 +48,7 @@ namespace Clinica_SePrise.Datos
                         command.Parameters.AddWithValue("@historial", historial);
                         command.Parameters.AddWithValue("@obrasocial", obrasocial);
                         // Ejecuta la consulta SQL (INSERT)
-                        MessageBox.Show(query);
                         int result = command.ExecuteNonQuery();
-
 
                         if (result > 0)
                         {
@@ -69,7 +67,7 @@ namespace Clinica_SePrise.Datos
                 {
                     Debug.WriteLine($"Error al insertar el registro: {ex.Message}");
                     Debug.WriteLine(ex.StackTrace); // Esto te mostrará más detalles sobre el error
-
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
