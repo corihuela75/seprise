@@ -44,7 +44,8 @@ namespace Clinica_SePrise.Pacientes
         //COMPROBAMOS INGRESO DE CAMPOS OBLIGATORIOS
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == ""|| txtDocu.Text == "" || txtEmail.Text == "" || cboGenero.Text == "" || txtDireccion.Text == "" || txtTelefono.Text == "")
+            if (txtNombre.Text == ""|| txtDocu.Text == "" || txtEmail.Text == "" || cboGenero.Text == "" ||
+                txtDireccion.Text == "" || txtTelefono.Text == "")
             {
                 MessageBox.Show("Debe completar datos requeridos (*) ",
                 "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -52,7 +53,7 @@ namespace Clinica_SePrise.Pacientes
             else
             {
                 nombre = txtNombre.Text;
-                edad = Int32.Parse(txtDocu.Text);
+                documento = Int32.Parse(txtDocu.Text);
                 direccion = txtDireccion.Text;
                 telefono = txtTelefono.Text;
                 email = txtEmail.Text;
@@ -77,11 +78,16 @@ namespace Clinica_SePrise.Pacientes
                 pacienteNuevo.InsertarPaciente(nombre, documento, nacimiento, edad, genero, telefono,
                   direccion, email, estado, historia, obra);
 
+                // Limpiar el formulario
+                btnLimpiar_Click(sender, e);
+
                 //Menu principal = new Menu();
                 //principal.Show();
                 //this.Close();
             }
         }
+
+
         // DESHABILITA EL INGRESO DE LETRAS EN CAMPO NUMERICO
         private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
         {

@@ -51,7 +51,16 @@ namespace Clinica_SePrise.Medicos
 
             // Asignación de valores a las variables
             nombre = txtNombre.Text;
-            matricula = int.Parse(txtMatricula.Text);
+            //matricula = int.Parse(txtMatricula.Text);
+
+            // Validación de matrícula numérica
+            if (!int.TryParse(txtMatricula.Text, out matricula))
+            {
+                MessageBox.Show("La matrícula debe ser un número válido.",
+                                "Error de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             especialidad = cboEspecialidad.Text;
             telefono = txtTelefono.Text;
             email = txtEmail.Text;
@@ -69,11 +78,7 @@ namespace Clinica_SePrise.Medicos
             // Insertar un nuevo médico
             medicoNuevo.InsertarMedico(nombre, matricula, especialidad, telefono, email);
 
-            MessageBox.Show("El médico ha sido añadido a la base de datos correctamente.",
-                            "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-            // AÑADIMOS EL USUARIO AL SISTEMA
+            // AÑADIMOS EL USUARIO A LA TABLA
 
             // Crear una instancia de Usuario, pasando la conexión
             Usuario usuarioNuevo = new Usuario(conexion);
@@ -81,8 +86,8 @@ namespace Clinica_SePrise.Medicos
             // Insertar un nuevo usuario
             usuarioNuevo.InsertarUsuario(usuario, contraseña, 122); //122:ROL DE MEDICO
 
-            Console.WriteLine("Operación completada.");
-
+            // Limpiar el formulario
+            btnLimpiar_Click(sender, e);
 
             // Volver al menú principal
             //Menu principal = new Menu();
