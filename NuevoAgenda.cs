@@ -10,7 +10,7 @@ namespace Clinica_SePrise.Turnos
     {
         private DateTime fecha;
         private int consultorio;
-        private string paciente;
+        private int paciente;
         private string medico;
         private string hora_inicio;
         private string hora_fin;

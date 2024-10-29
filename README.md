@@ -1,4 +1,8 @@
 
+(29-10.2024)
+
+- cambio en la tabla turnos el campo paciente a INT, para que quede igual que en tabla paciente
+- se completa el registro de turno por profesional para que quede reservado en la base con el dni del paciente
 
 
 

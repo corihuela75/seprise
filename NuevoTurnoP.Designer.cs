@@ -32,22 +32,26 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             btnVolver = new Button();
-            btnLimpiar = new Button();
-            btnIngresar = new Button();
+            btnRegistrar = new Button();
             lblTitulo = new Label();
             cboMedico = new ComboBox();
             lblNacimiento = new Label();
             dataGridViewTurnos = new DataGridView();
+            lblNombre1 = new Label();
+            lblDocumento1 = new Label();
+            lblFechaNacimiento1 = new Label();
+            lblObraSocial1 = new Label();
             btnBuscar = new Button();
             txtBuscarPaciente = new TextBox();
-            lblDni = new Label();
+            groupBox1 = new GroupBox();
+            lblObraSocial = new Label();
+            lblFechaNacimiento = new Label();
             lblNombre = new Label();
             lblDocumento = new Label();
-            lblFechaNacimiento = new Label();
-            lblObraSocial = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTurnos).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -77,7 +81,7 @@
             btnVolver.FlatStyle = FlatStyle.Flat;
             btnVolver.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnVolver.ForeColor = Color.SteelBlue;
-            btnVolver.Location = new Point(738, 591);
+            btnVolver.Location = new Point(575, 591);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(145, 48);
             btnVolver.TabIndex = 25;
@@ -85,35 +89,21 @@
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
-            // btnLimpiar
+            // btnRegistrar
             // 
-            btnLimpiar.BackColor = Color.Azure;
-            btnLimpiar.FlatAppearance.BorderColor = Color.LightBlue;
-            btnLimpiar.FlatAppearance.BorderSize = 3;
-            btnLimpiar.FlatStyle = FlatStyle.Flat;
-            btnLimpiar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.ForeColor = Color.SteelBlue;
-            btnLimpiar.Location = new Point(575, 591);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(145, 48);
-            btnLimpiar.TabIndex = 24;
-            btnLimpiar.Text = "LIMPIAR";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            // 
-            // btnIngresar
-            // 
-            btnIngresar.BackColor = Color.Azure;
-            btnIngresar.FlatAppearance.BorderColor = Color.LightBlue;
-            btnIngresar.FlatAppearance.BorderSize = 3;
-            btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnIngresar.ForeColor = Color.SteelBlue;
-            btnIngresar.Location = new Point(412, 591);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(145, 48);
-            btnIngresar.TabIndex = 23;
-            btnIngresar.Text = "INGRESAR";
-            btnIngresar.UseVisualStyleBackColor = false;
+            btnRegistrar.BackColor = Color.Azure;
+            btnRegistrar.FlatAppearance.BorderColor = Color.LightBlue;
+            btnRegistrar.FlatAppearance.BorderSize = 3;
+            btnRegistrar.FlatStyle = FlatStyle.Flat;
+            btnRegistrar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRegistrar.ForeColor = Color.SteelBlue;
+            btnRegistrar.Location = new Point(738, 591);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(145, 48);
+            btnRegistrar.TabIndex = 23;
+            btnRegistrar.Text = "REGISTRAR";
+            btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // lblTitulo
             // 
@@ -165,18 +155,58 @@
             dataGridViewTurnos.ShowEditingIcon = false;
             dataGridViewTurnos.Size = new Size(645, 269);
             dataGridViewTurnos.TabIndex = 30;
+            dataGridViewTurnos.RowEnter += dataGridViewTurnos_RowEnter;
+            // 
+            // lblNombre1
+            // 
+            lblNombre1.AutoSize = true;
+            lblNombre1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombre1.Location = new Point(242, 28);
+            lblNombre1.Name = "lblNombre1";
+            lblNombre1.Size = new Size(75, 21);
+            lblNombre1.TabIndex = 42;
+            lblNombre1.Text = "Nombre :";
+            // 
+            // lblDocumento1
+            // 
+            lblDocumento1.AutoSize = true;
+            lblDocumento1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDocumento1.Location = new Point(219, 54);
+            lblDocumento1.Name = "lblDocumento1";
+            lblDocumento1.Size = new Size(98, 21);
+            lblDocumento1.TabIndex = 43;
+            lblDocumento1.Text = "Documento :";
+            // 
+            // lblFechaNacimiento1
+            // 
+            lblFechaNacimiento1.AutoSize = true;
+            lblFechaNacimiento1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFechaNacimiento1.Location = new Point(155, 80);
+            lblFechaNacimiento1.Name = "lblFechaNacimiento1";
+            lblFechaNacimiento1.Size = new Size(162, 21);
+            lblFechaNacimiento1.TabIndex = 44;
+            lblFechaNacimiento1.Text = "Fecha de Nacimiento :";
+            // 
+            // lblObraSocial1
+            // 
+            lblObraSocial1.AutoSize = true;
+            lblObraSocial1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblObraSocial1.Location = new Point(220, 106);
+            lblObraSocial1.Name = "lblObraSocial1";
+            lblObraSocial1.Size = new Size(97, 21);
+            lblObraSocial1.TabIndex = 45;
+            lblObraSocial1.Text = "Obra Social :";
             // 
             // btnBuscar
             // 
             btnBuscar.BackColor = Color.Azure;
-            btnBuscar.FlatAppearance.BorderColor = Color.LightBlue;
-            btnBuscar.FlatAppearance.BorderSize = 3;
+            btnBuscar.FlatAppearance.BorderColor = SystemColors.ControlDarkDark;
             btnBuscar.FlatStyle = FlatStyle.Flat;
             btnBuscar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnBuscar.ForeColor = Color.Black;
-            btnBuscar.Location = new Point(530, 442);
+            btnBuscar.Location = new Point(23, 59);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(151, 32);
+            btnBuscar.Size = new Size(116, 25);
             btnBuscar.TabIndex = 41;
             btnBuscar.Text = "BUSCAR";
             btnBuscar.UseVisualStyleBackColor = false;
@@ -186,56 +216,69 @@
             // 
             txtBuscarPaciente.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtBuscarPaciente.ForeColor = SystemColors.MenuHighlight;
-            txtBuscarPaciente.Location = new Point(420, 446);
+            txtBuscarPaciente.Location = new Point(23, 28);
             txtBuscarPaciente.Name = "txtBuscarPaciente";
-            txtBuscarPaciente.Size = new Size(98, 25);
+            txtBuscarPaciente.Size = new Size(116, 25);
             txtBuscarPaciente.TabIndex = 39;
+            txtBuscarPaciente.KeyPress += txtBuscarPaciente_KeyPress;
             // 
-            // lblDni
+            // groupBox1
             // 
-            lblDni.AutoSize = true;
-            lblDni.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDni.Location = new Point(217, 449);
-            lblDni.Name = "lblDni";
-            lblDni.Size = new Size(191, 19);
-            lblDni.TabIndex = 40;
-            lblDni.Text = "INGRESE DNI DE PACIENTE :";
-            // 
-            // lblNombre
-            // 
-            lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(320, 513);
-            lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(38, 15);
-            lblNombre.TabIndex = 42;
-            lblNombre.Text = "label1";
-            // 
-            // lblDocumento
-            // 
-            lblDocumento.AutoSize = true;
-            lblDocumento.Location = new Point(392, 513);
-            lblDocumento.Name = "lblDocumento";
-            lblDocumento.Size = new Size(38, 15);
-            lblDocumento.TabIndex = 43;
-            lblDocumento.Text = "label1";
-            // 
-            // lblFechaNacimiento
-            // 
-            lblFechaNacimiento.AutoSize = true;
-            lblFechaNacimiento.Location = new Point(489, 513);
-            lblFechaNacimiento.Name = "lblFechaNacimiento";
-            lblFechaNacimiento.Size = new Size(38, 15);
-            lblFechaNacimiento.TabIndex = 44;
-            lblFechaNacimiento.Text = "label1";
+            groupBox1.Controls.Add(lblObraSocial);
+            groupBox1.Controls.Add(lblFechaNacimiento);
+            groupBox1.Controls.Add(lblNombre);
+            groupBox1.Controls.Add(lblDocumento);
+            groupBox1.Controls.Add(txtBuscarPaciente);
+            groupBox1.Controls.Add(lblObraSocial1);
+            groupBox1.Controls.Add(btnBuscar);
+            groupBox1.Controls.Add(lblFechaNacimiento1);
+            groupBox1.Controls.Add(lblNombre1);
+            groupBox1.Controls.Add(lblDocumento1);
+            groupBox1.FlatStyle = FlatStyle.Flat;
+            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox1.Location = new Point(217, 413);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(645, 151);
+            groupBox1.TabIndex = 46;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "DNI del paciente :";
             // 
             // lblObraSocial
             // 
             lblObraSocial.AutoSize = true;
-            lblObraSocial.Location = new Point(627, 513);
+            lblObraSocial.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblObraSocial.Location = new Point(323, 106);
             lblObraSocial.Name = "lblObraSocial";
-            lblObraSocial.Size = new Size(38, 15);
-            lblObraSocial.TabIndex = 45;
-            lblObraSocial.Text = "label1";
+            lblObraSocial.Size = new Size(0, 21);
+            lblObraSocial.TabIndex = 49;
+            lblObraSocial.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lblFechaNacimiento
+            // 
+            lblFechaNacimiento.AutoSize = true;
+            lblFechaNacimiento.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFechaNacimiento.Location = new Point(323, 80);
+            lblFechaNacimiento.Name = "lblFechaNacimiento";
+            lblFechaNacimiento.Size = new Size(0, 21);
+            lblFechaNacimiento.TabIndex = 48;
+            // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNombre.Location = new Point(323, 28);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(0, 21);
+            lblNombre.TabIndex = 46;
+            // 
+            // lblDocumento
+            // 
+            lblDocumento.AutoSize = true;
+            lblDocumento.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDocumento.Location = new Point(323, 54);
+            lblDocumento.Name = "lblDocumento";
+            lblDocumento.Size = new Size(0, 21);
+            lblDocumento.TabIndex = 47;
             // 
             // NuevoTurnoP
             // 
@@ -243,21 +286,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(895, 651);
-            Controls.Add(lblObraSocial);
-            Controls.Add(lblFechaNacimiento);
-            Controls.Add(lblDocumento);
-            Controls.Add(lblNombre);
-            Controls.Add(btnBuscar);
-            Controls.Add(txtBuscarPaciente);
-            Controls.Add(lblDni);
+            Controls.Add(groupBox1);
             Controls.Add(dataGridViewTurnos);
             Controls.Add(cboMedico);
             Controls.Add(lblNacimiento);
             Controls.Add(lblTitulo);
-            Controls.Add(btnVolver);
-            Controls.Add(btnLimpiar);
-            Controls.Add(btnIngresar);
+            Controls.Add(btnRegistrar);
             Controls.Add(panel1);
+            Controls.Add(btnVolver);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "NuevoTurnoP";
             StartPosition = FormStartPosition.CenterScreen;
@@ -266,6 +302,8 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTurnos).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,18 +313,21 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private Button btnVolver;
-        private Button btnLimpiar;
-        private Button btnIngresar;
+        private Button btnRegistrar;
         private Label lblTitulo;
         private ComboBox cboMedico;
         private Label lblNacimiento;
         private DataGridView dataGridViewTurnos;
+        private Label lblNombre1;
+        private Label lblDocumento1;
+        private Label lblFechaNacimiento1;
+        private Label lblObraSocial1;
         private Button btnBuscar;
         private TextBox txtBuscarPaciente;
-        private Label lblDni;
+        private GroupBox groupBox1;
+        private Label lblObraSocial;
+        private Label lblFechaNacimiento;
         private Label lblNombre;
         private Label lblDocumento;
-        private Label lblFechaNacimiento;
-        private Label lblObraSocial;
     }
 }

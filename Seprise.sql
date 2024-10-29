@@ -91,7 +91,7 @@ CREATE TABLE turnos (
     consultorio INT,
     medico VARCHAR(50),
 	especialidad VARCHAR(100),
-    paciente VARCHAR(50),
+    paciente INT,
     fecha DATE,
     hora_inicio TIME,
     hora_fin TIME,
@@ -104,8 +104,8 @@ CREATE TABLE turnos (
 
 INSERT INTO turnos (consultorio, medico, especialidad, paciente, fecha, hora_inicio, hora_fin, turno_periodo, duracion, estado) 
 VALUES
-    (1, 'Dr. Juan Pérez', 'Cardiología', 'Ana Gómez', '2024-11-01', '08:00:00', '08:30:00', 'mañana', '30', 'reservado'),
-    (2, 'Dra. Carla López', 'Dermatología', 'Pedro Martinez', '2024-11-01', '09:00:00', '10:00:00', 'mañana', '60', 'disponible'),
-    (1, 'Dr. Miguel Díaz', 'Neurología', 'Lucía Herrera', '2024-11-02', '14:00:00', '15:30:00', 'tarde', '90', 'cancelado'),
-    (3, 'Dr. Luis Suárez', 'Pediatría', 'Sofía Torres', '2024-11-03', '10:00:00', '10:30:00', 'mañana', '30', 'reservado'),
-    (2, 'Dra. Patricia Ríos', 'Ginecología', 'Carlos Pérez', '2024-11-04', '16:00:00', '17:00:00', 'tarde', '60', 'disponible');
+    (1, 'Dr. Juan Pérez', 'Cardiología', 1, '2024-11-01', '08:00:00', '08:30:00', 'mañana', '30', 'reservado'),
+    (2, 'Dra. Carla López', 'Dermatología', 2, '2024-11-01', '09:00:00', '10:00:00', 'mañana', '60', 'disponible'),
+    (1, 'Dr. Miguel Díaz', 'Neurología', 3, '2024-11-02', '14:00:00', '15:30:00', 'tarde', '90', 'cancelado'),
+    (3, 'Dr. Luis Suárez', 'Pediatría', 4, '2024-11-03', '10:00:00', '10:30:00', 'mañana', '30', 'reservado'),
+    (2, 'Dra. Patricia Ríos', 'Ginecología', 5, '2024-11-04', '16:00:00', '17:00:00', 'tarde', '60', 'disponible');
