@@ -49,9 +49,9 @@
             lblTitulo.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitulo.Location = new Point(200, 9);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(337, 45);
+            lblTitulo.Size = new Size(303, 45);
             lblTitulo.TabIndex = 22;
-            lblTitulo.Text = "REGISTRAR AGENDA";
+            lblTitulo.Text = "RATIFICAR TURNO";
             // 
             // panel1
             // 
