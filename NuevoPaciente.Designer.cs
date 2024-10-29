@@ -406,6 +406,7 @@ namespace Clinica_SePrise.Pacientes
             Name = "NuevoPaciente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "REGISTRAR PACIENTE";
+            FormClosing += NuevoPaciente_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);

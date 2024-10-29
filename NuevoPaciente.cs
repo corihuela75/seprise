@@ -1,5 +1,4 @@
 ﻿using Clinica_SePrise.Datos;
-using Clinica_SePrise;
 
 namespace Clinica_SePrise.Pacientes
 {
@@ -24,6 +23,7 @@ namespace Clinica_SePrise.Pacientes
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
+            this.btnLimpiar_Click(sender, e);
             this.Close();
         }
 
@@ -35,16 +35,17 @@ namespace Clinica_SePrise.Pacientes
             txtTelefono.Text = "";
             txtEmail.Text = "";
             dtpNacimiento.Value = DateTime.Now;
-            cboGenero.Text = "";
-            cboEstado.Text = "";
+            cboGenero.SelectedIndex = -1;
+            cboEstado.SelectedIndex = -1;
             txtObra.Text = "";
             txtHistoria.Text = "";
+            txtEdad.ResetText();
             txtNombre.Focus();
         }
         //COMPROBAMOS INGRESO DE CAMPOS OBLIGATORIOS
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == ""|| txtDocu.Text == "" || txtEmail.Text == "" || cboGenero.Text == "" ||
+            if (txtNombre.Text == "" || txtDocu.Text == "" || txtEmail.Text == "" || cboGenero.Text == "" ||
                 txtDireccion.Text == "" || txtTelefono.Text == "")
             {
                 MessageBox.Show("Debe completar datos requeridos (*) ",
@@ -83,7 +84,6 @@ namespace Clinica_SePrise.Pacientes
 
                 //Menu principal = new Menu();
                 //principal.Show();
-                //this.Close();
             }
         }
 
@@ -106,6 +106,11 @@ namespace Clinica_SePrise.Pacientes
                 // Si no es un número o una tecla de control, bloquea el carácter
                 e.Handled = true;
             }
+        }
+
+        private void NuevoPaciente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.btnLimpiar_Click(sender, e);
         }
     }
 }

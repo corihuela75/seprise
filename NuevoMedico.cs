@@ -29,7 +29,7 @@ namespace Clinica_SePrise.Medicos
             txtMatricula.Text = "";
             txtTelefono.Text = "";
             txtEmail.Text = "";
-            cboEspecialidad.Text = "";
+            cboEspecialidad.SelectedIndex = -1;
             txtUsuario.Text = "";
             txtContraseña.Text = "";
             txtNombre.Focus();
@@ -64,7 +64,7 @@ namespace Clinica_SePrise.Medicos
             especialidad = cboEspecialidad.Text;
             telefono = txtTelefono.Text;
             email = txtEmail.Text;
-             
+
             //SE DEJAN ESTAS VARIABLES PARA GUARDAR EN TABLA USUARIOS
             usuario = txtUsuario.Text;
             contraseña = txtContraseña.Text;
@@ -92,7 +92,13 @@ namespace Clinica_SePrise.Medicos
             // Volver al menú principal
             //Menu principal = new Menu();
             //principal.Show();
-            //this.Close();
+            this.Close();
+        }
+
+        private void NuevoMedico_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btnLimpiar_Click(sender, e);
+
         }
     }
 }

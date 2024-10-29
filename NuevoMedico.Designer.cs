@@ -308,6 +308,7 @@ namespace Clinica_SePrise.Medicos
             Name = "NuevoMedico";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "REGISTRAR MEDICO";
+            FormClosing += NuevoMedico_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
