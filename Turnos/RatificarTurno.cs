@@ -1,6 +1,7 @@
 ﻿using Clinica_SePrise.Datos;
 using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using Mysqlx.Cursor;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace Clinica_SePrise.Turnos
     public partial class RatificarTurno : Form
     {
         private Conexion conn = new Conexion();
+
+        private int idTurno;
         public RatificarTurno(string name)
         {
             InitializeComponent();
@@ -59,6 +62,7 @@ namespace Clinica_SePrise.Turnos
                             dgvTurno.Columns.Add("Valor", "Valor");
 
                             dgvTurno.Rows.Add("ID Turno", reader.GetInt32("id_turno"));
+                            this.idTurno = reader.GetInt32("id_turno");
                             dgvTurno.Rows.Add("Consultorio", reader.GetInt32("consultorio"));
                             dgvTurno.Rows.Add("Médico", reader.GetString("medico"));
                             dgvTurno.Rows.Add("Especialidad", reader.GetString("especialidad"));
@@ -67,7 +71,7 @@ namespace Clinica_SePrise.Turnos
                             dgvTurno.Rows.Add("Hora Inicio", reader.GetTimeSpan("hora_inicio"));
                             dgvTurno.Rows.Add("Hora Fin", reader.GetTimeSpan("hora_fin"));
                             dgvTurno.Rows.Add("Turno Periodo", reader.GetString("turno_periodo"));
-                            dgvTurno.Rows.Add("Duración", reader.GetString("duracion"));
+                            dgvTurno.Rows.Add("Duración", reader.GetInt16("duracion"));
                             dgvTurno.Rows.Add("Estado", reader.GetString("estado"));
 
                             dgvTurno.Visible = true;
@@ -81,6 +85,7 @@ namespace Clinica_SePrise.Turnos
                             MessageBox.Show("Turno no encontrado, verifique el numero ingresado.");
                         }
                     }
+                    connection.Close();
                 }
             }
 
@@ -104,12 +109,42 @@ namespace Clinica_SePrise.Turnos
 
         private void RatificarTurno_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            this.Hide();
+            txtIdTurno.ResetText();
+            dgvTurno.Visible = false;
         }
 
         private void btnRatificar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (var connection = conn.GetConnection())
+                {
+                    connection.Open();
+                    int id = this.idTurno;
+                    string query = "UPDATE turnos SET estado = 'ratificado' WHERE id_turno = @id";
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", this.idTurno);
+
+                        int result = command.ExecuteNonQuery();
+
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Turno ratificado exitosamente y agregado a la lista de espera.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al actualizar turno.");
+                        }
+                    }
+                    connection.Close();
+                }
+            } catch
+            {
+                MessageBox.Show("No es posible realizar esta operación, por favor revise los campos ingresados.");
+            }
+
+            
 
         }
     }

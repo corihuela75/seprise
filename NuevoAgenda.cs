@@ -59,7 +59,7 @@ namespace Clinica_SePrise.Turnos
                     cboMedico.DataSource = dt;
                     cboMedico.DisplayMember = "nombre_medi";  // Lo que se muestra en el ComboBox
                     cboMedico.ValueMember = "especialidad";        // El valor subyacente
-
+                    cboMedico.SelectedIndex = -1;
                     // Cerrar el lector
                     reader.Close();
                 }
@@ -73,14 +73,16 @@ namespace Clinica_SePrise.Turnos
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
+            btnLimpiar_Click(sender, e);
             this.Close();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            cboConsultorio.Text = "";
-            cboMedico.Text = "";
-            cboTurno.Text = "";
+            cboConsultorio.SelectedIndex = -1;
+            cboMedico.SelectedIndex = -1;
+            cboTurno.SelectedIndex = -1;
+            dtpFecha.Value = DateTime.Now;
             dtpFecha.Focus();
         }
 
@@ -215,6 +217,11 @@ namespace Clinica_SePrise.Turnos
                     return false;
                 }
             }
+        }
+
+        private void NuevoAgenda_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.btnLimpiar_Click(sender, e);
         }
     }
 }
