@@ -324,7 +324,6 @@
             Name = "RatificarTurno";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RATIFICAR TURNO";
-            FormClosing += RatificarTurno_FormClosing;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -341,12 +340,12 @@
         private Label lblTitulo;
         private Panel panel1;
         private PictureBox pictureBox1;
-        private Label lblAsterisco;
+
         private Label lblTipo;
         private TextBox txtIdTurno;
         private Button btnSearch;
         private Label lblName;
-        private DataGridView dgbTurno2;
+
         private GroupBox groupBox1;
         private Label lblObraSocial;
         private Label lblFechaNacimiento;

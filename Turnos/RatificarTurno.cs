@@ -171,12 +171,6 @@ namespace Clinica_SePrise.Turnos
             rbtObraSocial.Enabled = true;
         }
 
-        private void RatificarTurno_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            txtIdTurno.ResetText();
-            dgvTurno.Visible = false;
-        }
-
         private void btnRatificar_Click(object sender, EventArgs e)
         {
             try
