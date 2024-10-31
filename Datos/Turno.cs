@@ -15,8 +15,8 @@ namespace Clinica_SePrise.Datos
 
         // CREAR TURNO
 
-        public void InsertarTurno(int consultorio, string medico, string especialidad, string paciente, DateTime fecha, string hora_inicio, string hora_fin,
-            string turno_periodo, int duracion, string estado)
+        public void InsertarTurno(int consultorio, string medico, string especialidad, int paciente, DateTime fecha, string hora_inicio, string hora_fin,
+            string turno_periodo, int duracion, string pago, string estado)
         {
             using (var connection = conexion.GetConnection())
             {
@@ -25,8 +25,8 @@ namespace Clinica_SePrise.Datos
                     connection.Open();
 
                     string query = "INSERT INTO turnos (consultorio, medico, especialidad, paciente, fecha, hora_inicio," +
-                        " hora_fin, turno_periodo, duracion, estado) VALUES (@consultorio, @medicoId, @especialidad, @pacienteId," +
-                        " @fecha, @horaInicio, @horaFin, @turnoPeriodo, @duracion, @estado)";
+                        " hora_fin, turno_periodo, duracion, pago, estado) VALUES (@consultorio, @medicoId, @especialidad, @pacienteId," +
+                        " @fecha, @horaInicio, @horaFin, @turnoPeriodo, @duracion, @pago, @estado)";
 
                     using (var command = new MySqlCommand(query, connection))
                     {
@@ -39,6 +39,7 @@ namespace Clinica_SePrise.Datos
                         command.Parameters.AddWithValue("@horaFin", hora_fin);
                         command.Parameters.AddWithValue("@turnoPeriodo", turno_periodo);
                         command.Parameters.AddWithValue("@duracion", duracion);
+                        command.Parameters.AddWithValue("@pago", pago);
                         command.Parameters.AddWithValue("@estado", estado);
 
                         int rowsAffected = command.ExecuteNonQuery();

@@ -1,17 +1,5 @@
 ﻿using Clinica_SePrise.Datos;
-using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using Mysqlx.Cursor;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Clinica_SePrise.Turnos
 {
@@ -23,24 +11,17 @@ namespace Clinica_SePrise.Turnos
         public RatificarTurno(string name)
         {
             InitializeComponent();
-            lblName.Text = name;
         }
-
-        private void RatificarTurno_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //declaramos la variable para ampliar su alcance
+        private int consultorio;
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            btnRatificar.FlatAppearance.BorderColor = Color.LightBlue;
-            btnRatificar.ForeColor = Color.SteelBlue;
-            btnRatificar.Enabled = false;
             int.TryParse(txtIdTurno.Text, out int numero);
 
             if (numero <= 0)
             {
-                MessageBox.Show("El número ingresado es inválido");
+                MessageBox.Show("El número ingresado es inválido", "MENSAJE DEL SISTEMA",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -48,63 +29,146 @@ namespace Clinica_SePrise.Turnos
                 {
                     connection.Open();
 
-                    string query = "SELECT * FROM turnos WHERE id_turno = @numero";
+                    string query = "SELECT consultorio, estado, paciente FROM turnos WHERE id_turno = @numero";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@numero", numero);
-                    using (MySqlDataReader reader = command.ExecuteReader())
 
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            dgvTurno.Rows.Clear();
-                            dgvTurno.Columns.Clear();
-                            dgvTurno.Columns.Add("Campo", "Campo");
-                            dgvTurno.Columns.Add("Valor", "Valor");
 
-                            dgvTurno.Rows.Add("ID Turno", reader.GetInt32("id_turno"));
-                            this.idTurno = reader.GetInt32("id_turno");
-                            dgvTurno.Rows.Add("Consultorio", reader.GetInt32("consultorio"));
-                            dgvTurno.Rows.Add("Médico", reader.GetString("medico"));
-                            dgvTurno.Rows.Add("Especialidad", reader.GetString("especialidad"));
-                            dgvTurno.Rows.Add("Paciente", reader.GetString("paciente"));
-                            dgvTurno.Rows.Add("Fecha", reader.GetDateTime("fecha").ToString("yyyy-MM-dd"));
-                            dgvTurno.Rows.Add("Hora Inicio", reader.GetTimeSpan("hora_inicio"));
-                            dgvTurno.Rows.Add("Hora Fin", reader.GetTimeSpan("hora_fin"));
-                            dgvTurno.Rows.Add("Turno Periodo", reader.GetString("turno_periodo"));
-                            dgvTurno.Rows.Add("Duración", reader.GetInt16("duracion"));
-                            dgvTurno.Rows.Add("Estado", reader.GetString("estado"));
+                            string estadoTurno = reader.GetString("estado");
+                            int idPaciente = reader.GetInt32("paciente");
+                            consultorio = reader.GetInt32("consultorio");
 
-                            dgvTurno.Visible = true;
+                            if (estadoTurno == "reservado")
+                            {
+                                reader.Close(); // Cerramos el lector antes de realizar otra consulta
 
-                            btnRatificar.FlatAppearance.BorderColor = Color.DarkBlue;
-                            btnRatificar.ForeColor = Color.DarkBlue;
-                            btnRatificar.Enabled = true;
+                                // Consulta adicional para obtener datos del paciente
+                                string pacienteQuery = "SELECT nombre_paci, doc_paci, fecha_nac_paci, obra_social_paci FROM" +
+                                    " paciente WHERE doc_paci = @idPaciente";
+
+                                MySqlCommand pacienteCommand = new MySqlCommand(pacienteQuery, connection);
+                                pacienteCommand.Parameters.AddWithValue("@idPaciente", idPaciente);
+
+                                using (MySqlDataReader pacienteReader = pacienteCommand.ExecuteReader())
+                                {
+                                    if (pacienteReader.Read())
+                                    {
+                                        // Asigna los datos obtenidos de la base de datos a los Label
+                                        lblNombre.Text = pacienteReader["nombre_paci"].ToString();
+                                        lblDocumento.Text = pacienteReader["doc_paci"].ToString();
+                                        lblFechaNacimiento.Text = Convert.ToDateTime(pacienteReader["fecha_nac_paci"]).ToString("dd/MM/yyyy");
+                                        lblObraSocial.Text = pacienteReader["obra_social_paci"].ToString();
+
+
+                                        if (pacienteReader["obra_social_paci"].ToString() == "")
+                                        {
+                                            rbtParticular.Checked = true;
+                                            rbtObraSocial.Enabled = false;
+                                        }
+                                        else
+                                        {
+                                            rbtObraSocial.Enabled = true;
+                                            rbtObraSocial.Checked = true;
+                                        }
+                                        rbtObraSocial.Text = "Obra Social : " + pacienteReader["obra_social_paci"].ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se encontraron datos del paciente.", "Error",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show($"El turno no está en estado reservado.\n\n Se ecuentra {estadoTurno.ToUpper()}, por favor verifique.", "MENSAJE DEL SISTEMA",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+
                         }
                         else
                         {
-                            MessageBox.Show("Turno no encontrado, verifique el numero ingresado.");
+                            MessageBox.Show("Turno no encontrado, verifique el número ingresado.", "MENSAJE DEL SISTEMA",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
                     connection.Close();
                 }
             }
-
-
-
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
-        private void RatificarTurno_VisibleChanged(object sender, EventArgs e)
+        private void btnRatificar_click(object sender, EventArgs e)
         {
-            if (!this.Visible)
+            // Verifica si hay un número de turno válido
+            if (!int.TryParse(txtIdTurno.Text, out int numero) || numero <= 0)
             {
-                dgvTurno.Rows.Clear();
-                dgvTurno.Columns.Clear();
-                dgvTurno.Visible = false;
-                txtIdTurno.Clear();
-                btnRatificar.FlatAppearance.BorderColor = Color.LightBlue;
-                btnRatificar.ForeColor = Color.SteelBlue;
-                btnRatificar.Enabled = false;
+                MessageBox.Show("El número ingresado es inválido.", "MENSAJE DEL SISTEMA",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
             }
+
+
+            using (var connection = conn.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Determina el tipo de pago según el RadioButton seleccionado
+                    string metodoPago = rbtParticular.Checked ? "Particular" : "Obra Social";
+
+                    // Actualizamos el estado a "ratificado"
+                    string updateQuery = "UPDATE turnos SET estado = 'ratificado', pago = @pago WHERE id_turno = @numero";
+                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@numero", numero);
+                    updateCommand.Parameters.AddWithValue("@pago", metodoPago);
+
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("El turno ha sido ratificado exitosamente.\n\n" +
+                           "Debe dirigirse al consultorio:\n\n" +
+                           $"---      {consultorio}      ---\n\n" +
+                           "¡Gracias por su visita!",
+                           "TURNO RATIFICADO",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
+
+                        // Llama al método para resetear el formulario
+                        ResetForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo ratificar el turno. Intente nuevamente.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+        // Método para resetear el formulario
+        private void ResetForm()
+        {
+            txtIdTurno.Text = string.Empty;
+            lblNombre.Text = string.Empty;
+            lblDocumento.Text = string.Empty;
+            lblFechaNacimiento.Text = string.Empty;
+            lblObraSocial.Text = string.Empty;
+            rbtParticular.Checked = false;
+            rbtObraSocial.Checked = false;
+            rbtObraSocial.Enabled = true;
         }
 
         private void RatificarTurno_FormClosing(object sender, FormClosingEventArgs e)
@@ -143,9 +207,6 @@ namespace Clinica_SePrise.Turnos
             {
                 MessageBox.Show("No es posible realizar esta operación, por favor revise los campos ingresados.");
             }
-
-            
-
         }
     }
 }

@@ -31,10 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoTurnoE));
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
-            lblAsterisco = new Label();
             btnVolver = new Button();
-            btnLimpiar = new Button();
-            btnIngresar = new Button();
+            btnrRegistrar = new Button();
             lblTitulo = new Label();
             cboEspecialidad = new ComboBox();
             lblNacimiento = new Label();
@@ -61,16 +59,6 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // lblAsterisco
-            // 
-            lblAsterisco.AutoSize = true;
-            lblAsterisco.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAsterisco.Location = new Point(200, 592);
-            lblAsterisco.Name = "lblAsterisco";
-            lblAsterisco.Size = new Size(192, 15);
-            lblAsterisco.TabIndex = 26;
-            lblAsterisco.Text = "( * ) Campos de ingreso obligatorio";
-            // 
             // btnVolver
             // 
             btnVolver.BackColor = Color.Azure;
@@ -79,7 +67,7 @@
             btnVolver.FlatStyle = FlatStyle.Flat;
             btnVolver.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnVolver.ForeColor = Color.SteelBlue;
-            btnVolver.Location = new Point(738, 592);
+            btnVolver.Location = new Point(575, 592);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(145, 47);
             btnVolver.TabIndex = 25;
@@ -87,35 +75,20 @@
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
-            // btnLimpiar
+            // btnrRegistrar
             // 
-            btnLimpiar.BackColor = Color.Azure;
-            btnLimpiar.FlatAppearance.BorderColor = Color.LightBlue;
-            btnLimpiar.FlatAppearance.BorderSize = 3;
-            btnLimpiar.FlatStyle = FlatStyle.Flat;
-            btnLimpiar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.ForeColor = Color.SteelBlue;
-            btnLimpiar.Location = new Point(575, 592);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(145, 47);
-            btnLimpiar.TabIndex = 24;
-            btnLimpiar.Text = "LIMPIAR";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            // 
-            // btnIngresar
-            // 
-            btnIngresar.BackColor = Color.Azure;
-            btnIngresar.FlatAppearance.BorderColor = Color.LightBlue;
-            btnIngresar.FlatAppearance.BorderSize = 3;
-            btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnIngresar.ForeColor = Color.SteelBlue;
-            btnIngresar.Location = new Point(412, 592);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(145, 47);
-            btnIngresar.TabIndex = 23;
-            btnIngresar.Text = "INGRESAR";
-            btnIngresar.UseVisualStyleBackColor = false;
+            btnrRegistrar.BackColor = Color.Azure;
+            btnrRegistrar.FlatAppearance.BorderColor = Color.LightBlue;
+            btnrRegistrar.FlatAppearance.BorderSize = 3;
+            btnrRegistrar.FlatStyle = FlatStyle.Flat;
+            btnrRegistrar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnrRegistrar.ForeColor = Color.SteelBlue;
+            btnrRegistrar.Location = new Point(738, 592);
+            btnrRegistrar.Name = "btnrRegistrar";
+            btnrRegistrar.Size = new Size(145, 47);
+            btnrRegistrar.TabIndex = 23;
+            btnrRegistrar.Text = "REGISTRAR";
+            btnrRegistrar.UseVisualStyleBackColor = false;
             // 
             // lblTitulo
             // 
@@ -158,11 +131,9 @@
             Controls.Add(cboEspecialidad);
             Controls.Add(lblNacimiento);
             Controls.Add(lblTitulo);
-            Controls.Add(lblAsterisco);
-            Controls.Add(btnVolver);
-            Controls.Add(btnLimpiar);
-            Controls.Add(btnIngresar);
+            Controls.Add(btnrRegistrar);
             Controls.Add(panel1);
+            Controls.Add(btnVolver);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "NuevoTurnoE";
             StartPosition = FormStartPosition.CenterScreen;
@@ -178,10 +149,8 @@
 
         private Panel panel1;
         private PictureBox pictureBox1;
-        private Label lblAsterisco;
         private Button btnVolver;
-        private Button btnLimpiar;
-        private Button btnIngresar;
+        private Button btnrRegistrar;
         private Label lblTitulo;
         private ComboBox cboEspecialidad;
         private Label lblNacimiento;

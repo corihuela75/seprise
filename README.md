@@ -1,11 +1,25 @@
 
+(30-10-2024)
+
+- se completa el formulario de ratificacion de turnos
+- se agrega cuadro de dialogo con informacion del turno registrado en RegistroTurnoP
+- se estandarizan todos lo messagebox de RegistroTurnoP
+- ( SQL ) se agrega al campo estado de la tabla turnos las opciones : ratificado y vencido 
+- ( SQL ) se cambia el campo paciente de la tabla turnos para que guarde el documento en vez del Id del paciente
+- ( SQL ) se agrega el campo pago a la tabla turnos 
+- 
+
+
+(29-10.2024)
+
+- cambio en la tabla turnos el campo paciente a INT, para que quede igual que en tabla paciente
+- se completa el registro de turno por profesional para que quede reservado en la base con el dni del paciente
 
 
 
 (28-10-2024)
 
 - Se restablecen el funcionamiento de registro de pacientes y medicos para quer guarden en base de datos
-
 
 
 
