@@ -16,6 +16,7 @@ namespace Clinica_SePrise.Turnos
         private string hora_fin;
         private string turno_periodo;
         private string duracion;
+        private string pago;
         private string estado;
         private string especialidad;
         private int minutos = 30;
@@ -100,6 +101,7 @@ namespace Clinica_SePrise.Turnos
                 turno_periodo = cboTurno.Text;
                 especialidad = Convert.ToString(cboMedico.SelectedValue);
                 estado = "Disponible";
+                pago = "";
 
                 // Determinar la franja horaria según el periodo (mañana o tarde)
                 TimeSpan horaInicio;
@@ -162,7 +164,7 @@ namespace Clinica_SePrise.Turnos
                             // Insertar el turno en la base de datos
                             turnoNuevo.InsertarTurno(consultorio, medico, especialidad, paciente, fecha,
                                                      turnoHoraInicio.ToString("HH:mm"), turnoHoraFin.ToString("HH:mm"),
-                                                     turno_periodo, minutos, estado);
+                                                     turno_periodo, minutos, pago, estado);
 
                             // Puedes mostrar un mensaje opcional o seguir con el ciclo
                         }
@@ -189,7 +191,8 @@ namespace Clinica_SePrise.Turnos
             Conexion conexion = new Conexion();
 
             // Crea la consulta para verificar si ya existen turnos para la misma fecha, consultorio y turno_periodo
-            string queryVerificarTurnos = "SELECT COUNT(*) FROM turnos WHERE fecha = @fecha AND consultorio = @consultorio AND turno_periodo = @turno_periodo";
+            string queryVerificarTurnos = "SELECT COUNT(*) FROM turnos WHERE fecha = @fecha AND consultorio = @consultorio" +
+                " AND turno_periodo = @turno_periodo";
 
             using (var connection = conexion.GetConnection())
             {

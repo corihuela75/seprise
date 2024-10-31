@@ -215,11 +215,12 @@
             // txtBuscarPaciente
             // 
             txtBuscarPaciente.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBuscarPaciente.ForeColor = SystemColors.MenuHighlight;
+            txtBuscarPaciente.ForeColor = Color.Black;
             txtBuscarPaciente.Location = new Point(23, 28);
             txtBuscarPaciente.Name = "txtBuscarPaciente";
             txtBuscarPaciente.Size = new Size(116, 25);
             txtBuscarPaciente.TabIndex = 39;
+            txtBuscarPaciente.TextAlign = HorizontalAlignment.Center;
             txtBuscarPaciente.KeyPress += txtBuscarPaciente_KeyPress;
             // 
             // groupBox1

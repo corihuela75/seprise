@@ -41,7 +41,7 @@ namespace Clinica_SePrise.TurnoP
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió un error: " + ex.Message);
+                    MessageBox.Show("Ocurrió un error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -88,7 +88,7 @@ namespace Clinica_SePrise.TurnoP
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió un error: " + ex.Message);
+                    MessageBox.Show("Ocurrió un error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -99,7 +99,7 @@ namespace Clinica_SePrise.TurnoP
             documentoPaciente = txtBuscarPaciente.Text.Trim();
             if (string.IsNullOrEmpty(documentoPaciente))
             {
-                MessageBox.Show("Ingrese un número de documento para buscar.");
+                MessageBox.Show("Ingrese un número de documento para buscar.", "MENSAJE DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -125,14 +125,14 @@ namespace Clinica_SePrise.TurnoP
                     }
                     else
                     {
-                        MessageBox.Show("Paciente no encontrado.");
+                        MessageBox.Show("Paciente no encontrado.", "MENSAJE DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
 
                     reader.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió un error: " + ex.Message);
+                    MessageBox.Show("Ocurrió un error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -147,9 +147,6 @@ namespace Clinica_SePrise.TurnoP
             {
                 // Obtén el valor del ID desde la columna 0 (ajusta el índice si está en otra columna)
                 turnoSeleccionadoId = Convert.ToInt32(dataGridViewTurnos.Rows[e.RowIndex].Cells[0].Value);
-
-                // Muestra el ID del turno para verificar (opcional)
-                //MessageBox.Show("ID del turno seleccionado: " + turnoSeleccionadoId);
             }
         }
 
@@ -161,7 +158,7 @@ namespace Clinica_SePrise.TurnoP
             {
                 if (string.IsNullOrEmpty(documentoPaciente))
                 {
-                    MessageBox.Show("Verifique el documento del paciente para asignar el turno.");
+                    MessageBox.Show("Verifique el documento del paciente para asignar el turno.", "MENSAJE DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
@@ -180,29 +177,36 @@ namespace Clinica_SePrise.TurnoP
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("El turno se ha registrado correctamente.");
-                            // Actualiza el DataGridView para reflejar el cambio
+                            // Muestra un mensaje de confirmación con el ID del turno y los datos del paciente
+                            string mensajeConfirmacion = $"El turno se ha registrado correctamente.\n\n" +
+                                                         $"ID del Turno: {turnoSeleccionadoId}\n" +
+                                                         $"Nombre del Paciente: {lblNombre.Text}\n" +
+                                                         $"Documento: {lblDocumento.Text}\n" +
+                                                         $"Fecha de Nacimiento: {lblFechaNacimiento.Text}\n" +
+                                                         $"Obra Social: {lblObraSocial.Text}";
+
+                            MessageBox.Show(mensajeConfirmacion, "TURNO REGISTRADO CORRECTAMENTE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Actualiza el DataGridView para reflejar el cambio y limpia el campo de Documento
                             CargarTurnosDisponibles(cboMedico.SelectedValue.ToString());
+                            txtBuscarPaciente.Text = "";
+                            documentoPaciente = "";
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo registrar el turno. Intente nuevamente.");
+                            MessageBox.Show("No se pudo registrar el turno. Intente nuevamente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Ocurrió un error: " + ex.Message);
+                        MessageBox.Show("Ocurrió un error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Por favor, seleccione un turno antes de registrar.");
+                MessageBox.Show("Por favor, seleccione un turno antes de registrar.", "MENSAJE DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
-
-
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
@@ -214,11 +218,10 @@ namespace Clinica_SePrise.TurnoP
             // Verifica si el carácter presionado es un número o una tecla de control (como retroceso)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                // Si no es un número o una tecla de control, bloquea el carácter
+                // Si no es un número o una tecla de control, boquea el carácter
                 e.Handled = true;
             }
         }
-
     }
 }
 

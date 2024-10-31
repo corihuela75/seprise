@@ -49,14 +49,14 @@ CREATE TABLE paciente (
 INSERT INTO paciente (nombre_paci, doc_paci, fecha_nac_paci, edad_paci, genero_paci, tel_paci, direccion_paci, email_paci, estado_civil_paci, historial_paci, obra_social_paci)
 VALUES 
 ('Carlos Gómez', 12345678, '1985-04-10', 39, 'Masculino', '123-456-7890', 'Calle 123, Ciudad A', 'carlos.gomez@ejemplo.com', 'Casado', 'Sin antecedentes importantes.', 'Obra Social 1'),
-('Laura Sánchez', 23456789, '1990-08-15', 34, 'Femenino', '234-567-8901', 'Avenida 456, Ciudad B', 'laura.sanchez@ejemplo.com', 'Soltero', 'Alergia a penicilina.', 'Obra Social 2'),
+('Laura Sánchez', 23456789, '1990-08-15', 34, 'Femenino', '234-567-8901', 'Avenida 456, Ciudad B', 'laura.sanchez@ejemplo.com', 'Soltero', 'Alergia a penicilina.', ''),
 ('Ana Rodríguez', 34567890, '1975-02-20', 49, 'Femenino', '345-678-9012', 'Calle 789, Ciudad C', 'ana.rodriguez@ejemplo.com', 'Divorciado', 'Hipertensión controlada.', 'Obra Social 3'),
 ('Jorge López', 45678901, '1988-12-05', 35, 'Masculino', '456-789-0123', 'Pasaje 321, Ciudad D', 'jorge.lopez@ejemplo.com', 'Casado', 'Diabetes tipo 2.', 'Obra Social 4'),
 ('María Fernández', 56789012, '1995-07-25', 29, 'Femenino', '567-890-1234', 'Calle 654, Ciudad E', 'maria.fernandez@ejemplo.com', 'Soltero', 'Sin antecedentes.', 'Obra Social 5'),
 ('Pablo Díaz', 67890123, '2000-03-10', 24, 'Masculino', '678-901-2345', 'Avenida 987, Ciudad F', 'pablo.diaz@ejemplo.com', 'Soltero', 'Antecedente de asma.', 'Obra Social 6'),
 ('Lucía García', 78901234, '1970-09-30', 54, 'Femenino', '789-012-3456', 'Boulevard 111, Ciudad G', 'lucia.garcia@ejemplo.com', 'Viudo', 'Hipotiroidismo en tratamiento.', 'Obra Social 7'),
 ('Ricardo Méndez', 89012345, '1983-01-18', 41, 'Masculino', '890-123-4567', 'Callejón 222, Ciudad H', 'ricardo.mendez@ejemplo.com', 'Casado', 'Historial de migrañas.', 'Obra Social 8'),
-('Elena Ruiz', 90123456, '1998-11-12', 25, 'Femenino', '901-234-5678', 'Ruta 333, Ciudad I', 'elena.ruiz@ejemplo.com', 'Soltero', 'Sin antecedentes.', 'Obra Social 9'),
+('Elena Ruiz', 90123456, '1998-11-12', 25, 'Femenino', '901-234-5678', 'Ruta 333, Ciudad I', 'elena.ruiz@ejemplo.com', 'Soltero', 'Sin antecedentes.', ''),
 ('Miguel Torres', 11223344, '1987-05-05', 37, 'Masculino', '112-233-4455', 'Avenida 444, Ciudad J', 'miguel.torres@ejemplo.com', 'Casado', 'Colesterol elevado.', 'Obra Social 10');
 
 CREATE TABLE medico (
@@ -97,15 +97,17 @@ CREATE TABLE turnos (
     hora_fin TIME,
     turno_periodo ENUM('mañana', 'tarde'),
     duracion INT,
-    estado ENUM('disponible', 'reservado', 'cancelado')
+    pago ENUM ('Particular', 'Obra Social', ""),
+    estado ENUM('disponible', 'reservado', 'cancelado', 'ratificado', 'vencido')
     # CONSTRAINT fk_medico FOREIGN KEY (medico_id) REFERENCES medico (cod_medi)
     # CONSTRAINT fk_paciente FOREIGN KEY (paciente_id) REFERENCES paciente (cod_paci)
 );
 
-INSERT INTO turnos (consultorio, medico, especialidad, paciente, fecha, hora_inicio, hora_fin, turno_periodo, duracion, estado) 
+INSERT INTO turnos (consultorio, medico, especialidad, paciente, fecha, hora_inicio, hora_fin, turno_periodo, duracion, pago, estado) 
 VALUES
-    (1, 'Dr. Juan Pérez', 'Cardiología', 1, '2024-11-01', '08:00:00', '08:30:00', 'mañana', '30', 'reservado'),
-    (2, 'Dra. Carla López', 'Dermatología', 2, '2024-11-01', '09:00:00', '10:00:00', 'mañana', '60', 'disponible'),
-    (1, 'Dr. Miguel Díaz', 'Neurología', 3, '2024-11-02', '14:00:00', '15:30:00', 'tarde', '90', 'cancelado'),
-    (3, 'Dr. Luis Suárez', 'Pediatría', 4, '2024-11-03', '10:00:00', '10:30:00', 'mañana', '30', 'reservado'),
-    (2, 'Dra. Patricia Ríos', 'Ginecología', 5, '2024-11-04', '16:00:00', '17:00:00', 'tarde', '60', 'disponible');
+    (1, 'Dr. Juan Pérez', 'Cardiología', 12345678, '2024-11-01', '08:00:00', '08:30:00', 'mañana', '30',"",'reservado'),
+    (2, 'Dra. Carla López', 'Dermatología', 23456789, '2024-11-01', '09:00:00', '10:00:00', 'mañana', '60',"",'disponible'),
+    (1, 'Dr. Miguel Díaz', 'Neurología', 34567890, '2024-11-02', '14:00:00', '15:30:00', 'tarde', '90',"",'cancelado'),
+    (3, 'Dr. Luis Suárez', 'Pediatría', 45678901, '2024-11-03', '10:00:00', '10:30:00', 'mañana', '30',"", 'reservado'),
+    (2, 'Dra. Patricia Ríos', 'Ginecología', 56789012, '2024-11-04', '16:00:00', '17:00:00', 'tarde', '60',"",'disponible'),
+    (2, 'Dra. Patricia Ríos', 'Ginecología', 90123456, '2024-11-04', '17:00:00', '18:00:00', 'tarde', '60',"",'reservado');
