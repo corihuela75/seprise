@@ -75,25 +75,11 @@ namespace Clinica_SePrise
             {
                 connection.Open();
 
-                string query = "SELECT * FROM usuario WHERE NombreUsu = @usuario AND PassUsu = @contrasena";
+                string query = "SELECT U.`RolUsu`, U.`NombreUsu`,R.`NomRol`,U.`activo` FROM(usuario as U INNER JOIN roles as R ON U.`RolUsu` = R.`RolUsu` ) WHERE NombreUsu = @usuario AND PassUsu = @contrasena";
+               
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@usuario", usuario);
                 command.Parameters.AddWithValue("@contrasena", contrasena);
-
-                /*
-                  id_turno INT AUTO_INCREMENT PRIMARY KEY,
-                   consultorio INT,
-                   medico VARCHAR(50),
-	               especialidad VARCHAR(100),
-                   paciente VARCHAR(50),
-                   fecha DATE,
-                   hora_inicio TIME,
-                   hora_fin TIME,
-                   turno_periodo ENUM('mañana', 'tarde'),
-                   duracion ENUM('30', '60', '90'),
-                   estado ENUM('disponible', 'reservado', 'cancelado')
-                */
-
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {

@@ -1,12 +1,13 @@
 ﻿using Clinica_SePrise.Datos;
 using MySql.Data.MySqlClient;
 
-
 namespace Clinica_SePrise.Turnos
 {
     public partial class RatificarTurno : Form
     {
         private Conexion conn = new Conexion();
+
+        private int idTurno;
         public RatificarTurno(string name)
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace Clinica_SePrise.Turnos
                     {
                         if (reader.Read())
                         {
+
                             string estadoTurno = reader.GetString("estado");
                             int idPaciente = reader.GetInt32("paciente");
                             consultorio = reader.GetInt32("consultorio");
@@ -86,6 +88,7 @@ namespace Clinica_SePrise.Turnos
                                 MessageBox.Show($"El turno no está en estado reservado.\n\n Se ecuentra {estadoTurno.ToUpper()}, por favor verifique.", "MENSAJE DEL SISTEMA",
                                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
+
                         }
                         else
                         {
@@ -93,6 +96,7 @@ namespace Clinica_SePrise.Turnos
                                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
+                    connection.Close();
                 }
             }
         }
@@ -169,8 +173,40 @@ namespace Clinica_SePrise.Turnos
 
         private void RatificarTurno_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            this.Hide();
+            txtIdTurno.ResetText();
+            dgvTurno.Visible = false;
+        }
+
+        private void btnRatificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var connection = conn.GetConnection())
+                {
+                    connection.Open();
+                    int id = this.idTurno;
+                    string query = "UPDATE turnos SET estado = 'ratificado' WHERE id_turno = @id";
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", this.idTurno);
+
+                        int result = command.ExecuteNonQuery();
+
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Turno ratificado exitosamente y agregado a la lista de espera.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al actualizar turno.");
+                        }
+                    }
+                    connection.Close();
+                }
+            } catch
+            {
+                MessageBox.Show("No es posible realizar esta operación, por favor revise los campos ingresados.");
+            }
         }
     }
 }

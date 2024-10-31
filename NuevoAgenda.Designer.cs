@@ -244,6 +244,7 @@ namespace Clinica_SePrise.Turnos
             Name = "NuevoAgenda";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "REGISTRAR TURNOS";
+            FormClosing += NuevoAgenda_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
