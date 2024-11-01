@@ -1,5 +1,6 @@
 ﻿using Clinica_SePrise.Datos;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace Clinica_SePrise.Turnos
 {
@@ -16,9 +17,9 @@ namespace Clinica_SePrise.Turnos
         private int consultorio;
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            int.TryParse(txtIdTurno.Text, out int numero);
+            int.TryParse(txtIdTurno.Text, out int id_turno);
 
-            if (numero <= 0)
+            if (id_turno <= 0)
             {
                 MessageBox.Show("El número ingresado es inválido", "MENSAJE DEL SISTEMA",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -29,42 +30,33 @@ namespace Clinica_SePrise.Turnos
                 {
                     connection.Open();
 
-                    string query = "SELECT consultorio, estado, paciente FROM turnos WHERE id_turno = @numero";
+                    string query = "SELECT T.`estado`, T.`consultorio`,P.`nombre_paci`,P.`cod_paci`, " +
+                        "P.`doc_paci`, P.`fecha_nac_paci`, P.`obra_social_paci` FROM " +
+                        "turnos as T INNER join paciente as P " +
+                        "on T.`paciente` = P.`doc_paci`  WHERE T.`id_turno` = @id_turno";
                     MySqlCommand command = new MySqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@numero", numero);
+                    command.Parameters.AddWithValue("@id_turno", id_turno);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-
-                            string estadoTurno = reader.GetString("estado");
-                            int idPaciente = reader.GetInt32("paciente");
-                            consultorio = reader.GetInt32("consultorio");
+                                
+                                string estadoTurno = reader.GetString("estado");
 
                             if (estadoTurno == "reservado")
                             {
-                                reader.Close(); // Cerramos el lector antes de realizar otra consulta
-
-                                // Consulta adicional para obtener datos del paciente
-                                string pacienteQuery = "SELECT nombre_paci, doc_paci, fecha_nac_paci, obra_social_paci FROM" +
-                                    " paciente WHERE doc_paci = @idPaciente";
-
-                                MySqlCommand pacienteCommand = new MySqlCommand(pacienteQuery, connection);
-                                pacienteCommand.Parameters.AddWithValue("@idPaciente", idPaciente);
-
-                                using (MySqlDataReader pacienteReader = pacienteCommand.ExecuteReader())
-                                {
-                                    if (pacienteReader.Read())
-                                    {
+                                int idPaciente = reader.GetInt32("doc_paci");
+                                this.consultorio = reader.GetInt32("consultorio");
+                                
                                         // Asigna los datos obtenidos de la base de datos a los Label
-                                        lblNombre.Text = pacienteReader["nombre_paci"].ToString();
-                                        lblDocumento.Text = pacienteReader["doc_paci"].ToString();
-                                        lblFechaNacimiento.Text = Convert.ToDateTime(pacienteReader["fecha_nac_paci"]).ToString("dd/MM/yyyy");
-                                        lblObraSocial.Text = pacienteReader["obra_social_paci"].ToString();
+                                        lblNombre.Text = reader.GetString("nombre_paci");
+                                        lblDocumento.Text = reader.GetInt32("doc_paci").ToString();
+                                        lblFechaNacimiento.Text = reader.GetDateTime("fecha_nac_paci").ToString("dd/MM/yyyy");
+                                        lblObraSocial.Text = reader.GetString("obra_social_paci");
 
 
-                                        if (pacienteReader["obra_social_paci"].ToString() == "")
+                                        if (reader.GetString("obra_social_paci") == "")
                                         {
                                             rbtParticular.Checked = true;
                                             rbtObraSocial.Enabled = false;
@@ -74,17 +66,12 @@ namespace Clinica_SePrise.Turnos
                                             rbtObraSocial.Enabled = true;
                                             rbtObraSocial.Checked = true;
                                         }
-                                        rbtObraSocial.Text = "Obra Social : " + pacienteReader["obra_social_paci"].ToString();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("No se encontraron datos del paciente.", "Error",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
+                                        rbtObraSocial.Text = "Obra Social : " + reader.GetString("obra_social_paci");
+                                reader.Close();
                             }
                             else
                             {
+                                reader.Close();
                                 MessageBox.Show($"El turno no está en estado reservado.\n\n Se ecuentra {estadoTurno.ToUpper()}, por favor verifique.", "MENSAJE DEL SISTEMA",
                                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
@@ -124,6 +111,7 @@ namespace Clinica_SePrise.Turnos
 
                     // Determina el tipo de pago según el RadioButton seleccionado
                     string metodoPago = rbtParticular.Checked ? "Particular" : "Obra Social";
+                    Console.WriteLine("res", metodoPago);
 
                     // Actualizamos el estado a "ratificado"
                     string updateQuery = "UPDATE turnos SET estado = 'ratificado', pago = @pago WHERE id_turno = @numero";

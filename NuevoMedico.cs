@@ -12,6 +12,9 @@ namespace Clinica_SePrise.Medicos
         private string email;
         private string usuario;
         private string contraseña;
+        private string turno_trabajo;
+
+
 
         public NuevoMedico()
         {
@@ -33,6 +36,7 @@ namespace Clinica_SePrise.Medicos
             txtUsuario.Text = "";
             txtContraseña.Text = "";
             txtNombre.Focus();
+            cboTurnoTrabajo.SelectedIndex = -1;
         }
         //COMPROBAMOS INGRESO DE CAMPOS OBLIGATORIOS
 
@@ -64,6 +68,7 @@ namespace Clinica_SePrise.Medicos
             especialidad = cboEspecialidad.Text;
             telefono = txtTelefono.Text;
             email = txtEmail.Text;
+            turno_trabajo = cboTurnoTrabajo.Text;
 
             //SE DEJAN ESTAS VARIABLES PARA GUARDAR EN TABLA USUARIOS
             usuario = txtUsuario.Text;
@@ -76,7 +81,7 @@ namespace Clinica_SePrise.Medicos
             Medico medicoNuevo = new Medico(conexion);
 
             // Insertar un nuevo médico
-            medicoNuevo.InsertarMedico(nombre, matricula, especialidad, telefono, email);
+            medicoNuevo.InsertarMedico(nombre, matricula, especialidad, telefono, email, turno_trabajo);
 
             // AÑADIMOS EL USUARIO A LA TABLA
 

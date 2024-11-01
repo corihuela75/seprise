@@ -59,6 +59,59 @@ VALUES
 ('Elena Ruiz', 90123456, '1998-11-12', 25, 'Femenino', '901-234-5678', 'Ruta 333, Ciudad I', 'elena.ruiz@ejemplo.com', 'Soltero', 'Sin antecedentes.', ''),
 ('Miguel Torres', 11223344, '1987-05-05', 37, 'Masculino', '112-233-4455', 'Avenida 444, Ciudad J', 'miguel.torres@ejemplo.com', 'Casado', 'Colesterol elevado.', 'Obra Social 10');
 
+CREATE TABLE agenda (
+    id_agenda INT AUTO_INCREMENT,
+    cod_medi int NOT NULL,
+    fecha DATE,
+    turno ENUM('mañana', 'tarde'),
+    consultorio int(3),
+    constraint pk_agenda primary key (id_agenda)
+);
+
+INSERT INTO agenda (cod_medi, fecha, turno, consultorio) VALUES
+(11, '2024-11-01', 'mañana', 1),
+(1, '2024-11-01', 'mañana', 3),
+(3, '2024-11-01', 'mañana', 4),
+(6, '2024-11-01', 'tarde', 2),
+(7, '2024-11-01', 'tarde', 1),
+(12, '2024-11-01', 'tarde', 5),
+(4, '2024-11-02', 'mañana', 2),
+(8, '2024-11-02', 'mañana', 1),
+(10, '2024-11-02', 'mañana', 3),
+(2, '2024-11-02', 'tarde', 1),
+(4, '2024-11-02', 'tarde', 2),
+(3, '2024-11-02', 'tarde', 3),
+(5, '2024-11-03', 'mañana', 3),
+(1, '2024-11-03', 'mañana', 5),
+(7, '2024-11-03', 'mañana', 4),
+(3, '2024-11-03', 'tarde', 1),
+(9, '2024-11-03', 'tarde', 3),
+(11, '2024-11-03', 'tarde', 2),
+(4, '2024-11-04', 'mañana', 4),
+(10, '2024-11-04', 'mañana', 1),
+(12, '2024-11-04', 'mañana', 3),
+(1, '2024-11-04', 'tarde', 1),
+(2, '2024-11-04', 'tarde', 4),
+(6, '2024-11-04', 'tarde', 5),
+(8, '2024-11-05', 'mañana', 5),
+(5, '2024-11-05', 'mañana', 2),
+(9, '2024-11-05', 'mañana', 4),
+(12, '2024-11-05', 'tarde', 1),
+(2, '2024-11-05', 'tarde', 2),
+(12, '2024-11-05', 'tarde', 3),
+(11, '2024-11-06', 'mañana', 3),
+(4, '2024-11-06', 'mañana', 1),
+(1, '2024-11-06', 'mañana', 5),
+(3, '2024-11-06', 'tarde', 1),
+(8, '2024-11-06', 'tarde', 3),
+(9, '2024-11-06', 'tarde', 4),
+(2, '2024-11-07', 'mañana', 2),
+(11, '2024-11-07', 'mañana', 4),
+(10, '2024-11-07', 'mañana', 5),
+(4, '2024-11-07', 'tarde', 1),
+(6, '2024-11-07', 'tarde', 3),
+(7, '2024-11-07', 'tarde', 4);
+
 CREATE TABLE medico (
     cod_medi INT AUTO_INCREMENT,
     nombre_medi VARCHAR(50) NOT NULL,
@@ -89,8 +142,7 @@ VALUES
 CREATE TABLE turnos (
     id_turno INT AUTO_INCREMENT PRIMARY KEY,
     consultorio INT,
-    medico VARCHAR(50),
-	especialidad VARCHAR(100),
+    medico INT,
     paciente INT,
     fecha DATE,
     hora_inicio TIME,
@@ -103,11 +155,11 @@ CREATE TABLE turnos (
     # CONSTRAINT fk_paciente FOREIGN KEY (paciente_id) REFERENCES paciente (cod_paci)
 );
 
-INSERT INTO turnos (consultorio, medico, especialidad, paciente, fecha, hora_inicio, hora_fin, turno_periodo, duracion, pago, estado) 
+INSERT INTO turnos (consultorio, medico, paciente, fecha, hora_inicio, hora_fin, turno_periodo, duracion, pago, estado) 
 VALUES
-    (1, 'Dr. Juan Pérez', 'Cardiología', 12345678, '2024-11-01', '08:00:00', '08:30:00', 'mañana', '30',"",'reservado'),
-    (2, 'Dra. Carla López', 'Dermatología', 23456789, '2024-11-01', '09:00:00', '10:00:00', 'mañana', '60',"",'disponible'),
-    (1, 'Dr. Miguel Díaz', 'Neurología', 34567890, '2024-11-02', '14:00:00', '15:30:00', 'tarde', '90',"",'cancelado'),
-    (3, 'Dr. Luis Suárez', 'Pediatría', 45678901, '2024-11-03', '10:00:00', '10:30:00', 'mañana', '30',"", 'reservado'),
-    (2, 'Dra. Patricia Ríos', 'Ginecología', 56789012, '2024-11-04', '16:00:00', '17:00:00', 'tarde', '60',"",'disponible'),
-    (2, 'Dra. Patricia Ríos', 'Ginecología', 90123456, '2024-11-04', '17:00:00', '18:00:00', 'tarde', '60',"",'reservado');
+    (1, 3, 12345678, '2024-11-01', '08:00:00', '08:30:00', 'mañana', '30',"",'reservado'),
+    (2, 8, 23456789, '2024-11-01', '09:00:00', '10:00:00', 'mañana', '60',"",'disponible'),
+    (1, 9, 34567890, '2024-11-02', '14:00:00', '15:30:00', 'tarde', '90',"",'cancelado'),
+    (3, 4, 45678901, '2024-11-03', '10:00:00', '10:30:00', 'mañana', '30',"", 'reservado'),
+    (2, 6, 56789012, '2024-11-04', '16:00:00', '17:00:00', 'tarde', '60',"",'disponible'),
+    (2, 6, 90123456, '2024-11-04', '17:00:00', '18:00:00', 'tarde', '60',"",'reservado');

@@ -52,6 +52,8 @@ namespace Clinica_SePrise.Medicos
             label1 = new Label();
             cboEspecialidad = new ComboBox();
             txtContraseña = new TextBox();
+            lblTurno = new Label();
+            cboTurnoTrabajo = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -279,12 +281,36 @@ namespace Clinica_SePrise.Medicos
             txtContraseña.Size = new Size(214, 25);
             txtContraseña.TabIndex = 8;
             // 
+            // lblTurno
+            // 
+            lblTurno.AutoSize = true;
+            lblTurno.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTurno.Location = new Point(366, 369);
+            lblTurno.Name = "lblTurno";
+            lblTurno.Size = new Size(62, 19);
+            lblTurno.TabIndex = 31;
+            lblTurno.Text = "TURNO:";
+            // 
+            // cboTurnoTrabajo
+            // 
+            cboTurnoTrabajo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTurnoTrabajo.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cboTurnoTrabajo.ForeColor = SystemColors.MenuHighlight;
+            cboTurnoTrabajo.FormattingEnabled = true;
+            cboTurnoTrabajo.Items.AddRange(new object[] { "mañana", "tarde", "ambos" });
+            cboTurnoTrabajo.Location = new Point(434, 366);
+            cboTurnoTrabajo.Name = "cboTurnoTrabajo";
+            cboTurnoTrabajo.Size = new Size(214, 25);
+            cboTurnoTrabajo.TabIndex = 32;
+            // 
             // NuevoMedico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(895, 651);
+            Controls.Add(cboTurnoTrabajo);
+            Controls.Add(lblTurno);
             Controls.Add(txtContraseña);
             Controls.Add(cboEspecialidad);
             Controls.Add(label4);
@@ -341,5 +367,7 @@ namespace Clinica_SePrise.Medicos
         private Label label1;
         private ComboBox cboEspecialidad;
         private TextBox txtContraseña;
+        private Label lblTurno;
+        private ComboBox cboTurnoTrabajo;
     }
 }

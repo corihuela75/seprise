@@ -7,9 +7,12 @@ namespace Clinica_SePrise.TurnoP
     public partial class NuevoTurnoP : Form
     {
         private string documentoPaciente;
+        private int intervalo = 30;
+
         public NuevoTurnoP()
         {
             InitializeComponent();
+            this.LlenarComboBoxMedicos();
         }
 
         private void NuevoTurno_Load(object sender, EventArgs e)
@@ -20,7 +23,7 @@ namespace Clinica_SePrise.TurnoP
         private void LlenarComboBoxMedicos()
         {
             Conexion conexion = new Conexion();
-            string query = "SELECT nombre_medi FROM medico";
+            string query = "SELECT nombre_medi, cod_medi, especialidad FROM medico";
 
             using (var connection = conexion.GetConnection())
             {
@@ -34,8 +37,13 @@ namespace Clinica_SePrise.TurnoP
                     dt.Load(reader);
 
                     cboMedico.DataSource = dt;
-                    cboMedico.DisplayMember = "nombre_medi";
-                    cboMedico.ValueMember = "nombre_medi";
+                    string nombre = reader.GetString("nombre_medi");
+                    string cod = reader.GetInt32("cod_medi").ToString();
+                    string especialidad = reader.GetString("especialidad");
+
+                    cboMedico.DisplayMember = nombre;
+                    cboMedico.ValueMember = cod;
+                    this.intervalo = especialidad == "kinesiologia" ? 60 : especialidad == "psicologia" ? 90 : intervalo;
 
                     reader.Close();
                 }
@@ -53,8 +61,8 @@ namespace Clinica_SePrise.TurnoP
         private void CargarTurnosDisponibles(string medico)
         {
             Conexion conexion = new Conexion();
-            string query = "SELECT Id_turno, fecha, hora_inicio, hora_fin, estado FROM turnos WHERE" +
-                "  estado = 'Disponible' AND medico = @medico";
+            string query = "SELECT  T.id_turno, T.fecha, T.hora_inicio, T.hora_fin, T.estado" +
+                "from turnos as T where T.medico = @medico";
 
             using (var connection = conexion.GetConnection())
             {
@@ -71,7 +79,7 @@ namespace Clinica_SePrise.TurnoP
                     dataGridViewTurnos.DataSource = dt;
 
                     // Cambiamos los títulos de las columnas
-                    dataGridViewTurnos.Columns["Id_turno"].HeaderText = "ID del Turno";
+                    dataGridViewTurnos.Columns["Id_turno"].HeaderText = "ID Turno";
                     dataGridViewTurnos.Columns["fecha"].HeaderText = "Fecha";
                     dataGridViewTurnos.Columns["hora_inicio"].HeaderText = "Hora de Inicio";
                     dataGridViewTurnos.Columns["hora_fin"].HeaderText = "Hora de Fin";

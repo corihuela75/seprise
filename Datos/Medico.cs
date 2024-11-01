@@ -16,7 +16,7 @@ namespace Clinica_SePrise.Datos
         // CREAR MEDICO
 
         public void InsertarMedico(string nombre, int matricula, string especialidad,
-            string telefono, string email)
+            string telefono, string email, string turno)
         {
             using (var connection = conexion.GetConnection())
             {
@@ -25,8 +25,8 @@ namespace Clinica_SePrise.Datos
                     connection.Open();
 
                     string query = "INSERT INTO medico (nombre_medi, matricula, especialidad," +
-                        " tel_medi, email_medi) VALUES (@nombre, @matricula, @especialidad, @telefono, @email" +
-                        " @email)";
+                        " tel_medi, email_medi, turno_trabajo) VALUES (@nombre, @matricula, @especialidad, @telefono, @email" +
+                        " @email, @turno)";
 
                     using (var command = new MySqlCommand(query, connection))
                     {
@@ -35,6 +35,8 @@ namespace Clinica_SePrise.Datos
                         command.Parameters.AddWithValue("@especialidad", especialidad);
                         command.Parameters.AddWithValue("@telefono", telefono);
                         command.Parameters.AddWithValue("@email", email);
+                        command.Parameters.AddWithValue("@turno", turno);
+
 
                         int rowsAffected = command.ExecuteNonQuery();
 

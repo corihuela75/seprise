@@ -10,13 +10,12 @@ namespace Clinica_SePrise.Turnos
     {
         private DateTime fecha;
         private int consultorio;
-        private int paciente;
-        private string medico;
+        private string paciente;
+        private int medico;
         private string hora_inicio;
         private string hora_fin;
         private string turno_periodo;
         private string duracion;
-        private string pago;
         private string estado;
         private string especialidad;
         private int minutos = 30;
@@ -37,7 +36,7 @@ namespace Clinica_SePrise.Turnos
             Conexion conexion = new Conexion();
 
             // Hacemos la consulta doble para traer el medico y su especialidad
-            string query = "SELECT nombre_medi, especialidad FROM medico";
+            string query = "SELECT nombre_medi, cod_medi FROM medico";
 
             // Usar la conexión para obtener los datos de la consulta
             using (var connection = conexion.GetConnection())
@@ -59,8 +58,8 @@ namespace Clinica_SePrise.Turnos
                     // Asignar DataTable como fuente de datos del ComboBox
                     cboMedico.DataSource = dt;
                     cboMedico.DisplayMember = "nombre_medi";  // Lo que se muestra en el ComboBox
-                    cboMedico.ValueMember = "especialidad";        // El valor subyacente
-                    cboMedico.SelectedIndex = -1;
+                    cboMedico.ValueMember = "cod_medi";        // El valor subyacente
+
                     // Cerrar el lector
                     reader.Close();
                 }
@@ -74,23 +73,21 @@ namespace Clinica_SePrise.Turnos
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            btnLimpiar_Click(sender, e);
             this.Close();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            cboConsultorio.SelectedIndex = -1;
-            cboMedico.SelectedIndex = -1;
-            cboTurno.SelectedIndex = -1;
-            dtpFecha.Value = DateTime.Now;
+            cboConsultorio.Text = "";
+            cboMedico.Text = "";
+            cboTurno.Text = "";
             dtpFecha.Focus();
         }
 
         //COMPROBAMOS INGRESO DE CAMPOS OBLIGATORIOS
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (cboConsultorio.Text == "" || cboMedico.Text == "" || cboTurno.Text == "")
+            if (cboConsultorio.Text == "" || cboMedico.SelectedIndex == -1 || cboTurno.Text == "")
             {
                 MessageBox.Show("Debe completar datos requeridos (*) ",
                 "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -99,11 +96,9 @@ namespace Clinica_SePrise.Turnos
             {
                 fecha = dtpFecha.Value;
                 consultorio = Int32.Parse(cboConsultorio.Text);
-                medico = cboMedico.Text;
+                medico = Convert.ToInt32(cboMedico.SelectedValue);
                 turno_periodo = cboTurno.Text;
-                especialidad = Convert.ToString(cboMedico.SelectedValue);
                 estado = "Disponible";
-                pago = "";
 
                 // Determinar la franja horaria según el periodo (mañana o tarde)
                 TimeSpan horaInicio;
@@ -125,24 +120,52 @@ namespace Clinica_SePrise.Turnos
                     MessageBox.Show("Debe seleccionar un turno válido (mañana o tarde).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                Conexion conexion = new Conexion();
 
-                // Intervalo de 30, 60 o 90  minutos entre turnos
-                if (especialidad == "Kinesiologia *")
+                // Hacemos la consulta doble para traer el medico y su especialidad
+                using (var connection = conexion.GetConnection())
                 {
-                    minutos = 60;
-                }
-                else if (especialidad == "Psiquiatría **")
-                {
-                    minutos = 90;
+
+                    connection.Open();
+
+                string query = "SELECT especialidad FROM medico where cod_medi = @medico";
+
+                    // Crear un comando MySQL
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@medico", medico);
+                    // Ejecutar la consulta y obtener un MySqlDataReader
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            especialidad = reader.GetString("especialidad");
+                            // Intervalo de 30, 60 o 90  minutos entre turnos
+                            if (especialidad == "Kinesiologia *")
+                            {
+                                minutos = 60;
+                            }
+                            else if (especialidad == "Psiquiatría **")
+                            {
+                                minutos = 90;
+                            }
+                        } else
+                        {
+                            MessageBox.Show("No se encontro especialidad relacionada con el medico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                       
+
+                
                 }
 
                 TimeSpan intervalo = new TimeSpan(0, minutos, 0);  // Intervalo de 30 minutos
 
                 // Crear una instancia de la clase Conexion
-                Conexion conexion = new Conexion();
+                //Conexion conexion = new Conexion();
 
                 // Crear una instancia de Turno, pasando la conexión
-                Turno turnoNuevo = new Turno(conexion);
+                Turno turnoNuevo = new Turno(conexion, true);
 
 
                 // Verificar si ya existen turnos para la misma fecha, consultorio, médico y periodo de turno
@@ -164,9 +187,9 @@ namespace Clinica_SePrise.Turnos
                             DateTime turnoHoraFin = turnoHoraInicio.AddMinutes(minutos);
 
                             // Insertar el turno en la base de datos
-                            turnoNuevo.InsertarTurno(consultorio, medico, especialidad, paciente, fecha,
+                            turnoNuevo.InsertarTurno(consultorio, medico, 0, fecha,
                                                      turnoHoraInicio.ToString("HH:mm"), turnoHoraFin.ToString("HH:mm"),
-                                                     turno_periodo, minutos, pago, estado);
+                                                     turno_periodo, minutos,"", estado);
 
                             // Puedes mostrar un mensaje opcional o seguir con el ciclo
                         }
@@ -193,8 +216,7 @@ namespace Clinica_SePrise.Turnos
             Conexion conexion = new Conexion();
 
             // Crea la consulta para verificar si ya existen turnos para la misma fecha, consultorio y turno_periodo
-            string queryVerificarTurnos = "SELECT COUNT(*) FROM turnos WHERE fecha = @fecha AND consultorio = @consultorio" +
-                " AND turno_periodo = @turno_periodo";
+            string queryVerificarTurnos = "SELECT COUNT(*) FROM turnos WHERE fecha = @fecha AND consultorio = @consultorio AND turno_periodo = @turno_periodo";
 
             using (var connection = conexion.GetConnection())
             {
@@ -220,11 +242,6 @@ namespace Clinica_SePrise.Turnos
                     return false;
                 }
             }
-        }
-
-        private void NuevoAgenda_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.btnLimpiar_Click(sender, e);
         }
     }
 }
