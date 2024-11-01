@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Clinica_SePrise.Turnos
@@ -186,6 +187,7 @@ namespace Clinica_SePrise.Turnos
                             DateTime turnoHoraInicio = new DateTime(fecha.Year, fecha.Month, fecha.Day, horaActual.Hours, horaActual.Minutes, 0);
                             DateTime turnoHoraFin = turnoHoraInicio.AddMinutes(minutos);
 
+                            if (!this.registrarAgenda()) return;
                             // Insertar el turno en la base de datos
                             turnoNuevo.InsertarTurno(consultorio, medico, 0, fecha,
                                                      turnoHoraInicio.ToString("HH:mm"), turnoHoraFin.ToString("HH:mm"),
@@ -205,6 +207,39 @@ namespace Clinica_SePrise.Turnos
                     //Menu principal = new Menu();
                     //principal.Show();
                     //this.Close();
+                }
+            }
+        }
+
+        private bool registrarAgenda()
+        {
+            Conexion conexion = new Conexion();
+            using (var connection = conexion.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "INSERT INTO agenda (cod_medi, fecha, turno, consultorio) VALUES (@medico, @fecha, @turno_periodo, @consultorio)";
+
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@medico", medico);
+                        command.Parameters.AddWithValue("@fecha", fecha);
+                        command.Parameters.AddWithValue("@turno_periodo", turno_periodo);
+                        command.Parameters.AddWithValue("@consultorio", consultorio);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        return rowsAffected > 0;
+                        
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show($"Error al insertar el turno: {ex.Message}",
+                                 "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
             }
         }
@@ -238,7 +273,7 @@ namespace Clinica_SePrise.Turnos
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió un error al verificar los turnos: " + ex.Message);
+                    MessageBox.Show("No se pudo crear la agenda, favor intente de nuevo: " + ex.Message);
                     return false;
                 }
             }
