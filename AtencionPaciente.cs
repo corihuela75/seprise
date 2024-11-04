@@ -1,4 +1,5 @@
 ﻿using Clinica_SePrise.Datos;
+using Clinica_SePrise.Diagnosticar;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -7,10 +8,13 @@ namespace Clinica_SePrise.Atencion
     public partial class AtencionPaciente : Form
     {
         private string documentoPaciente;
+        private Diagnostico formDiagnostico;
+        private int idPaciente; // Pasa como parametro al formDiagnostico
 
         public AtencionPaciente()
         {
             InitializeComponent();
+            btnRegistrar.Enabled = false;
         }
 
         private void NuevoTurno_Load(object sender, EventArgs e)
@@ -77,7 +81,7 @@ namespace Clinica_SePrise.Atencion
         private void MostrarDatosPaciente(string docPaciente)
         {
             Conexion conexion = new Conexion();
-            string query = "SELECT nombre_paci, doc_paci, fecha_nac_paci, obra_social_paci FROM paciente WHERE doc_paci = @paciente";
+            string query = "SELECT cod_paci, nombre_paci, doc_paci, fecha_nac_paci, obra_social_paci FROM paciente WHERE doc_paci = @paciente";
 
             using (var connection = conexion.GetConnection())
             {
@@ -90,6 +94,7 @@ namespace Clinica_SePrise.Atencion
 
                     if (reader.Read())
                     {
+                        idPaciente = Convert.ToInt32(reader["cod_paci"].ToString());
                         lblNombre.Text = reader["nombre_paci"].ToString();
                         lblDocumento.Text = reader["doc_paci"].ToString();
                         lblFechaNacimiento.Text = Convert.ToDateTime(reader["fecha_nac_paci"]).ToString("dd/MM/yyyy");
@@ -117,6 +122,7 @@ namespace Clinica_SePrise.Atencion
 
         private void CargarHistoriaClinica(String docPacienteStr)
         {
+            btnRegistrar.Enabled = true;
             // Intentar convertir el documento del paciente a int
             if (!int.TryParse(docPacienteStr, out int docPaciente))
             {
@@ -142,12 +148,14 @@ namespace Clinica_SePrise.Atencion
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la historia clínica para este paciente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("No se encontró la historia clínica para este paciente.", "Aviso", MessageBoxButtons.OK, 
+                            MessageBoxIcon.Warning);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al cargar la historia clínica: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al cargar la historia clínica: " + ex.Message, "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }
@@ -162,6 +170,12 @@ namespace Clinica_SePrise.Atencion
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            this.formDiagnostico = this.formDiagnostico ?? new Diagnostico(idPaciente);
+            this.formDiagnostico.ShowDialog();
         }
     }
 }

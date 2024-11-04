@@ -32,16 +32,34 @@
             lblFechaNacimiento = new Label();
             lblNombre = new Label();
             lblDocumento = new Label();
-            richTextBoxHistoria = new RichTextBox();
             panel2 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
+            richConsulta = new RichTextBox();
+            panel4 = new Panel();
+            panel8 = new Panel();
+            richNotas = new RichTextBox();
+            lblNotas = new Label();
+            panel7 = new Panel();
+            richTratamiento = new RichTextBox();
+            lblTratamiento = new Label();
+            panel6 = new Panel();
+            richDiagnostico = new RichTextBox();
+            lblDiagnostico = new Label();
+            panel5 = new Panel();
+            richExamen = new RichTextBox();
+            lblHistorial = new Label();
+            lblExamen = new Label();
             panel3 = new Panel();
-            richTextBox1 = new RichTextBox();
+            richHistoria = new RichTextBox();
+            lblConsulta = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             panel2.SuspendLayout();
+            panel4.SuspendLayout();
+            panel8.SuspendLayout();
+            panel7.SuspendLayout();
+            panel6.SuspendLayout();
+            panel5.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,7 +69,7 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(180, 807);
+            panel1.Size = new Size(180, 857);
             panel1.TabIndex = 22;
             // 
             // pictureBox1
@@ -72,12 +90,13 @@
             btnVolver.FlatStyle = FlatStyle.Flat;
             btnVolver.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnVolver.ForeColor = Color.SteelBlue;
-            btnVolver.Location = new Point(556, 580);
+            btnVolver.Location = new Point(557, 792);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(145, 48);
             btnVolver.TabIndex = 25;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // btnRegistrar
             // 
@@ -87,12 +106,13 @@
             btnRegistrar.FlatStyle = FlatStyle.Flat;
             btnRegistrar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnRegistrar.ForeColor = Color.SteelBlue;
-            btnRegistrar.Location = new Point(719, 580);
+            btnRegistrar.Location = new Point(720, 792);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(145, 48);
             btnRegistrar.TabIndex = 23;
             btnRegistrar.Text = "REGISTRAR DIAGNOSTICO";
             btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // lblTitulo
             // 
@@ -200,88 +220,222 @@
             lblDocumento.Size = new Size(0, 21);
             lblDocumento.TabIndex = 47;
             // 
-            // richTextBoxHistoria
-            // 
-            richTextBoxHistoria.BorderStyle = BorderStyle.None;
-            richTextBoxHistoria.Location = new Point(-1, -1);
-            richTextBoxHistoria.Name = "richTextBoxHistoria";
-            richTextBoxHistoria.Size = new Size(301, 94);
-            richTextBoxHistoria.TabIndex = 51;
-            richTextBoxHistoria.Text = "";
-            // 
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(richTextBoxHistoria);
-            panel2.Location = new Point(216, 185);
+            panel2.Controls.Add(richConsulta);
+            panel2.Location = new Point(0, 40);
             panel2.Name = "panel2";
-            panel2.Size = new Size(301, 94);
+            panel2.Size = new Size(630, 100);
             panel2.TabIndex = 52;
             // 
-            // label1
+            // richConsulta
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(216, 161);
-            label1.Name = "label1";
-            label1.Size = new Size(149, 21);
-            label1.TabIndex = 50;
-            label1.Text = "Motivo de consulta :";
-            label1.Click += label1_Click;
+            richConsulta.BorderStyle = BorderStyle.None;
+            richConsulta.Location = new Point(0, 0);
+            richConsulta.Name = "richConsulta";
+            richConsulta.Size = new Size(630, 100);
+            richConsulta.TabIndex = 51;
+            richConsulta.Text = "";
             // 
-            // label2
+            // panel4
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(563, 161);
-            label2.Name = "label2";
-            label2.Size = new Size(149, 21);
-            label2.TabIndex = 53;
-            label2.Text = "Motivo de consulta :";
+            panel4.AutoScroll = true;
+            panel4.Controls.Add(panel8);
+            panel4.Controls.Add(lblNotas);
+            panel4.Controls.Add(panel7);
+            panel4.Controls.Add(lblTratamiento);
+            panel4.Controls.Add(panel6);
+            panel4.Controls.Add(lblDiagnostico);
+            panel4.Controls.Add(panel5);
+            panel4.Controls.Add(lblHistorial);
+            panel4.Controls.Add(lblExamen);
+            panel4.Controls.Add(panel3);
+            panel4.Controls.Add(lblConsulta);
+            panel4.Controls.Add(panel2);
+            panel4.Location = new Point(217, 172);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(648, 600);
+            panel4.TabIndex = 55;
+            // 
+            // panel8
+            // 
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Controls.Add(richNotas);
+            panel8.Location = new Point(0, 790);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(630, 100);
+            panel8.TabIndex = 62;
+            // 
+            // richNotas
+            // 
+            richNotas.BorderStyle = BorderStyle.None;
+            richNotas.Location = new Point(0, 0);
+            richNotas.Name = "richNotas";
+            richNotas.Size = new Size(630, 100);
+            richNotas.TabIndex = 51;
+            richNotas.Text = "";
+            // 
+            // lblNotas
+            // 
+            lblNotas.AutoSize = true;
+            lblNotas.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNotas.Location = new Point(0, 765);
+            lblNotas.Name = "lblNotas";
+            lblNotas.Size = new Size(141, 21);
+            lblNotas.TabIndex = 61;
+            lblNotas.Text = "Notas Adicionales :";
+            // 
+            // panel7
+            // 
+            panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Controls.Add(richTratamiento);
+            panel7.Location = new Point(0, 640);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(630, 100);
+            panel7.TabIndex = 60;
+            // 
+            // richTratamiento
+            // 
+            richTratamiento.BorderStyle = BorderStyle.None;
+            richTratamiento.Location = new Point(0, 0);
+            richTratamiento.Name = "richTratamiento";
+            richTratamiento.Size = new Size(630, 100);
+            richTratamiento.TabIndex = 51;
+            richTratamiento.Text = "";
+            // 
+            // lblTratamiento
+            // 
+            lblTratamiento.AutoSize = true;
+            lblTratamiento.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTratamiento.Location = new Point(0, 615);
+            lblTratamiento.Name = "lblTratamiento";
+            lblTratamiento.Size = new Size(166, 21);
+            lblTratamiento.TabIndex = 59;
+            lblTratamiento.Text = "Plan de Tratamiento * :";
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Controls.Add(richDiagnostico);
+            panel6.Location = new Point(0, 490);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(630, 100);
+            panel6.TabIndex = 58;
+            // 
+            // richDiagnostico
+            // 
+            richDiagnostico.BorderStyle = BorderStyle.None;
+            richDiagnostico.Location = new Point(0, 0);
+            richDiagnostico.Name = "richDiagnostico";
+            richDiagnostico.Size = new Size(630, 100);
+            richDiagnostico.TabIndex = 51;
+            richDiagnostico.Text = "";
+            // 
+            // lblDiagnostico
+            // 
+            lblDiagnostico.AutoSize = true;
+            lblDiagnostico.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDiagnostico.Location = new Point(0, 465);
+            lblDiagnostico.Name = "lblDiagnostico";
+            lblDiagnostico.Size = new Size(110, 21);
+            lblDiagnostico.TabIndex = 57;
+            lblDiagnostico.Text = "Diagnóstico * :";
+            // 
+            // panel5
+            // 
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(richExamen);
+            panel5.Location = new Point(0, 340);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(630, 100);
+            panel5.TabIndex = 56;
+            // 
+            // richExamen
+            // 
+            richExamen.BorderStyle = BorderStyle.None;
+            richExamen.Location = new Point(0, 0);
+            richExamen.Name = "richExamen";
+            richExamen.Size = new Size(630, 100);
+            richExamen.TabIndex = 51;
+            richExamen.Text = "";
+            // 
+            // lblHistorial
+            // 
+            lblHistorial.AutoSize = true;
+            lblHistorial.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblHistorial.Location = new Point(0, 165);
+            lblHistorial.Name = "lblHistorial";
+            lblHistorial.Size = new Size(125, 21);
+            lblHistorial.TabIndex = 53;
+            lblHistorial.Text = "Historia Médica :";
+            // 
+            // lblExamen
+            // 
+            lblExamen.AutoSize = true;
+            lblExamen.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblExamen.Location = new Point(0, 315);
+            lblExamen.Name = "lblExamen";
+            lblExamen.Size = new Size(125, 21);
+            lblExamen.TabIndex = 55;
+            lblExamen.Text = "Exámen Físico * :";
             // 
             // panel3
             // 
             panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(richTextBox1);
-            panel3.Location = new Point(563, 185);
+            panel3.Controls.Add(richHistoria);
+            panel3.Location = new Point(0, 190);
             panel3.Name = "panel3";
-            panel3.Size = new Size(301, 94);
+            panel3.Size = new Size(630, 100);
             panel3.TabIndex = 54;
             // 
-            // richTextBox1
+            // richHistoria
             // 
-            richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.Location = new Point(-1, -1);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(301, 94);
-            richTextBox1.TabIndex = 51;
-            richTextBox1.Text = "";
+            richHistoria.BorderStyle = BorderStyle.None;
+            richHistoria.Location = new Point(0, 0);
+            richHistoria.Name = "richHistoria";
+            richHistoria.Size = new Size(630, 100);
+            richHistoria.TabIndex = 51;
+            richHistoria.Text = "";
+            // 
+            // lblConsulta
+            // 
+            lblConsulta.AutoSize = true;
+            lblConsulta.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblConsulta.Location = new Point(0, 15);
+            lblConsulta.Name = "lblConsulta";
+            lblConsulta.Size = new Size(160, 21);
+            lblConsulta.TabIndex = 50;
+            lblConsulta.Text = "Motivo de consulta * :";
             // 
             // Diagnostico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             BackColor = Color.LightCyan;
-            ClientSize = new Size(895, 651);
-            Controls.Add(label2);
-            Controls.Add(panel3);
-            Controls.Add(label1);
-            Controls.Add(panel2);
+            ClientSize = new Size(895, 861);
             Controls.Add(groupBox1);
             Controls.Add(lblTitulo);
             Controls.Add(btnRegistrar);
             Controls.Add(panel1);
             Controls.Add(btnVolver);
+            Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Diagnostico";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ATENCION DE PACIENTES";
-            Load += Diagnostico_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel2.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -301,11 +455,24 @@
         private Label lblFechaNacimiento;
         private Label lblNombre;
         private Label lblDocumento;
-        private RichTextBox richTextBoxHistoria;
         private Panel panel2;
-        private Label label1;
-        private Label label2;
+        private Panel panel4;
+        private RichTextBox richConsulta;
+        private Label lblConsulta;
+        private Label lblHistorial;
         private Panel panel3;
-        private RichTextBox richTextBox1;
+        private RichTextBox richHistoria;
+        private Panel panel5;
+        private RichTextBox richExamen;
+        private Label lblExamen;
+        private Panel panel6;
+        private RichTextBox richDiagnostico;
+        private Label lblDiagnostico;
+        private Panel panel7;
+        private RichTextBox richTratamiento;
+        private Label lblTratamiento;
+        private Panel panel8;
+        private RichTextBox richNotas;
+        private Label lblNotas;
     }
 }

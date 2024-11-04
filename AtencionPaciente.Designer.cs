@@ -93,8 +93,9 @@
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(145, 48);
             btnRegistrar.TabIndex = 23;
-            btnRegistrar.Text = "REGISTRAR DIAGNOSTICO";
+            btnRegistrar.Text = "IR AL DIAGNOSTICO";
             btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // lblTitulo
             // 
