@@ -252,12 +252,12 @@
             // lblIngreso
             // 
             lblIngreso.AutoSize = true;
-            lblIngreso.Location = new Point(118, 123);
+            lblIngreso.Location = new Point(47, 114);
             lblIngreso.Name = "lblIngreso";
             lblIngreso.Size = new Size(38, 15);
             lblIngreso.TabIndex = 16;
             lblIngreso.Text = "label3";
-            lblIngreso.TextAlign = ContentAlignment.MiddleCenter;
+            lblIngreso.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // Menu
             // 

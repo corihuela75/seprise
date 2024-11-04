@@ -18,6 +18,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtencionPaciente));
             panel1 = new Panel();
+            lblIngreso = new Label();
             pictureBox1 = new PictureBox();
             btnVolver = new Button();
             btnRegistrar = new Button();
@@ -49,11 +50,22 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(lblIngreso);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(180, 807);
             panel1.TabIndex = 22;
+            // 
+            // lblIngreso
+            // 
+            lblIngreso.AutoSize = true;
+            lblIngreso.Location = new Point(10, 190);
+            lblIngreso.Name = "lblIngreso";
+            lblIngreso.Size = new Size(38, 15);
+            lblIngreso.TabIndex = 53;
+            lblIngreso.Text = "label3";
+            lblIngreso.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
@@ -314,6 +326,7 @@
             Text = "ATENCION DE PACIENTES";
             Load += NuevoTurno_Load;
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -346,5 +359,6 @@
         private GroupBox groupBox2;
         private RichTextBox richTextBoxHistoria;
         private Panel panel2;
+        private Label lblIngreso;
     }
 }

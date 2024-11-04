@@ -53,7 +53,7 @@ namespace Clinica_SePrise
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            lblIngreso.Text = id.ToString() + '-' + name.ToUpper() + '\n' + rol.ToUpper();
+            lblIngreso.Text = "USUARIO: " + name.ToUpper() + " (Id: " + id.ToString()+") "+ "\nROL: " + rol.ToUpper();
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -91,7 +91,7 @@ namespace Clinica_SePrise
             btnOne.Text = "GESTIONAR PACIENTES";
             btnTwo.Text = "GESTIONAR PERSONAL MEDICO";
             btnThree.Text = "GESTIONAR AGENDA";
-            this.btnOneForm = this.formPacientes ?? new NuevoPaciente();
+            this.btnOneForm = this.formPacientes ?? new NuevoPaciente(id, name, rol);
             this.btnTwoForm = this.formMedico ?? new NuevoMedico();
             this.btnThreeForm = this.formAgenda ?? new NuevoAgenda();
             this.btnSelected(btnAdministrativa);
@@ -141,7 +141,7 @@ namespace Clinica_SePrise
             btnTwo.Text = "";
             btnThree.Text = "";
             //this.btnThreeForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
-            this.btnOneForm = this.formAtencion ?? new AtencionPaciente();
+            this.btnOneForm = this.formAtencion ?? new AtencionPaciente(id, name, rol);
             //this.btnTwoForm = this.formTurnosProf ?? new NuevoTurnoP();
             this.btnSelected(btnAtencion);
         }

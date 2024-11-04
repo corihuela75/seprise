@@ -48,6 +48,7 @@ namespace Clinica_SePrise.Pacientes
             lblApto = new Label();
             lblAsterisco = new Label();
             panel1 = new Panel();
+            lblIngreso = new Label();
             label1 = new Label();
             txtTelefono = new TextBox();
             label2 = new Label();
@@ -256,11 +257,22 @@ namespace Clinica_SePrise.Pacientes
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(lblIngreso);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(180, 657);
             panel1.TabIndex = 21;
+            // 
+            // lblIngreso
+            // 
+            lblIngreso.AutoSize = true;
+            lblIngreso.Location = new Point(10, 190);
+            lblIngreso.Name = "lblIngreso";
+            lblIngreso.Size = new Size(38, 15);
+            lblIngreso.TabIndex = 34;
+            lblIngreso.Text = "label3";
+            lblIngreso.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
@@ -407,8 +419,10 @@ namespace Clinica_SePrise.Pacientes
             StartPosition = FormStartPosition.CenterScreen;
             Text = "REGISTRAR PACIENTE";
             FormClosing += NuevoPaciente_FormClosing;
+            Load += Principal_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -447,5 +461,6 @@ namespace Clinica_SePrise.Pacientes
         private Label label5;
         private TextBox txtEdad;
         private DateTimePicker dtpNacimiento;
+        private Label lblIngreso;
     }
 }
