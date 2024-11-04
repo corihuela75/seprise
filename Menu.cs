@@ -4,7 +4,9 @@ using Clinica_SePrise.Pacientes;
 using Clinica_SePrise.Turnos;
 using Clinica_SePrise.TurnoE;
 using Clinica_SePrise.TurnoP;
+using Clinica_SePrise.Diagnosticar;
 using System.Data;
+using Clinica_SePrise.Atencion;
 
 
 namespace Clinica_SePrise
@@ -32,6 +34,9 @@ namespace Clinica_SePrise
         private NuevoTurnoE formTurnosEspe;
         private NuevoTurnoP formTurnosProf;
 
+        // -- FORMS ATENCION DE PACIENTES --
+        private Diagnostico formDiagnostico;
+        private AtencionPaciente formAtencion;
 
         public Menu(int id, string name, string rol)
         {
@@ -84,11 +89,11 @@ namespace Clinica_SePrise
             btnThree.Visible = true;
             btnFour.Visible = false;
             btnOne.Text = "GESTIONAR PACIENTES";
-            btnTwo.Text = "GESTIONAR AGENDA";
-            btnThree.Text = "GESTIONAR PESONAL MEDICO";
+            btnTwo.Text = "GESTIONAR PERSONAL MEDICO";
+            btnThree.Text = "GESTIONAR AGENDA";
             this.btnOneForm = this.formPacientes ?? new NuevoPaciente();
-            this.btnTwoForm = this.formAgenda ?? new NuevoAgenda();
-            this.btnThreeForm = this.formMedico ?? new NuevoMedico();
+            this.btnTwoForm = this.formMedico ?? new NuevoMedico();
+            this.btnThreeForm = this.formAgenda ?? new NuevoAgenda();
             this.btnSelected(btnAdministrativa);
         }
 
@@ -97,23 +102,48 @@ namespace Clinica_SePrise
             this.restablecerBotones();
             btnOne.Visible = true;
             btnTwo.Visible = true;
-            btnThree.Visible = true;
+            btnThree.Visible = false;
             btnFour.Visible = false;
             btnOne.Text = "SOLICITAR TURNO POR ESPECIALIDAD";
             btnTwo.Text = "SOLICITAR TURNO POR PROFESIONAL";
-            btnThree.Text = "RATIFICAR TURNO";
-            this.btnThreeForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
+            btnThree.Text = "";
             this.btnOneForm = this.formTurnosEspe ?? new NuevoTurnoE();
             this.btnTwoForm = this.formTurnosProf ?? new NuevoTurnoP();
+            //this.btnThreeForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
             this.btnSelected(btnTurnos);
         }
 
         private void btnSalaEspera_Click(object sender, EventArgs e)
         {
+            this.restablecerBotones();
+            btnOne.Visible = true;
+            btnTwo.Visible = false;
+            btnThree.Visible = false;
+            btnFour.Visible = false;
+            btnOne.Text = "RATIFICAR TURNO";
+            btnTwo.Text = "";
+            btnThree.Text = "";
+            this.btnOneForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
+            //this.btnTwoForm = this.formTurnosProf ?? new NuevoTurnoP();
+            //this.btnThreeForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
+            this.btnSelected(btnEspera);
+
         }
 
         private void btnAtencion_Click(object sender, EventArgs e)
         {
+            this.restablecerBotones();
+            btnOne.Visible = true;
+            btnTwo.Visible = false;
+            btnThree.Visible = false;
+            btnFour.Visible = false;
+            btnOne.Text = "CONSULTA DE HISTORIA CLINICA";
+            btnTwo.Text = "";
+            btnThree.Text = "";
+            //this.btnThreeForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
+            this.btnOneForm = this.formAtencion ?? new AtencionPaciente();
+            //this.btnTwoForm = this.formTurnosProf ?? new NuevoTurnoP();
+            this.btnSelected(btnAtencion);
         }
 
         // --- OPCIONES OPCIONALES ---
