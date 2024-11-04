@@ -1,6 +1,8 @@
 
 (04-11-2024)
 
+- se agrega gestion de turnos x especialidad
+
 - se mueve el menu de ratificar turnos al menu de Sala de espera
 - se agrega el formulario de consulta de historia clinica, que permite buscar paciente por DNI o por Nombre
 - desde este fomulario, se habilita el boton de ir al diagnostico (con el paciente seleccionado)

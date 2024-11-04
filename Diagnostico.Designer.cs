@@ -51,6 +51,7 @@
             panel3 = new Panel();
             richHistoria = new RichTextBox();
             lblConsulta = new Label();
+            lblAsterisco = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -408,6 +409,16 @@
             lblConsulta.TabIndex = 50;
             lblConsulta.Text = "Motivo de consulta * :";
             // 
+            // lblAsterisco
+            // 
+            lblAsterisco.AutoSize = true;
+            lblAsterisco.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAsterisco.Location = new Point(216, 154);
+            lblAsterisco.Name = "lblAsterisco";
+            lblAsterisco.Size = new Size(192, 15);
+            lblAsterisco.TabIndex = 56;
+            lblAsterisco.Text = "( * ) Campos de ingreso obligatorio";
+            // 
             // Diagnostico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -415,6 +426,7 @@
             AutoScroll = true;
             BackColor = Color.LightCyan;
             ClientSize = new Size(895, 861);
+            Controls.Add(lblAsterisco);
             Controls.Add(groupBox1);
             Controls.Add(lblTitulo);
             Controls.Add(btnRegistrar);
@@ -474,5 +486,6 @@
         private Panel panel8;
         private RichTextBox richNotas;
         private Label lblNotas;
+        private Label lblAsterisco;
     }
 }

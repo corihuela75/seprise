@@ -82,7 +82,7 @@ namespace Clinica_SePrise.TurnoP
                     dataGridViewTurnos.Columns["fecha"].Width = 120;
                     dataGridViewTurnos.Columns["hora_inicio"].Width = 100;
                     dataGridViewTurnos.Columns["hora_fin"].Width = 100;
-                    dataGridViewTurnos.Columns["hora_fin"].Width = 160;
+                    dataGridViewTurnos.Columns["estado"].Width = 160;
 
                     reader.Close();
                 }
