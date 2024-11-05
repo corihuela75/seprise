@@ -30,9 +30,11 @@ namespace Clinica_SePrise
         private NuevoMedico formMedico;
 
         // -- FORMS GESTION TURNOS --
-        private RatificarTurno formRatTurno;
         private NuevoTurnoE formTurnosEspe;
         private NuevoTurnoP formTurnosProf;
+
+        // -- FORMS GESTION TURNOS --
+        private RatificarTurno formRatTurno;
 
         // -- FORMS ATENCION DE PACIENTES --
         private Diagnostico formDiagnostico;
@@ -117,14 +119,14 @@ namespace Clinica_SePrise
         {
             this.restablecerBotones();
             btnOne.Visible = true;
-            btnTwo.Visible = false;
+            btnTwo.Visible = true;
             btnThree.Visible = false;
             btnFour.Visible = false;
             btnOne.Text = "RATIFICAR TURNO";
-            btnTwo.Text = "";
+            btnTwo.Text = "CRONOGRAMA SALA ESPERA";
             btnThree.Text = "";
             this.btnOneForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
-            //this.btnTwoForm = this.formTurnosProf ?? new NuevoTurnoP();
+            this.btnTwoForm =  new CronogramaSalaEspera();
             //this.btnThreeForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
             this.btnSelected(btnEspera);
 

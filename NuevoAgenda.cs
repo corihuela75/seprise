@@ -166,7 +166,7 @@ namespace Clinica_SePrise.Turnos
                             // Insertar el turno en la base de datos
                             turnoNuevo.InsertarTurno(consultorio, medico, especialidad, paciente, fecha,
                                                      turnoHoraInicio.ToString("HH:mm"), turnoHoraFin.ToString("HH:mm"),
-                                                     turno_periodo, minutos, pago, estado);
+                                                     turno_periodo, minutos, pago, estado,true);
 
                             // Puedes mostrar un mensaje opcional o seguir con el ciclo
                         }

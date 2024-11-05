@@ -16,7 +16,7 @@ namespace Clinica_SePrise.Datos
         // CREAR TURNO
 
         public void InsertarTurno(int consultorio, string medico, string especialidad, int paciente, DateTime fecha, string hora_inicio, string hora_fin,
-            string turno_periodo, int duracion, string pago, string estado)
+            string turno_periodo, int duracion, string pago, string estado,bool fromAgenda = false)
         {
             using (var connection = conexion.GetConnection())
             {
@@ -43,7 +43,7 @@ namespace Clinica_SePrise.Datos
                         command.Parameters.AddWithValue("@estado", estado);
 
                         int rowsAffected = command.ExecuteNonQuery();
-
+                        if (fromAgenda) { return; }
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("El turno a sido añadido a la base de datos correctamente ",

@@ -110,6 +110,7 @@ namespace Clinica_SePrise
                         MessageBox.Show("Usuario o contraseña incorrectos.");
                     }
                 }
+                connection.Close();
             }
         }
     }

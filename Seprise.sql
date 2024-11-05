@@ -48,6 +48,7 @@ CREATE TABLE paciente (
 
 INSERT INTO paciente (nombre_paci, doc_paci, fecha_nac_paci, edad_paci, genero_paci, tel_paci, direccion_paci, email_paci, estado_civil_paci, historial_paci, obra_social_paci)
 VALUES 
+('', 0, '1985-04-10', 18, 'Masculino', '123-456-7890', 'Calle falsa 123', 'ejemplo@ejemplo.com', 'Casado', '', ''),
 ('Carlos Gómez', 12345678, '1985-04-10', 39, 'Masculino', '123-456-7890', 'Calle 123, Ciudad A', 'carlos.gomez@ejemplo.com', 'Casado', 'Sin antecedentes importantes.', 'Obra Social 1'),
 ('Laura Sánchez', 23456789, '1990-08-15', 34, 'Femenino', '234-567-8901', 'Avenida 456, Ciudad B', 'laura.sanchez@ejemplo.com', 'Soltero', 'Alergia a penicilina.', ''),
 ('Ana Rodríguez', 34567890, '1975-02-20', 49, 'Femenino', '345-678-9012', 'Calle 789, Ciudad C', 'ana.rodriguez@ejemplo.com', 'Divorciado', 'Hipertensión controlada.', 'Obra Social 3'),
@@ -98,9 +99,7 @@ CREATE TABLE turnos (
     turno_periodo ENUM('mañana', 'tarde'),
     duracion INT,
     pago ENUM ('Particular', 'Obra Social', ""),
-    estado ENUM('disponible', 'reservado', 'cancelado', 'ratificado', 'vencido')
-    # CONSTRAINT fk_medico FOREIGN KEY (medico_id) REFERENCES medico (cod_medi)
-    # CONSTRAINT fk_paciente FOREIGN KEY (paciente_id) REFERENCES paciente (cod_paci)
+    estado ENUM('disponible', 'reservado', 'cancelado', 'ratificado', 'vencido', 'en curso')
 );
 
 INSERT INTO turnos (consultorio, medico, especialidad, paciente, fecha, hora_inicio, hora_fin, turno_periodo, duracion, pago, estado) 
