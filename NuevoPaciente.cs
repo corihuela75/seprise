@@ -1,4 +1,5 @@
 ﻿using Clinica_SePrise.Datos;
+using System.Xml.Linq;
 
 namespace Clinica_SePrise.Pacientes
 {
@@ -15,12 +16,22 @@ namespace Clinica_SePrise.Pacientes
         private String estado;
         private String obra;
         private String historia;
+        //DATOS DE LOGIN
+        private string name;
+        private string rol;
+        private int id;
 
-        public NuevoPaciente()
+        public NuevoPaciente(int id, string name, string rol)
         {
+            this.name = name;
+            this.id = id;
+            this.rol = rol;
             InitializeComponent();
         }
-
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            lblIngreso.Text = "USUARIO: " + name.ToUpper() + " (Id: " + id.ToString() + ") " + "\nROL: " + rol.ToUpper();
+        }
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.btnLimpiar_Click(sender, e);

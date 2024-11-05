@@ -26,8 +26,8 @@ constraint fk_usuario foreign key(RolUsu) references roles(RolUsu)
 
 insert into usuario(CodUsu,NombreUsu,PassUsu,RolUsu) values
 (26,'Admin','1234',120),
-(30,'Cristian','1234',120),
-(31,'Heber','1234',120);
+(30,'Empleado','1234',121),
+(31,'Medico','1234',122);
 
 CREATE TABLE paciente (
     cod_paci INT AUTO_INCREMENT,
@@ -110,4 +110,4 @@ VALUES
     (1, 'Dr. Miguel Díaz', 'Neurología', 34567890, '2024-11-02', '14:00:00', '15:30:00', 'tarde', '90',"",'cancelado'),
     (3, 'Dr. Luis Suárez', 'Pediatría', 45678901, '2024-11-03', '10:00:00', '10:30:00', 'mañana', '30',"", 'reservado'),
     (2, 'Dra. Patricia Ríos', 'Ginecología', 56789012, '2024-11-04', '16:00:00', '17:00:00', 'tarde', '60',"",'disponible'),
-    (2, 'Dra. Patricia Ríos', 'Ginecología', 90123456, '2024-11-04', '17:00:00', '18:00:00', 'tarde', '60',"",'reservado');
+    (2, 'Dra. Patricia Ríos', 'Ginecología', 90123456, '2024-11-04', '17:00:00', '18:00:00', 'tarde', '60',"",'reservado'); 

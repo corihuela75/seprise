@@ -10,16 +10,25 @@ namespace Clinica_SePrise.Atencion
         private string documentoPaciente;
         private Diagnostico formDiagnostico;
         private int idPaciente; // Pasa como parametro al formDiagnostico
+        //DATOS LOGIN
+        private string name;
+        private string rol;
+        private int id;
 
-        public AtencionPaciente()
+        public AtencionPaciente(int id, string name, string rol)
         {
             InitializeComponent();
             btnRegistrar.Enabled = false;
+            this.name = name;
+            this.id = id;
+            this.rol = rol;
         }
+
 
         private void NuevoTurno_Load(object sender, EventArgs e)
         {
             LlenarComboBoxPacientes();
+            lblIngreso.Text = "USUARIO: " + name.ToUpper() + " (Id: " + id.ToString() + ") " + "\nROL: " + rol.ToUpper();
         }
 
         private void LlenarComboBoxPacientes()
@@ -122,7 +131,10 @@ namespace Clinica_SePrise.Atencion
 
         private void CargarHistoriaClinica(String docPacienteStr)
         {
-            btnRegistrar.Enabled = true;
+            if (rol == "Medico")
+            {
+                btnRegistrar.Enabled = true;
+            }
             // Intentar convertir el documento del paciente a int
             if (!int.TryParse(docPacienteStr, out int docPaciente))
             {
@@ -174,7 +186,7 @@ namespace Clinica_SePrise.Atencion
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            this.formDiagnostico = this.formDiagnostico ?? new Diagnostico(idPaciente);
+            this.formDiagnostico = this.formDiagnostico ?? new Diagnostico(idPaciente, id, name, rol);
             this.formDiagnostico.ShowDialog();
         }
     }

@@ -1,6 +1,16 @@
 
 (04-11-2024)
 
+- ( SQL ) Se modifica tabla de usuarios
+(26,'Admin','1234',120),
+(30,'Empleado','1234',121),
+(31,'Medico','1234',122);
+
+- Solo el rolo de Medico puede acceder al formulario de Diagnostico
+- Se pasan los datos de login a formulario de Registro pacientes, Atencion y Diagnostico
+- Se modifica formato de historia clinica, para que se guarde la fecha, el medico y la hora
+
+
 - se agrega gestion de turnos x especialidad
 
 - se mueve el menu de ratificar turnos al menu de Sala de espera

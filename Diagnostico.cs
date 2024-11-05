@@ -8,12 +8,23 @@ namespace Clinica_SePrise.Diagnosticar
     public partial class Diagnostico : Form
     {
         private int pacienteId;
+        //DATOS LOGIN
+        private string name;
+        private string rol;
+        private int id;
 
-        public Diagnostico(int idPaciente)
+        public Diagnostico(int idPaciente, int id, string name, string rol)
         {
             InitializeComponent();
             this.pacienteId = idPaciente;
             MostrarDatosPaciente(pacienteId);
+            this.name = name;
+            this.id = id;
+            this.rol = rol;
+        }
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            lblIngreso.Text = "USUARIO: " + name.ToUpper() + " (Id: " + id.ToString() + ") " + "\nROL: " + rol.ToUpper();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -92,14 +103,14 @@ namespace Clinica_SePrise.Diagnosticar
                 richDiagnostico.BackColor = Color.White;
             }
 
-            if (string.IsNullOrWhiteSpace(richDiagnostico.Text))
+            if (string.IsNullOrWhiteSpace(richTratamiento.Text))
             {
-                richDiagnostico.BackColor = Color.LightCoral;
+                richTratamiento.BackColor = Color.LightCoral;
                 camposCompletos = false;
             }
             else
             {
-                richDiagnostico.BackColor = Color.White;
+                richTratamiento.BackColor = Color.White;
             }
 
             // Si todos los campos están completos, procede con la acción
@@ -107,12 +118,16 @@ namespace Clinica_SePrise.Diagnosticar
             {
 
                 // Concatenar el contenido de los RichTextBox
-                string nuevoContenido = $"Motivo de la consulta:\n{richConsulta.Text}" +
+                string nuevoContenido = $"\n\nREGISTRO DE ATENCION MEDICA DE FECHA: {DateTime.Today.ToString("dd/MM/yyyy")}" +
+                    $"\n--------------------------------------------------------------" +
+                    $"\n\nMotivo de la consulta:\n{richConsulta.Text}" +
                     $"\n\nHistoria Médica:\n{richHistoria.Text}" +
                     $"\n\nExámenn Físico:\n{richExamen.Text}" +
                     $"\n\nDiagnóstico:\n{richDiagnostico.Text}" +
                     $"\n\nTratamiento:\n{richTratamiento.Text}" +
-                    $"\n\nNotas:\n{richNotas.Text}\n\n-------------------------------------";
+                    $"\n\nNotas:\n{richNotas.Text}" +
+                    $"\n\nMédico: {name}" +
+                    $"\nHora: {DateTime.Now.ToString("HH:mm")}";
 
                 // Ahora guarda el contenido concatenado en la base de datos
                 AgregarContenidoEnBaseDeDatos(nuevoContenido);
