@@ -60,6 +60,7 @@ namespace Clinica_SePrise.Pacientes
             label5 = new Label();
             txtEdad = new TextBox();
             dtpNacimiento = new DateTimePicker();
+            btnListar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -248,7 +249,7 @@ namespace Clinica_SePrise.Pacientes
             // 
             lblAsterisco.AutoSize = true;
             lblAsterisco.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAsterisco.Location = new Point(200, 592);
+            lblAsterisco.Location = new Point(186, 560);
             lblAsterisco.Name = "lblAsterisco";
             lblAsterisco.Size = new Size(192, 15);
             lblAsterisco.TabIndex = 20;
@@ -381,12 +382,29 @@ namespace Clinica_SePrise.Pacientes
             dtpNacimiento.TabIndex = 33;
             dtpNacimiento.Value = new DateTime(2024, 10, 23, 22, 30, 28, 0);
             // 
+            // btnListar
+            // 
+            btnListar.BackColor = Color.Azure;
+            btnListar.FlatAppearance.BorderColor = Color.LightBlue;
+            btnListar.FlatAppearance.BorderSize = 3;
+            btnListar.FlatStyle = FlatStyle.Flat;
+            btnListar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnListar.ForeColor = Color.SteelBlue;
+            btnListar.Location = new Point(249, 592);
+            btnListar.Name = "btnListar";
+            btnListar.Size = new Size(145, 47);
+            btnListar.TabIndex = 34;
+            btnListar.Text = "VER  TODOS LOS PACIENTES";
+            btnListar.UseVisualStyleBackColor = false;
+            btnListar.Click += btnListar_Click;
+            // 
             // NuevoPaciente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(895, 651);
+            Controls.Add(btnListar);
             Controls.Add(dtpNacimiento);
             Controls.Add(txtHistoria);
             Controls.Add(label5);
@@ -462,5 +480,6 @@ namespace Clinica_SePrise.Pacientes
         private TextBox txtEdad;
         private DateTimePicker dtpNacimiento;
         private Label lblIngreso;
+        private Button btnListar;
     }
 }
