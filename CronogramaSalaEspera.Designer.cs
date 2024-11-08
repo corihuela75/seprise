@@ -44,7 +44,9 @@
             btnBuscar = new Button();
             lblDni = new Label();
             txtDni = new TextBox();
-            button1 = new Button();
+            btnAConsultorio = new Button();
+            btnVolver = new Button();
+            lblFechaHoy = new Label();
             SuspendLayout();
             // 
             // lblTitulo
@@ -154,7 +156,7 @@
             cboTurno.ForeColor = SystemColors.MenuHighlight;
             cboTurno.FormattingEnabled = true;
             cboTurno.Items.AddRange(new object[] { "mañana", "tarde" });
-            cboTurno.Location = new Point(1183, 31);
+            cboTurno.Location = new Point(1183, 40);
             cboTurno.Name = "cboTurno";
             cboTurno.Size = new Size(181, 25);
             cboTurno.TabIndex = 29;
@@ -164,7 +166,7 @@
             // 
             lvlTurno.AutoSize = true;
             lvlTurno.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lvlTurno.Location = new Point(1110, 33);
+            lvlTurno.Location = new Point(1110, 42);
             lvlTurno.Name = "lvlTurno";
             lvlTurno.Size = new Size(54, 21);
             lvlTurno.TabIndex = 30;
@@ -202,26 +204,53 @@
             txtDni.Size = new Size(189, 23);
             txtDni.TabIndex = 46;
             // 
-            // button1
+            // btnAConsultorio
             // 
-            button1.BackColor = Color.Azure;
-            button1.FlatAppearance.BorderColor = SystemColors.ControlDarkDark;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(1099, 468);
-            button1.Name = "button1";
-            button1.Size = new Size(148, 43);
-            button1.TabIndex = 47;
-            button1.Text = "A CONSULTORIO";
-            button1.UseVisualStyleBackColor = false;
+            btnAConsultorio.BackColor = Color.Azure;
+            btnAConsultorio.FlatAppearance.BorderColor = SystemColors.ControlDarkDark;
+            btnAConsultorio.FlatStyle = FlatStyle.Flat;
+            btnAConsultorio.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAConsultorio.ForeColor = Color.Black;
+            btnAConsultorio.Location = new Point(1099, 468);
+            btnAConsultorio.Name = "btnAConsultorio";
+            btnAConsultorio.Size = new Size(148, 43);
+            btnAConsultorio.TabIndex = 47;
+            btnAConsultorio.Text = "A CONSULTORIO";
+            btnAConsultorio.UseVisualStyleBackColor = false;
+            btnAConsultorio.Click += btnAConsultorio_Click;
+            // 
+            // btnVolver
+            // 
+            btnVolver.BackColor = Color.Azure;
+            btnVolver.FlatAppearance.BorderColor = SystemColors.ControlDarkDark;
+            btnVolver.FlatStyle = FlatStyle.Flat;
+            btnVolver.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVolver.ForeColor = Color.Black;
+            btnVolver.Location = new Point(1099, 591);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(148, 43);
+            btnVolver.TabIndex = 48;
+            btnVolver.Text = "VOLVER";
+            btnVolver.UseVisualStyleBackColor = false;
+            // 
+            // lblFechaHoy
+            // 
+            lblFechaHoy.AutoSize = true;
+            lblFechaHoy.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFechaHoy.Location = new Point(1183, 12);
+            lblFechaHoy.Name = "lblFechaHoy";
+            lblFechaHoy.Size = new Size(52, 21);
+            lblFechaHoy.TabIndex = 49;
+            lblFechaHoy.Text = "label1";
             // 
             // CronogramaSalaEspera
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1419, 755);
-            Controls.Add(button1);
+            Controls.Add(lblFechaHoy);
+            Controls.Add(btnVolver);
+            Controls.Add(btnAConsultorio);
             Controls.Add(txtDni);
             Controls.Add(lblDni);
             Controls.Add(btnBuscar);
@@ -264,6 +293,8 @@
         private Button btnBuscar;
         private Label lblDni;
         private TextBox txtDni;
-        private Button button1;
+        private Button btnAConsultorio;
+        private Button btnVolver;
+        private Label lblFechaHoy;
     }
 }
