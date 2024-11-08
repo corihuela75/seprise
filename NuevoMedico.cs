@@ -1,4 +1,5 @@
 ﻿using Clinica_SePrise.Datos;
+using Clinica_SePrise.Pacientes;
 
 namespace Clinica_SePrise.Medicos
 {
@@ -99,6 +100,12 @@ namespace Clinica_SePrise.Medicos
         {
             btnLimpiar_Click(sender, e);
 
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            ListadoMedicos listado = new ListadoMedicos();
+            listado.Show();
         }
     }
 }

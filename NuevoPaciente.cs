@@ -91,7 +91,7 @@ namespace Clinica_SePrise.Pacientes
                   direccion, email, estado, historia, obra);
 
                 // Limpiar el formulario
-                btnLimpiar_Click(sender, e);
+                // btnLimpiar_Click(sender, e);
 
                 //Menu principal = new Menu();
                 //principal.Show();
@@ -121,7 +121,13 @@ namespace Clinica_SePrise.Pacientes
 
         private void NuevoPaciente_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.btnLimpiar_Click(sender, e);
+            //this.btnLimpiar_Click(sender, e);
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            ListadoPacientes listado = new ListadoPacientes();
+            listado.Show();
         }
     }
 }
