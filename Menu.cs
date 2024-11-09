@@ -126,7 +126,7 @@ namespace Clinica_SePrise
             btnTwo.Text = "CRONOGRAMA SALA ESPERA";
             btnThree.Text = "";
             this.btnOneForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
-            this.btnTwoForm =  new CronogramaSalaEspera();
+            this.btnTwoForm =  new CronogramaSalaEspera(id, name, rol);
             //this.btnThreeForm = this.formRatTurno ?? new RatificarTurno(lblIngreso.Text);
             this.btnSelected(btnEspera);
 
