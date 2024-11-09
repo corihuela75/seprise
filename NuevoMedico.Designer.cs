@@ -52,6 +52,7 @@ namespace Clinica_SePrise.Medicos
             label1 = new Label();
             cboEspecialidad = new ComboBox();
             txtContraseña = new TextBox();
+            btnListar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -195,7 +196,7 @@ namespace Clinica_SePrise.Medicos
             // 
             lblAsterisco.AutoSize = true;
             lblAsterisco.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAsterisco.Location = new Point(200, 592);
+            lblAsterisco.Location = new Point(200, 559);
             lblAsterisco.Name = "lblAsterisco";
             lblAsterisco.Size = new Size(192, 15);
             lblAsterisco.TabIndex = 20;
@@ -279,12 +280,29 @@ namespace Clinica_SePrise.Medicos
             txtContraseña.Size = new Size(214, 25);
             txtContraseña.TabIndex = 8;
             // 
+            // btnListar
+            // 
+            btnListar.BackColor = Color.Azure;
+            btnListar.FlatAppearance.BorderColor = Color.LightBlue;
+            btnListar.FlatAppearance.BorderSize = 3;
+            btnListar.FlatStyle = FlatStyle.Flat;
+            btnListar.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnListar.ForeColor = Color.SteelBlue;
+            btnListar.Location = new Point(247, 592);
+            btnListar.Name = "btnListar";
+            btnListar.Size = new Size(145, 47);
+            btnListar.TabIndex = 35;
+            btnListar.Text = "VER  TODOS LOS MEDICOS";
+            btnListar.UseVisualStyleBackColor = false;
+            btnListar.Click += btnListar_Click;
+            // 
             // NuevoMedico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(895, 651);
+            Controls.Add(btnListar);
             Controls.Add(txtContraseña);
             Controls.Add(cboEspecialidad);
             Controls.Add(label4);
@@ -341,5 +359,6 @@ namespace Clinica_SePrise.Medicos
         private Label label1;
         private ComboBox cboEspecialidad;
         private TextBox txtContraseña;
+        private Button btnListar;
     }
 }
