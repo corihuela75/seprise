@@ -19,24 +19,34 @@ namespace Clinica_SePrise.Datos
             // Ruta del archivo de configuración
             string configFilePath = "config.json";
 
-            // Lee el archivo JSON
-            string jsonContent = File.ReadAllText(configFilePath);
-
-            // Parsear el contenido del archivo JSON
-            var config = JsonSerializer.Deserialize<DatabaseConfig>(jsonContent);
-       
-
-            if (config != null && config.MySqlConnection != null)
+            try
             {
-                // Construir la cadena de conexión
-                connectionString = $"Server={config.MySqlConnection.Server};" +
-                                   $"Database={config.MySqlConnection.Database};" +
-                                   $"User={config.MySqlConnection.User};" +
-                                   $"Password={config.MySqlConnection.Password};";
+                // Lee el archivo JSON
+                string jsonContent = File.ReadAllText(configFilePath);
+
+                // Parsear el contenido del archivo JSON
+                var config = JsonSerializer.Deserialize<DatabaseConfig>(jsonContent);
+
+                if (config != null && config.MySqlConnection != null)
+                {
+                    // Construir la cadena de conexión
+                    connectionString = $"Server={config.MySqlConnection.Server};" +
+                                       $"Database={config.MySqlConnection.Database};" +
+                                       $"User={config.MySqlConnection.User};" +
+                                       $"Password={config.MySqlConnection.Password};";
+                }
+                else
+                {
+                    throw new Exception("La configuración de la base de datos es inválida.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                throw new Exception("*** Error al leer la configuración de la conexión MySQL.");
+                MessageBox.Show($"Error al leer la configuración de la base de datos: {ex.Message}",
+                                "Error de configuración",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                throw;
             }
         }
 
@@ -45,19 +55,21 @@ namespace Clinica_SePrise.Datos
             return new MySqlConnection(connectionString);
         }
 
-        public void TestConnection()
+        public bool TestConnection()
         {
-            using (var connection = GetConnection())
+            try
             {
-                try
+                using (var connection = GetConnection())
                 {
                     connection.Open();
                     Debug.WriteLine("*** Conexión exitosa a la base de datos MySQL.");
+                    return true; // La conexión fue exitosa
                 }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"*** Error al conectar a la base de datos: {ex.Message}");
-                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"*** Error al conectar a la base de datos: {ex.Message}");
+                return false; // La conexión falló
             }
         }
     }
